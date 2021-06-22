@@ -88,6 +88,11 @@ html, body {
   height: 20px;
 }
 
+.chevron-down {
+  width: 16px;
+  height: 16px;
+}
+
 .level-label {
   width: 176px;
   height: 32px;
@@ -98,6 +103,22 @@ html, body {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+}
+
+.label-level {
+  
+}
+
+.label-current {
+
+}
+
+.label-of {
+
+}
+
+.label-total {
+
 }
 
 .sidebar-instructions {
