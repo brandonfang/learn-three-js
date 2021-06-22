@@ -1,0 +1,11 @@
+@import './reset.scss';
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-size: 100%;
+}
+
+
