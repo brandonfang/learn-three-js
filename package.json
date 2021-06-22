@@ -1,0 +1,27 @@
+{
+  "name": "js-proj",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brandonfang/js-proj.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brandonfang/js-proj/issues"
+  },
+  "homepage": "https://github.com/brandonfang/js-proj#readme",
+  "dependencies": {
+    "three": "^0.129.0",
+    "webpack": "^5.40.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.7.2"
+  }
+}

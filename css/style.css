@@ -1,0 +1,123 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-size: 100%;
+  font-family: 'Inter', sans-serif;
+}
+
+.game {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  gap: 32px;
+  /* display: flex;
+  flex-direction: row; */
+}
+
+.sidebar {
+  background: lightgoldenrodyellow;
+  height: 100%;
+  width: 100%;
+  min-width: 600px;
+  justify-self: center;
+  padding: 32px 32px;
+}
+
+.view {
+  background: lightgoldenrodyellow;
+  height: 100%;
+  width: 100%;
+  min-width: 600px;
+  justify-self: center;
+  padding: 32px 32px;
+}
+
+.sidebar-header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  height: 32px;
+}
+
+.logo {
+  line-height: 1;
+  margin: 0;
+}
+
+.level-picker {
+  height: 32px;
+  width: 240px;
+  border-radius: 4px;
+  background: lightgreen;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.arrow {
+  width: 32px;
+  height: 32px;
+  background:lightgrey;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.arrow.left {
+  border-radius: 4px 0 0 4px;
+}
+
+.arrow.right {
+  border-radius: 0 4px 4px 0;
+}
+
+.arrow:hover {
+  background: gray;
+}
+
+.chevron {
+  width: 20px;
+  height: 20px;
+}
+
+.level-label {
+  width: 176px;
+  height: 32px;
+  font-size: 14px;
+  background: lightsteelblue;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-instructions {
+  width: 100%;
+  margin-top: 32px;
+}
+
+.footer {
+  width: 100%;
+  height: 24px;
+  margin-top: 16px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.editor {
+  width: 100%;
+  height: 400px;
+  margin-top: 16px;
+  background: lightseagreen;
+}
