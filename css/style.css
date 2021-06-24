@@ -126,6 +126,10 @@ html, body {
   border-radius: 0 4px 4px 0;
 }
 
+.arrow.disabled {
+  opacity: 0.3;
+}
+
 .arrow:hover {
   background: var(--gray-200);
 }
