@@ -3,7 +3,7 @@
 
 h1 {
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.2;
   margin-bottom: 16px;
 }
@@ -27,5 +27,17 @@ p {
   font-weight: 400;
   line-height: 1.5;
   margin-bottom: 16px;
+}
+
+a {
+  color: var(--teal-600);
+  text-decoration: underline;
+  /* border-bottom: 1px solid var(--teal-600); */
+  transition: 0.3s;
+}
+
+a:hover {
+  color: var(--teal-800);
+  /* border-bottom: 1px solid var(--teal-800); */
 }
 
