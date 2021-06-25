@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JAVASCRIPT GAME</title>
+    <title>Learn CSS Animations</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
@@ -15,7 +15,7 @@
       <section class="sidebar">
         <div class="sidebar-header">
           <div>
-            <h1 class="logo">Learn CSS Grid</h1>
+            <h1 class="logo">Learn CSS Animations</h1>
           </div>
 
           <div class="level-picker">
@@ -26,7 +26,7 @@
               <span class="label-level">Level&nbsp;</span>
               <span class="label-current">1&nbsp;</span>
               <span class="label-of">of&nbsp;</span>
-              <span class="label-total">20&nbsp;</span>
+              <span class="label-total">5&nbsp;</span>
               <span>
                 <svg class="chevron-down" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
@@ -40,13 +40,19 @@
           </div>
         </div>
 
-        <div class="sidebar-instructions">
-          <h2>Magni dolor nobis ipsum quis, aliquid esse quasi, voluptatem similique magnam ex, quod praesentium delectus?</h2>
+        <div class="instructions">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni dolor nobis ipsum quis, aliquid esse quasi, voluptatem similique magnam ex, quod praesentium delectus? Dolores, natus facere deleniti laboriosam sint nesciunt. Magni dolor nobis ipsum quis, aliquid esse quasi, voluptatem similique magnam ex, quod praesentium delectus? Dolores, natus facere deleniti laboriosam sint nesciunt.</p>
         </div>
 
-        <div class="editor" id="editor">
-
+        <!-- <div class="editor" id="editor"></div> -->
+        <div id="editor">
+          <div id="css">
+            <div class="line-numbers">1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14</div>
+            <pre id="before"></pre>
+            <textarea id="code" autofocus autocapitalize="none"></textarea>
+            <pre id="after"></pre>
+          </div>
+          <button id="next" class="translate">Next</button>
         </div>
 
         <div class="footer">

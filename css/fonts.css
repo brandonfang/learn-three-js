@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500&display=swap');
 
 h1 {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: 600;
   line-height: 1.2;
   margin-bottom: 16px;
@@ -30,14 +30,14 @@ p {
 }
 
 a {
-  color: var(--teal-600);
+  /* color: var(--teal-600); */
   text-decoration: underline;
   /* border-bottom: 1px solid var(--teal-600); */
   transition: 0.3s;
 }
 
 a:hover {
-  color: var(--teal-800);
+  /* color: var(--teal-800); */
   /* border-bottom: 1px solid var(--teal-800); */
 }
 
