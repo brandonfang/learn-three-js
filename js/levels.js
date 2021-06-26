@@ -71,4 +71,76 @@ let levels = [
     before: '',
     after: ''
   },
+  {
+    name: 'level 9',
+    instructions: '<h2>Instructions for level 1.</h2>',
+    board: '',
+    selector: '',
+    style: {},
+    before: '',
+    after: ''
+  },
+  {
+    name: 'level 10',
+    instructions: 'Instructions for level 2.',
+    board: '',
+    selector: '',
+    style: {},
+    before: '',
+    after: ''
+  },
+  {
+    name: 'level 11',
+    instructions: 'Instructions for level 3.',
+    board: '',
+    selector: '',
+    style: {},
+    before: '',
+    after: ''
+  },
+  {
+    name: 'level 12',
+    instructions: 'Instructions for level 4.',
+    board: '',
+    selector: '',
+    style: {},
+    before: '',
+    after: ''
+  },
+  {
+    name: 'level 13',
+    instructions: 'Instructions for level 5.',
+    board: '',
+    selector: '',
+    style: {},
+    before: '',
+    after: ''
+  },
+  {
+    name: 'level 14',
+    instructions: 'Instructions for level 6.',
+    board: '',
+    selector: '',
+    style: {},
+    before: '',
+    after: ''
+  },
+  {
+    name: 'level 15',
+    instructions: 'Instructions for level 7.',
+    board: '',
+    selector: '',
+    style: {},
+    before: '',
+    after: ''
+  },
+  {
+    name: 'level 16',
+    instructions: 'Instructions for level 8.',
+    board: '',
+    selector: '',
+    style: {},
+    before: '',
+    after: ''
+  },
 ];

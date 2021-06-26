@@ -5,39 +5,36 @@
 html, body {
   font-size: 100%;
   font-family: 'Inter', sans-serif;
-  background: var(--coolGray-200);
+  line-height: 1.5;
 }
 
 .game {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 4fr 5fr;
   grid-template-rows: 1fr;
 }
 
-@media (max-width: 999px) {
+@media (max-width: 1080px) {
   .game {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 1fr;
   }
 }
 
-
 .sidebar {
   background: white;
   height: 100%;
   width: 100%;
-  /* min-width: 600px; */
   justify-self: center;
   padding: 32px 32px;
 }
 
 .view {
-  background: var(--lime-100);
+  background: var(--teal-100);
   height: 100%;
   width: 100%;
-  /* min-width: 600px; */
   justify-self: center;
   padding: 32px 32px;
 }
@@ -51,46 +48,74 @@ html, body {
 }
 
 .logo {
+  color: var(--teal-800);
   line-height: 1;
   margin: 0;
 }
 
-.level-picker {
+.level-wrapper {
   height: 32px;
-  width: 240px;
+  width: 224px;
   border-radius: 4px;
-
+  box-shadow: 0 0 8px 4px hsla(175, 77%, 26%, 0.08);
+  position: relative;
   display: flex;
   flex-direction: row;
+  transition: 0.3s ease-in-out;
+}
+
+.level-wrapper:hover {
+  box-shadow: 0px 0px 8px 4px hsla(175, 77%, 26%, 0.12);
+}
+
+.level-picker {
+  width: 160px;
+  height: 32px;
+  font-size: 15px;
+  font-weight: 600;
+  background: var(--teal-200);
+  color: var(--teal-800);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   align-items: center;
+  transition: inherit;
+}
+
+.level-picker:hover {
+  background: var(--teal-400);
+  color: var(--teal-900);
 }
 
 .arrow {
   width: 32px;
   height: 32px;
-  background: var(--coolGray-300);
-  transition: 0.2s ease-in-out;
-
+  background: var(--teal-200);
+  color: var(--teal-800);
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  transition: inherit;
+}
+
+.arrow:hover {
+  background: var(--teal-400);
+  color: var(--teal-900);
 }
 
 .arrow.left {
   border-radius: 4px 0 0 4px;
+  border-right: 1px solid var(--teal-800);
 }
 
 .arrow.right {
   border-radius: 0 4px 4px 0;
+  border-left: 1px solid var(--teal-800);
 }
 
 .arrow.disabled {
   opacity: 0.3;
-}
-
-.arrow:hover {
-  background: var(--coolGray-400);
 }
 
 .chevron {
@@ -101,19 +126,7 @@ html, body {
 .chevron-down {
   width: 16px;
   height: 16px;
-  margin-top: 2px;
-}
-
-.level-label {
-  width: 176px;
-  height: 32px;
-  font-size: 14px;
-  background: var(--coolGray-200);
-
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+  margin-top: 8px;
 }
 
 .label-level {
@@ -132,16 +145,70 @@ html, body {
 
 }
 
+.level-dropdown {
+  /* display: none; */
+  position: absolute;
+  z-index: 1;
+  top: 44px;
+  left: 32px;
+  width: 160px;
+  border-radius: 4px;
+  outline: none;
+  box-shadow: 0 0 12px 4px hsla(175, 77%, 26%, 0.2);
+  background: var(--teal-700);
+  padding: 16px;
+
+}
+
+.level-dropdown::before {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  top: -12px;
+  left: calc(50% - 12px);
+  outline: none;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-bottom: 12px solid var(--teal-700);
+}
+
+.level-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 8px 4px;
+}
+
+.level-circle {
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--teal-200) inset;
+  background: var(--teal-600);
+  color: white;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.level-circle:hover {
+  box-shadow: 0 0 0 3px rgb(107, 107, 107) inset;
+}
+
+
+
 .instructions {
   width: 100%;
-  margin-top: 32px;
+  margin: 32px 0;
 }
 
 .footer {
   width: 100%;
-  height: 24px;
-  margin-top: 16px;
-
+  height: 14px;
+  margin-top: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -150,21 +217,27 @@ html, body {
 .credits {
   font-size: 14px;
   color: var(--coolGray-700);
-  margin-right: 16px;
+  margin-right: 12px;
 }
 
 .credits.last {
   margin-right: 0px;
 }
 
-#editor {
-  /* width: 100%;
-  height: 400px;
-  margin-top: 16px; */
-  background: var(--teal-400);
-  position: relative;
-  margin-top: 2em;
 
+
+
+
+
+/* Begin editor Code */
+#editor {
+  width: 100%;
+  /* height: 400px;
+  margin-top: 16px; */
+  /* background: var(--teal-400); */
+  position: relative;
+  margin: 32px 0;
+  box-shadow: 0 0 8px 4px hsla(175, 77%, 26%, 0.08);
 }
 
 #editor,
