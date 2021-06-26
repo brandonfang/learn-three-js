@@ -20,7 +20,7 @@ const Game = {
    
     
     this.loadMenu();
-    game.loadLevel();
+    Game.loadLevel();
   },
 
   setHandlers: () => {
@@ -74,6 +74,10 @@ const Game = {
     // level indicator event listener
 
     // arrows event listener
+
+
+
+    
   },
 
   loadLevel: () => {
