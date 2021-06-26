@@ -1,3 +1,6 @@
+const $ = (_) => document.querySelector(_);
+const $c = (_) => document.createElement(_);
+
 const Game = {
   user: localStorage.user || '',
   level: localStorage.level || 0,

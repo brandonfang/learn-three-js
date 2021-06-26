@@ -10,13 +10,24 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed, 
 figure, figcaption, footer, header, hgroup, 
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video,
+svg, button, main, input, textarea {
 	margin: 0;
 	padding: 0;
 	border: 0;
+  outline: 0;
+  box-sizing: border-box;
+  background: transparent;
 	font-size: 100%;
 	font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
 	vertical-align: baseline;
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
 }
 
 article, aside, details, figcaption, figure, 
@@ -30,6 +41,12 @@ body {
 
 ol, ul {
 	list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 blockquote, q {
@@ -46,31 +63,3 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
-html, body, div, span, iframe, svg,
-h1, h2, h3, h4, h5, h6, button,
-p, a, img, strong, main, small, input,
-ol, ul, li, label, form, textarea,
-article, aside, canvas, figure, time,
-footer, header, figcaption, nav, section {
-  margin: 0;
-  border: 0;
-  padding: 0;
-  outline: 0;
-  background: transparent;
-  box-sizing: border-box;
-  color: inherit;
-  text-align: inherit;
-  text-decoration: inherit;
-  vertical-align: inherit;
-  margin-block-start: 0;
-  margin-inline-start: 0;
-  margin-block-end: 0;
-  margin-inline-end: 0;
-}
-
-img {
-  display: block;
-  width: 100%;
-  height: auto;
-} 
