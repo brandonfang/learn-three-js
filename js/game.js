@@ -61,14 +61,22 @@ const Game = {
   },
 
   loadMenu: () => {
+    levels.forEach((level, i) => {
+      let levelMarker = '<div></div>';
+      // append to levels
+    });
 
+    // level marker event listener
+  
+    // level indicator event listener
+
+    // arrows event listener
   },
 
   loadLevel: () => {
     this.show(document.getElementById('editor'));
     this.hide(document.getElementById('levels-dropdown'));
-
-
+    // update canvas
 
     if (this.level === 0) {
       this.addClass(document.getElementsByClassName('.arrow.left'), 'disabled');
@@ -78,10 +86,17 @@ const Game = {
       this.addClass(document.getElementsByClassName('.arrow.right'), 'disabled');
     }
 
+    Game.applyStyles();
+    Game.check();
+  },
 
+  check: () => {
+    Game.applyStyles();
+  },
 
+  applyStyles: () => {
 
-    
+    Game.saveAnswer();
   },
 
   saveAnswer: () => {
