@@ -155,7 +155,7 @@ html, body {
   border-radius: 4px;
   outline: none;
   box-shadow: 0 0 12px 4px hsla(175, 77%, 26%, 0.2);
-  background: var(--teal-700);
+  background: var(--teal-400);
   padding: 16px;
 
 }
@@ -170,22 +170,22 @@ html, body {
   outline: none;
   border-left: 12px solid transparent;
   border-right: 12px solid transparent;
-  border-bottom: 12px solid var(--teal-700);
+  border-bottom: 12px solid var(--teal-400);
 }
 
 .level-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 8px 4px;
+  gap: 4px;
 }
 
 .level-circle {
   width: 29px;
   height: 29px;
   border-radius: 50%;
-  box-shadow: 0 0 0 2px var(--teal-200) inset;
-  background: var(--teal-600);
-  color: white;
+  box-shadow: 0 0 0 3px var(--coolGray-400) inset;
+  background: var(--teal-200);
+  color: var(--teal-900);
   font-size: 12px;
   font-weight: 500;
   cursor: pointer;
@@ -195,10 +195,12 @@ html, body {
 }
 
 .level-circle:hover {
-  box-shadow: 0 0 0 3px rgb(107, 107, 107) inset;
+  box-shadow: 0 0 0 3px var(--pink-300) inset;
 }
 
-
+.level-circle.selected {
+  box-shadow: 0 0 0 3px var(--pink-500) inset;
+}
 
 .instructions {
   width: 100%;
