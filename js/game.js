@@ -5,11 +5,17 @@ const Game = {
   solved: localStorage.solved || [],
 
   start: () => {
+
+    $('#level-picker .label-total').text(levels.length);
+    $('#editor').show();
+    $('#share').hide();
+    
     if (!localStorage.user) {
       game.user = Date.now().toString(36) + Math.random().toString(36).substring(2);
       localStorage.setItem('user', game.user);
     }
-
+   
+    
     this.loadMenu();
     game.loadLevel();
   },
