@@ -1,4 +1,15 @@
 :root {
+  --blueGray-50: hsl(210, 40%, 98%);
+  --blueGray-100: hsl(210, 40%, 96%);
+  --blueGray-200: hsl(214, 32%, 91%);
+  --blueGray-300: hsl(213, 27%, 84%);
+  --blueGray-400: hsl(215, 20%, 65%);
+  --blueGray-500: hsl(215, 16%, 47%);
+  --blueGray-600: hsl(215, 19%, 35%);
+  --blueGray-700: hsl(215, 25%, 27%);
+  --blueGray-800: hsl(217, 33%, 17%);
+  --blueGray-900: hsl(222, 47%, 11%);
+
   --coolGray-50: hsl(210, 20%, 98%);
   --coolGray-100: hsl(220, 14%, 96%);
   --coolGray-200: hsl(220, 13%, 91%);
@@ -20,6 +31,28 @@
   --gray-700: hsl(240, 5%, 26%);
   --gray-800: hsl(240, 4%, 16%);
   --gray-900: hsl(240, 6%, 10%);
+
+  --trueGray-50: hsl(0, 0%, 98%);
+  --trueGray-100: hsl(0, 0%, 96%);
+  --trueGray-200: hsl(0, 0%, 90%);
+  --trueGray-300: hsl(0, 0%, 83%);
+  --trueGray-400: hsl(0, 0%, 64%);
+  --trueGray-500: hsl(0, 0%, 45%);
+  --trueGray-600: hsl(0, 0%, 32%);
+  --trueGray-700: hsl(0, 0%, 25%);
+  --trueGray-800: hsl(0, 0%, 15%);
+  --trueGray-900: hsl(0, 0%, 9%);
+
+  --warmGray-50: hsl(60, 9%, 98%);
+  --warmGray-100: hsl(60, 5%, 96%);
+  --warmGray-200: hsl(20, 6%, 90%);
+  --warmGray-300: hsl(24, 6%, 83%);
+  --warmGray-400: hsl(24, 5%, 64%);
+  --warmGray-500: hsl(25, 5%, 45%);
+  --warmGray-600: hsl(33, 5%, 32%);
+  --warmGray-700: hsl(30, 6%, 25%);
+  --warmGray-800: hsl(12, 6%, 15%);
+  --warmGray-900: hsl(24, 10%, 10%);
 
   --red-50: hsl(0, 86%, 97%);
   --red-100: hsl(0, 93%, 94%);
