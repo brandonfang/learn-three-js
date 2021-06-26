@@ -61,7 +61,7 @@ html, body {
   position: relative;
   display: flex;
   flex-direction: row;
-  transition: 0.3s ease-in-out;
+  transition: 0.2s ease-in-out;
 }
 
 .level-wrapper:hover {
@@ -157,7 +157,6 @@ html, body {
   box-shadow: 0 0 12px 4px hsla(175, 77%, 26%, 0.2);
   background: var(--teal-400);
   padding: 16px;
-
 }
 
 .level-dropdown::before {
@@ -183,7 +182,7 @@ html, body {
   width: 29px;
   height: 29px;
   border-radius: 50%;
-  box-shadow: 0 0 0 3px var(--coolGray-400) inset;
+  box-shadow: 0 0 0 2px var(--coolGray-400) inset;
   background: var(--teal-200);
   color: var(--teal-900);
   font-size: 12px;

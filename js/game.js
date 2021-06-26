@@ -1,5 +1,9 @@
 const $ = (_) => document.querySelector(_);
+const $$ = (_) => document.querySelectorAll(_);
 const $c = (_) => document.createElement(_);
+
+console.log('yea boi')
+console.log($('.level-grid'));
 
 const Game = {
   user: localStorage.user || '',
@@ -9,17 +13,17 @@ const Game = {
 
   start: () => {
 
-    $('#level-picker .label-total').text(levels.length);
-    $('#editor').show();
-    $('#share').hide();
+    // $('#level-picker .label-total').text(levels.length);
+    // $('#editor').show();
+    // $('#share').hide();
     
     if (!localStorage.user) {
-      game.user = Date.now().toString(36) + Math.random().toString(36).substring(2);
-      localStorage.setItem('user', game.user);
+      Game.user = Date.now().toString(36) + Math.random().toString(36).substring(2);
+      localStorage.setItem('user', Game.user);
     }
    
     
-    this.loadMenu();
+    Game.loadMenu();
     Game.loadLevel();
   },
 
@@ -67,6 +71,10 @@ const Game = {
     levels.forEach((level, i) => {
       let levelMarker = '<div></div>';
       // append to levels
+
+
+      // levelMarker.appendTo('#levels');
+      $('.level-grid').innerHTML += `<div class="level-circle">${level.levelNumber}</div>`
     });
 
     // level marker event listener
@@ -77,7 +85,7 @@ const Game = {
 
 
 
-    
+
   },
 
   loadLevel: () => {
@@ -120,5 +128,5 @@ const Game = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  game.start();
+  Game.start();
 });

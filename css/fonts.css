@@ -33,7 +33,7 @@ a {
   /* color: var(--teal-600); */
   text-decoration: underline;
   /* border-bottom: 1px solid var(--teal-600); */
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 a:hover {
