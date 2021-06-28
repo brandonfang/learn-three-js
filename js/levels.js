@@ -2,7 +2,7 @@ let levels = [
   { 
     number: 1,
     name: 'title 1',
-    instructions: '<h2>Instructions for level 1.</h2>',
+    instructions: '<h2>Instructions title for level 1.</h2><p>Instructions content for level 1. Lorem ipsum.</p>',
     board: '',
     selector: '',
     style: {},

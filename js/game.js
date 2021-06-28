@@ -3,9 +3,9 @@ const $ = (x) => document.querySelector(x);
 const $$ = (x) => document.querySelectorAll(x);
 const $c = (x) => document.createElement(x);
 
-const addClass = (ele, className) => ele.classList.add(className);
-const removeClass = (ele, className) => ele.classList.remove(className);
-const toggleClass = (ele, className) => ele.classList.toggle(className);
+const addClass = (ele, className) => { if (ele) ele.classList.add(className) };
+const removeClass = (ele, className) => { if (ele) ele.classList.remove(className) };
+const toggleClass = (ele, className) => { if (ele) ele.classList.toggle(className) };
 
 const show = (ele) => ele.style.display = 'block';
 const hide = (ele) => ele.style.display = 'none';
@@ -98,19 +98,17 @@ var Game = {
   },
 
   // in progress
-  loadLevel: () => {
+  loadLevel: (level) => {
     show($('.editor'));
     hide($('.level-dropdown'));
-    // remove styls on background
+    // remove styles on background
     // update canvas
 
-    if (this.level === 0) {
-      addClass($('.arrow.left'), 'disabled');
-    }
+    removeClass($('.arrow.disabled'), 'disabled');
+    if (level === 0) addClass($('.arrow.left'), 'disabled');
+    if (level === levels.length - 1) addClass($('.arrow.right'), 'disabled');
 
-    if (this.level === levels.length - 1) {
-      addClass($('.arrow.right'), 'disabled');
-    }
+    $('.instructions').innerHTML = level.instructions;
 
     Game.applyStyles();
     Game.check();
