@@ -203,12 +203,12 @@ html, body {
   box-shadow: 0 0 0 3px var(--pink-300) inset;
 }
 
-.level-circle.selected {
+.level-circle.current {
   box-shadow: 0 0 0 3px var(--pink-500) inset;
 }
 
 .level-circle.solved {
-  box-shadow: 0 0 0 3px var(--pink-500) inset;
+  box-shadow: 0 0 0 3px var(--green-700) inset;
 }
 
 .reset-button {

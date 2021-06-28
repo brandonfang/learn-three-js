@@ -24,6 +24,9 @@ const addEventListenerByClass = (className, event, fn) => {
   }
 }
 
+const text = (ele, content) => ele.textContent = content;
+
+
 // Game Logic
 var Game = {
   user: localStorage.user || '',
@@ -32,10 +35,8 @@ var Game = {
   solved: localStorage.solved || [],
 
   start: () => {
-
-    // $('#level-picker .label-total').text(levels.length);
-    // $('#editor').show();
-    // $('#share').hide();
+    text($('.label-total'), levels.length.toString());
+    show($('.editor'));
     
     if (!localStorage.user) {
       Game.user = Date.now().toString(36) + Math.random().toString(36).substring(2);
@@ -101,14 +102,22 @@ var Game = {
   loadLevel: (level) => {
     show($('.editor'));
     hide($('.level-dropdown'));
+    removeClass($('.level-circle.current'), 'current');
+    addClass($$('.level-circle').item(level.number - 1), 'current')
+    text($('.label-current'), level.number.toString());
+    text($('#before'), level.before);
+    text($('#after'), level.after);
     // remove styles on background
     // update canvas
+    // remove/reset animations
 
     removeClass($('.arrow.disabled'), 'disabled');
     if (level === 0) addClass($('.arrow.left'), 'disabled');
     if (level === levels.length - 1) addClass($('.arrow.right'), 'disabled');
 
     $('.instructions').innerHTML = level.instructions;
+
+    let answer = Game.answers[level.name];
 
     Game.applyStyles();
     Game.check();
