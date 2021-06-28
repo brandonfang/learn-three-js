@@ -78,11 +78,19 @@ const Game = {
     });
 
     // level marker event listener
-  
+    document.querySelectorAll('.level-circle').addEventListener('click', () => {
+      // record user answer
+      // load level
+    });
+
     // level indicator event listener
+    document.querySelectorAll('.level-picker').addEventListener('click', () => {
 
+    });
     // arrows event listener
+    document.querySelectorAll('.arrow').addEventListener('click', () => {
 
+    });
 
 
 
