@@ -1,7 +1,7 @@
 let levels = [
   { 
-    levelNumber: 1,
-    name: 'level 1',
+    number: 1,
+    name: 'title 1',
     instructions: '<h2>Instructions for level 1.</h2>',
     board: '',
     selector: '',
@@ -10,8 +10,8 @@ let levels = [
     after: ''
   },
   {
-    levelNumber: 2,
-    name: 'level 2',
+    number: 2,
+    name: 'title 2',
     instructions: 'Instructions for level 2.',
     board: '',
     selector: '',
@@ -20,8 +20,8 @@ let levels = [
     after: ''
   },
   {
-    levelNumber: 3,
-    name: 'level 3',
+    number: 3,
+    name: 'title 3',
     instructions: 'Instructions for level 3.',
     board: '',
     selector: '',
@@ -30,8 +30,8 @@ let levels = [
     after: ''
   },
   {
-    levelNumber: 4,
-    name: 'level 4',
+    number: 4,
+    name: 'title 4',
     instructions: 'Instructions for level 4.',
     board: '',
     selector: '',
@@ -40,8 +40,8 @@ let levels = [
     after: ''
   },
   {
-    levelNumber: 5,
-    name: 'level 5',
+    number: 5,
+    name: 'title 5',
     instructions: 'Instructions for level 5.',
     board: '',
     selector: '',
@@ -50,8 +50,8 @@ let levels = [
     after: ''
   },
   {
-    levelNumber: 6,
-    name: 'level 6',
+    number: 6,
+    name: 'title 6',
     instructions: 'Instructions for level 6.',
     board: '',
     selector: '',
@@ -60,8 +60,8 @@ let levels = [
     after: ''
   },
   {
-    levelNumber: 7,
-    name: 'level 7',
+    number: 7,
+    name: 'title 7',
     instructions: 'Instructions for level 7.',
     board: '',
     selector: '',
@@ -70,8 +70,8 @@ let levels = [
     after: ''
   },
   {
-    levelNumber: 8,
-    name: 'level 8',
+    number: 8,
+    name: 'title 8',
     instructions: 'Instructions for level 8.',
     board: '',
     selector: '',
@@ -80,8 +80,8 @@ let levels = [
     after: ''
   },
   {
-    levelNumber: 9,
-    name: 'level 9',
+    number: 9,
+    name: 'title 9',
     instructions: '<h2>Instructions for level 1.</h2>',
     board: '',
     selector: '',
@@ -90,8 +90,8 @@ let levels = [
     after: ''
   },
   {
-    levelNumber: 10,
-    name: 'level 10',
+    number: 10,
+    name: 'title 10',
     instructions: 'Instructions for level 2.',
     board: '',
     selector: '',
@@ -100,8 +100,8 @@ let levels = [
     after: ''
   },
   {
-    levelNumber: 11,
-    name: 'level 11',
+    number: 11,
+    name: 'title 11',
     instructions: 'Instructions for level 3.',
     board: '',
     selector: '',
@@ -110,8 +110,8 @@ let levels = [
     after: ''
   },
   {
-    levelNumber: 12,
-    name: 'level 12',
+    number: 12,
+    name: 'title 12',
     instructions: 'Instructions for level 4.',
     board: '',
     selector: '',
@@ -120,8 +120,8 @@ let levels = [
     after: ''
   },
   {
-    levelNumber: 13,
-    name: 'level 13',
+    number: 13,
+    name: 'title 13',
     instructions: 'Instructions for level 5.',
     board: '',
     selector: '',
@@ -130,8 +130,8 @@ let levels = [
     after: ''
   },
   {
-    levelNumber: 14,
-    name: 'level 14',
+    number: 14,
+    name: 'title 14',
     instructions: 'Instructions for level 6.',
     board: '',
     selector: '',
@@ -140,8 +140,8 @@ let levels = [
     after: ''
   },
   {
-    levelNumber: 15,
-    name: 'level 15',
+    number: 15,
+    name: 'title 15',
     instructions: 'Instructions for level 7.',
     board: '',
     selector: '',
@@ -150,8 +150,8 @@ let levels = [
     after: ''
   },
   {
-    levelNumber: 16,
-    name: 'level 16',
+    number: 16,
+    name: 'title 16',
     instructions: 'Instructions for level 8.',
     board: '',
     selector: '',

@@ -5,6 +5,7 @@
 html, body {
   font-size: 100%;
   font-family: 'Inter', sans-serif;
+  letter-spacing: -0.01em;
   line-height: 1.5;
 }
 
@@ -39,7 +40,7 @@ html, body {
   padding: 32px 32px;
 }
 
-.sidebar-header {
+.header {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
@@ -53,7 +54,7 @@ html, body {
   margin: 0;
 }
 
-.level-wrapper {
+.level-menu {
   height: 32px;
   width: 224px;
   border-radius: 4px;
@@ -64,7 +65,7 @@ html, body {
   transition: 0.2s ease-in-out;
 }
 
-.level-wrapper:hover {
+.level-menu:hover {
   box-shadow: 0px 0px 8px 4px hsla(175, 77%, 26%, 0.12);
 }
 
@@ -72,7 +73,7 @@ html, body {
   width: 160px;
   height: 32px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   background: var(--teal-200);
   color: var(--teal-800);
   display: flex;
@@ -116,6 +117,7 @@ html, body {
 
 .arrow.disabled {
   opacity: 0.3;
+  background: red;
 }
 
 .chevron {
@@ -123,30 +125,34 @@ html, body {
   height: 20px;
 }
 
-.chevron-down {
-  width: 16px;
-  height: 16px;
-  margin-top: 8px;
-}
-
 .label-level {
-  
+  margin-left: 12px;
 }
 
 .label-current {
-
+  margin: 0 3px;
 }
 
 .label-of {
-
+  margin: 0 3px;
 }
 
 .label-total {
+  margin: 0 3px;
+}
 
+.label-down {
+  height: 16px;
+  margin-left: 4px;
+}
+
+.chevron-down {
+  width: 16px;
+  height: 16px;
 }
 
 .level-dropdown {
-  /* display: none; */
+  display: none;
   position: absolute;
   z-index: 1;
   top: 44px;
@@ -182,7 +188,7 @@ html, body {
   width: 29px;
   height: 29px;
   border-radius: 50%;
-  box-shadow: 0 0 0 2px var(--coolGray-400) inset;
+  box-shadow: none;
   background: var(--teal-200);
   color: var(--teal-900);
   font-size: 12px;
@@ -201,6 +207,14 @@ html, body {
   box-shadow: 0 0 0 3px var(--pink-500) inset;
 }
 
+.level-circle.solved {
+  box-shadow: 0 0 0 3px var(--pink-500) inset;
+}
+
+.reset-button {
+
+}
+
 .instructions {
   width: 100%;
   margin: 32px 0;
@@ -215,13 +229,13 @@ html, body {
   align-items: center;
 }
 
-.credits {
+.footer-link {
   font-size: 14px;
   color: var(--coolGray-700);
   margin-right: 12px;
 }
 
-.credits.last {
+.footer-link.last {
   margin-right: 0px;
 }
 
@@ -238,7 +252,7 @@ html, body {
   /* background: var(--teal-400); */
   position: relative;
   margin: 32px 0;
-  box-shadow: 0 0 8px 4px hsla(175, 77%, 26%, 0.08);
+  /* box-shadow: 0 0 8px 4px hsla(175, 77%, 26%, 0.08); */
 }
 
 #editor,
@@ -275,7 +289,7 @@ pre {
   height: 24px;
   margin-left: 16px;
   border: none;
-  font-family: 'Source Code Pro', monospace;
+  font-family: 'Menlo', monospace;
   font-size: 16px;
   outline: none;
   resize: none;

@@ -1,11 +1,31 @@
-const $ = (_) => document.querySelector(_);
-const $$ = (_) => document.querySelectorAll(_);
-const $c = (_) => document.createElement(_);
+// Utility Methods
+const $ = (x) => document.querySelector(x);
+const $$ = (x) => document.querySelectorAll(x);
+const $c = (x) => document.createElement(x);
 
-console.log('yea boi')
-console.log($('.level-grid'));
+const addClass = (ele, className) => ele.classList.add(className);
+const removeClass = (ele, className) => ele.classList.remove(className);
+const toggleClass = (ele, className) => ele.classList.toggle(className);
 
-const Game = {
+const show = (ele) => ele.style.display = 'block';
+const hide = (ele) => ele.style.display = 'none';
+const toggle = (ele) => {
+  if (window.getComputedStyle(ele).display !== 'none') {
+    hide(ele);
+    return;
+  }
+  show(ele);
+};
+
+const addEventListenerByClass = (className, event, fn) => {
+  let list = document.getElementsByClassName(className);
+  for (let i = 0; i < list.length; i++) {
+    list[i].addEventListener(event, fn, false);
+  }
+}
+
+// Game Logic
+var Game = {
   user: localStorage.user || '',
   level: localStorage.level || 0,
   answers: localStorage.answers || {},
@@ -22,91 +42,74 @@ const Game = {
       localStorage.setItem('user', Game.user);
     }
    
-    
+    Game.setHandlers();
     Game.loadMenu();
-    Game.loadLevel();
+    Game.loadLevel(levels[Game.level]);
   },
 
   setHandlers: () => {
 
   },
 
-  show: (ele) => {
-    ele.style.display = 'block';
-  },
-
-  hide: (ele) => {
-    ele.style.display = 'none';
-  },
-
-  toggle: (ele) => {
-    if (window.getComputedStyle(ele).display !== 'none') {
-      this.hide(ele);
-      return;
-    }
-    this.show(ele);
-  },
-
-  addClass: (ele, className) => {
-    ele.classList.add(className);
-  },
-
-  removeClass: (ele, className) => {
-    ele.classList.remove(className);
-  },
-
-  toggleClass: (ele, className) => {
-    ele.classList.toggle(className);
-  },
 
   prev: () => {
-    this.level -= 1;
+    this.level--;
+    this.loadLevel(levels[this.level]);
   },
 
   next: () => {
-    this.level += 1;
+    this.level++;
   },
 
   loadMenu: () => {
     levels.forEach((level, i) => {
-      let levelMarker = '<div></div>';
-      // append to levels
-
-
-      // levelMarker.appendTo('#levels');
-      $('.level-grid').innerHTML += `<div class="level-circle">${level.levelNumber}</div>`
+      let solved = Game.solved.includes(level.name) ? ' solved' : '';
+      let levelCircle = `<div class='level-circle${solved}' level='${i}' title='${level.name}'>${i + 1}</div>`;
+      $('.level-grid').innerHTML += levelCircle;
     });
 
-    // level marker event listener
-    document.querySelectorAll('.level-circle').addEventListener('click', () => {
-      // record user answer
-      // load level
+    let circles = $$('.level-circle');
+    circles.forEach((circle) => {
+      circle.addEventListener('click', () => {
+        Game.saveAnswer();
+        let level = circle.getAttribute('level');
+        Game.level = parseInt(level, 10);
+        Game.loadLevel(levels[level]);
+      });
+    })
+
+    $('.level-picker').addEventListener('click', () => {
+      toggle($('.level-dropdown'));
     });
 
-    // level indicator event listener
-    document.querySelectorAll('.level-picker').addEventListener('click', () => {
-
-    });
-    // arrows event listener
-    document.querySelectorAll('.arrow').addEventListener('click', () => {
-
+    let arrowLeft = $('.arrow.left');
+    arrowLeft.addEventListener('click', () => {
+      if (arrowLeft.classList.contains('disabled')) return;
+      Game.saveAnswer();
+      Game.prev();
     });
 
-
-
+    let arrowRight = $('.arrow.left');
+    arrowRight.addEventListener('click', () => {
+      if (arrowRight.classList.contains('disabled')) return;
+      Game.saveAnswer();
+      Game.next();
+    });
   },
 
+  // in progress
   loadLevel: () => {
-    this.show(document.getElementById('editor'));
-    this.hide(document.getElementById('levels-dropdown'));
+    show($('.editor'));
+    hide($('.level-dropdown'));
+    // remove styls on background
     // update canvas
 
     if (this.level === 0) {
-      this.addClass(document.getElementsByClassName('.arrow.left'), 'disabled');
+      addClass($('.arrow.left'), 'disabled');
     }
 
     if (this.level === levels.length - 1) {
-      this.addClass(document.getElementsByClassName('.arrow.right'), 'disabled');
+      addClass($('.arrow.right'), 'disabled');
     }
 
     Game.applyStyles();

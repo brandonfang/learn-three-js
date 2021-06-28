@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Three.js Thunder - A game for learning three.js</title>
+    <title>Three.js Tea - A game for learning three.js</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/colors.css">
     <link rel="stylesheet" href="css/fonts.css">
@@ -14,38 +14,33 @@
   <body>
     <div class="game">
       <section class="sidebar">
-        <div class="sidebar-header">
+        <header class="header">
           <div>
-            <h1 class="logo">Three.js Thunder</h1>
+            <h1 class="logo">Three.js Tea</h1>
           </div>
 
-          <div class="level-wrapper">
+          <div class="level-menu">
             <span class="arrow left">
               <svg class="chevron" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6"></polyline></svg>
             </span>
             <div class="level-picker">
-              <span class="label-level">Level&nbsp;</span>
-              <span class="label-current">1&nbsp;</span>
-              <span class="label-of">of&nbsp;</span>
-              <span class="label-total">8&nbsp;</span>
-              <span>
-                <svg class="chevron-down" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <span class="label-level">Level</span>
+              <span class="label-current">1</span>
+              <span class="label-of">of</span>
+              <span class="label-total">8</span>
+              <span class="label-down">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
               </span>
             </div>
             <span class="arrow right">
               <svg class="chevron" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </span>
             <div class="level-dropdown">
-              <div class="level-grid">
-                <div class="level-circle selected">0</div>
-                <div class="level-circle">0</div>
-                <div class="level-circle">0</div>
-                <div class="level-circle">0</div>
-              </div>
-              <!-- <div class="reset">Reset</div> -->
+              <div class="level-grid"></div>
+              <!-- <div class="reset-button">Reset</div> -->
             </div>
           </div>
-        </div>
+        </header>
 
         <div class="instructions">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, nesciunt et rem laborum asperiores illo illum praesentium qui ex provident cumque a quae impedit quas officia quibusdam excepturi odio non!
@@ -77,16 +72,16 @@
         </div>
 
         <div class="footer">
-          <div class="credits">
+          <div class="footer-link">
             Created by <a href="https://twitter.com/bdmfang" target="_blank">Brandon Fang</a>
           </div>
-          <div class="credits">
+          <div class="footer-link">
             <a href="https://bdmfang.com" target="_blank">Portfolio</a>
           </div>
-          <div class="credits">
+          <div class="footer-link">
             <a href="https://github.com/brandonfang" target="_blank">GitHub</a>
           </div>
-          <div class="credits last">
+          <div class="footer-link last">
             <a href="https://www.linkedin.com/in/bdmfang" target="_blank">LinkedIn</a>
           </div>
         </div>
