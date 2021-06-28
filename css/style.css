@@ -125,25 +125,30 @@ html, body {
   height: 20px;
 }
 
+.label {
+  display: inline-block;
+  margin-left: 0.15em;
+  margin-right: 0.15em;
+}
+
 .label-level {
   margin-left: 12px;
 }
 
 .label-current {
-  margin: 0 3px;
 }
 
 .label-of {
-  margin: 0 3px;
 }
 
 .label-total {
-  margin: 0 3px;
+  margin-right: 0;
 }
 
 .label-down {
   height: 16px;
   margin-left: 4px;
+  margin-right: 0;
 }
 
 .chevron-down {

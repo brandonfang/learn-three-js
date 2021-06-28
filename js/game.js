@@ -6,6 +6,12 @@ const $c = (x) => document.createElement(x);
 const addClass = (ele, className) => { if (ele) ele.classList.add(className) };
 const removeClass = (ele, className) => { if (ele) ele.classList.remove(className) };
 const toggleClass = (ele, className) => { if (ele) ele.classList.toggle(className) };
+const addEventListenerByClass = (className, event, fn) => {
+  let list = document.getElementsByClassName(className);
+  for (let i = 0; i < list.length; i++) {
+    list[i].addEventListener(event, fn, false);
+  }
+}
 
 const show = (ele) => ele.style.display = 'block';
 const hide = (ele) => ele.style.display = 'none';
@@ -16,13 +22,6 @@ const toggle = (ele) => {
   }
   show(ele);
 };
-
-const addEventListenerByClass = (className, event, fn) => {
-  let list = document.getElementsByClassName(className);
-  for (let i = 0; i < list.length; i++) {
-    list[i].addEventListener(event, fn, false);
-  }
-}
 
 const text = (ele, content) => ele.textContent = content;
 
@@ -39,7 +38,9 @@ var Game = {
     show($('.editor'));
     
     if (!localStorage.user) {
+      // generate a random id for new user
       Game.user = Date.now().toString(36) + Math.random().toString(36).substring(2);
+      // put new user into local storage
       localStorage.setItem('user', Game.user);
     }
    
@@ -54,12 +55,13 @@ var Game = {
 
 
   prev: () => {
-    this.level--;
-    this.loadLevel(levels[this.level]);
+    Game.level--;
+    Game.loadLevel(levels[Game.level]);
   },
 
   next: () => {
-    this.level++;
+    Game.level++;
+    Game.loadLevel(levels[Game.level]);
   },
 
   loadMenu: () => {
@@ -88,22 +90,23 @@ var Game = {
       if (arrowLeft.classList.contains('disabled')) return;
       Game.saveAnswer();
       Game.prev();
-    });
+    }, false);
 
-    let arrowRight = $('.arrow.left');
+    let arrowRight = $('.arrow.right');
     arrowRight.addEventListener('click', () => {
       if (arrowRight.classList.contains('disabled')) return;
       Game.saveAnswer();
       Game.next();
-    });
+    }, false);
   },
 
   // in progress
   loadLevel: (level) => {
+    if (!level) return;
     show($('.editor'));
     hide($('.level-dropdown'));
     removeClass($('.level-circle.current'), 'current');
-    addClass($$('.level-circle').item(level.number - 1), 'current')
+    addClass($$('.level-circle').item(level.number - 1), 'current');
     text($('.label-current'), level.number.toString());
     text($('#before'), level.before);
     text($('#after'), level.after);
