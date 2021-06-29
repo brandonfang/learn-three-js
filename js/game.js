@@ -139,6 +139,18 @@ var Game = {
 
   },
 
+  reset: () => {
+    let isConfirmed = confirm('Are you sure you want to reset the game? You will lose all your saved progress.');
+    if (isConfirmed) {
+      Game.level = 0;
+      Game.answers = {};
+      Game.solved = [];
+      Game.loadLevel(levels[0]);
+      let circles = $$('.level-circles')
+      circles.forEach((circle) => removeClass(circle, 'solved'));
+    }
+  },
+
   win: () => {
 
   },
