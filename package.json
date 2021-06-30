@@ -1,5 +1,5 @@
 {
-  "name": "js-proj",
+  "name": "learn-three-js",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,15 +8,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/brandonfang/js-proj.git"
+    "url": "git+https://github.com/brandonfang/learn-three-js.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/brandonfang/js-proj/issues"
+    "url": "https://github.com/brandonfang/learn-three-js/issues"
   },
-  "homepage": "https://github.com/brandonfang/js-proj#readme",
+  "homepage": "https://github.com/brandonfang/learn-three-js#readme",
   "dependencies": {
     "jquery": "^3.6.0",
     "three": "^0.129.0",

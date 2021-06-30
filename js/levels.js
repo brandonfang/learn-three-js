@@ -2,7 +2,7 @@ let levels = [
   { 
     number: 1,
     name: 'title 1',
-    instructions: '<h2>Instructions title for level 1.</h2><p>Instructions content for level 1. Lorem ipsum.</p>',
+    instructions: '<h2>Welcome to Three.js, a game for you for learn about creating and animating 3D graphics with three.js.</h2><p>Instructions content for level 1. Lorem ipsum.</p>',
     board: '',
     selector: '',
     style: {},

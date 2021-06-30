@@ -33,11 +33,10 @@ html, body {
 }
 
 .view {
-  background: var(--teal-100);
   height: 100%;
   width: 100%;
   justify-self: center;
-  padding: 32px 32px;
+  /* padding: 32px; */
 }
 
 .header {
@@ -308,3 +307,20 @@ pre {
   bottom: 1em;
   padding-top: 0.3em;
 }
+
+
+
+
+/* Begin Canvas Code */
+
+.canvas {
+  width: 100%;
+  height: 100%;
+  background: var(--gray-300);
+}
+
+
+
+
+
+
