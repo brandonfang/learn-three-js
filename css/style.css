@@ -13,7 +13,7 @@ html, body {
   width: 100%;
   height: 100%;
   display: grid;
-  grid-template-columns: 4fr 5fr;
+  grid-template-columns: 4fr 4fr;
   grid-template-rows: 1fr;
 }
 
@@ -231,12 +231,13 @@ html, body {
   margin-top: 32px;
   display: flex;
   justify-content: center;
+  justify-content: center;
   align-items: center;
 }
 
 .footer-link {
   font-size: 14px;
-  color: var(--coolGray-700);
+  color: var(--coolGray-600);
   margin-right: 12px;
 }
 
