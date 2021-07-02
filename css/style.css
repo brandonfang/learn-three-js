@@ -218,7 +218,17 @@ html, body {
 }
 
 .reset-button {
-
+  height: 28px;
+  width: 60px;
+  margin: 12px auto 0 auto;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--teal-900);
+  background: var(--teal-200);
 }
 
 .instructions {
