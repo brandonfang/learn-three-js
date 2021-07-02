@@ -104,6 +104,7 @@ var Game = {
   loadLevel: (level) => {
     if (!level) return;
     show($('.editor'));
+    show($('.reference'))
     hide($('.level-dropdown'));
     removeClass($('.level-circle.current'), 'current');
     addClass($$('.level-circle').item(level.number - 1), 'current');
@@ -119,6 +120,11 @@ var Game = {
     if (level === levels.length - 1) addClass($('.arrow.right'), 'disabled');
 
     $('.instructions').innerHTML = level.instructions;
+    if (level.reference) {
+      $('.reference-body').innerHTML = level.reference;
+    } else {
+      hide($('.reference'));
+    }
 
     let answer = Game.answers[level.name];
 
