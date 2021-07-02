@@ -122,15 +122,15 @@ var Game = {
 
     let answer = Game.answers[level.name];
 
-    Game.applyStyles();
+    Game.applyCode();
     Game.check();
   },
 
   check: () => {
-    Game.applyStyles();
+    Game.applyCode();
   },
 
-  applyStyles: () => {
+  applyCode: () => {
 
     Game.saveAnswer();
   },

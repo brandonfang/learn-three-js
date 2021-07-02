@@ -11,7 +11,9 @@ html, body {
 
 .game {
   width: 100%;
+  max-width: 2000px;
   height: 100%;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 4fr 4fr;
   grid-template-rows: 1fr;
