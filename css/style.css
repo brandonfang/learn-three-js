@@ -231,21 +231,45 @@ html, body {
   width: 100%;
   margin: 32px 0;
   border-radius: 8px;
-  border: 2px solid var(--fuchsia-700);
-  background: var(--fuchsia-50);
-  padding: 24px 24px 16px 24px;
+  border: 2px solid var(--teal-600);
+  background: var(--teal-50);
+  padding: 24px;
+}
+
+.reference-header {
+  height: 24px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
 .bookmark {
-  display: inline-block;
+  color: var(--teal-600);
+  margin-right: 8px;  
 }
 
-.reference-heading {
-  display: inline-block;
-  /* position: absolute; */
-  /* margin: 0; */
-  /* padding: 0 10px; */
-  /* background: white; */
+.reference-title {
+  color: var(--teal-600);
+  margin: 0;
+  line-height: 1;
+}
+
+.reference-body {
+  color: var(--teal-900);
+  margin: 0;
+}
+
+.reference-body > p {
+  margin-bottom: 8px;
+}
+
+ul {
+  margin-left: 18px;
+}
+
+li {
+  list-style: disc;
+  margin-bottom: 8px;
 }
 
 .footer {
