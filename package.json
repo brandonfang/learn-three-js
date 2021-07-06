@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -19,9 +19,11 @@
   "homepage": "https://github.com/brandonfang/learn-three-js#readme",
   "dependencies": {
     "three": "^0.129.0",
-    "webpack": "^5.40.0"
+    "three-globe": "^2.18.5",
+    "three-glow-mesh": "^0.1.2"
   },
   "devDependencies": {
+    "webpack": "^5.44.0",
     "webpack-cli": "^4.7.2"
   }
 }
