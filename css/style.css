@@ -16,7 +16,7 @@ html, body {
   height: 100vh;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 4fr 4fr;
+  grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
 }
 
@@ -164,8 +164,8 @@ html, body {
   width: 160px;
   border-radius: 4px;
   outline: none;
-  box-shadow: 0 0 12px 4px hsla(175, 77%, 26%, 0.2);
-  background: var(--lime-400);
+  box-shadow: 0 6px 16px 8px hsla(201, 90%, 27%, 0.3);
+  background: var(--fuchsia-50);
   padding: 16px;
 }
 
@@ -179,7 +179,7 @@ html, body {
   outline: none;
   border-left: 12px solid transparent;
   border-right: 12px solid transparent;
-  border-bottom: 12px solid var(--lime-400);
+  border-bottom: 12px solid var(--fuchsia-50);
 }
 
 .level-grid {
@@ -193,9 +193,9 @@ html, body {
   height: 29px;
   border-radius: 50%;
   box-shadow: none;
-  background: var(--lime-200);
+  background: var(--sky-200);
   color: var(--sky-900);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   cursor: pointer;
   display: flex;
@@ -204,11 +204,11 @@ html, body {
 }
 
 .level-circle:hover {
-  box-shadow: 0 0 0 3px var(--pink-300) inset;
+  box-shadow: 0 0 0 3px var(--green-400) inset;
 }
 
 .level-circle.current {
-  box-shadow: 0 0 0 3px var(--pink-500) inset;
+  box-shadow: 0 0 0 3px var(--cyan-500) inset;
 }
 
 .level-circle.solved {
@@ -226,7 +226,8 @@ html, body {
   font-size: 14px;
   font-weight: 500;
   color: var(--sky-900);
-  background: var(--lime-200);
+  background: var(--sky-200);
+  cursor: pointer;
 }
 
 .instructions {
@@ -292,7 +293,7 @@ li {
 
 .footer-link {
   font-size: 14px;
-  color: var(--coolGray-600);
+  color: var(--coolGray-800);
   margin-right: 12px;
 }
 

@@ -50,7 +50,7 @@ var Game = {
   },
 
   setHandlers: () => {
-
+    $('.reset-button').addEventListener('click', Game.reset);
   },
 
 
