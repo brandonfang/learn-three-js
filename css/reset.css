@@ -19,7 +19,6 @@ svg, button, main, input, textarea {
   box-sizing: border-box;
   background: transparent;
 	font-size: 100%;
-  letter-spacing: -0.01em;
 	font: inherit;
   color: inherit;
   text-align: inherit;

@@ -1,45 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400&display=swap');
+
+/* font face */
+
+:root {
+  --font-stack-header: "Recoleta", "Work Sans", "Georgia", serif;
+  --font-stack-body: "Graphik", "Inter", "Helvetica", "Arial", sans-serif;
+  --font-stack-code: "Menlo", "Monaco", "Lucida Console", "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Courier New", "Inconsolata", "Roboto Mono", monospace;
+}
 
 h1 {
+  font-family: var(--font-stack-header);
+  color: var(--sky-900);
   font-size: 26px;
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 16px;
+  line-height: 1;
+  margin: 0;
 }
 
 h2 {
-  font-size: 20px;
-  font-weight: 600;
+  font-family: var(--font-stack-body);
+  color: var(--sky-900);
+  font-size: 24px;
+  font-weight: 500;
   line-height: 1.3;
   margin-bottom: 16px;
-  color: var(--sky-900)
 }
 
 h3 {
-  font-size: 18px;
-  font-weight: 600;
-  line-height: 1.4;
+  font-family: var(--font-stack-header);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 1;
   margin-bottom: 16px;
 }
 
 p {
+  font-family: var(--font-stack-body);
+  color: var(--coolGray-800);
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
   margin-bottom: 16px;
-  color: var(--coolGray-800)
 }
 
-a {
-  /* color: var(--teal-600); */
+a, a:visited {
+  font-family: inherit;
+  color: inherit;
   text-decoration: underline;
-  /* border-bottom: 1px solid var(--teal-600); */
   transition: 0.2s;
 }
 
 a:hover {
-  /* color: var(--teal-800); */
-  /* border-bottom: 1px solid var(--teal-800); */
+  color: inherit;
 }
 
