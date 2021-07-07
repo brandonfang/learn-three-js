@@ -17,8 +17,8 @@ html, body {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto 1fr;
   grid-template-areas: 
-    "header view"
-    "sidebar view";
+    'header view'
+    'sidebar view';
 }
 
 
@@ -27,7 +27,8 @@ html, body {
   height: 100%;
   width: 100%;
   justify-self: center;
-  padding: 24px 32px 32px 32px;
+  padding: 32px;
+  /* padding-top: 24px; */
   /* overflow-y: auto; */
 }
 
@@ -37,6 +38,7 @@ html, body {
   width: 100%;
   justify-self: center;
   /* padding: 32px; */
+  background: #fdc48b;
 }
 
 .header-wrapper {
@@ -65,7 +67,7 @@ html, body {
   width: 224px;
   border-radius: 4px;
   box-shadow: 0 0 8px 4px hsla(175, 77%, 26%, 0.08), 
-    0 0 0 1px var(--sky-700);
+    0 0 0 2px var(--sky-700);
   position: relative;
   display: flex;
   flex-direction: row;
@@ -73,7 +75,7 @@ html, body {
 }
 
 .level-menu:hover {
-  box-shadow: 0px 0px 8px 4px hsla(175, 77%, 26%, 0.12), 0 0 0 1px var(--sky-700);
+  box-shadow: 0px 0px 8px 4px hsla(175, 77%, 26%, 0.12), 0 0 0 2px var(--sky-700);
 }
 
 .level-picker {
@@ -90,7 +92,7 @@ html, body {
 }
 
 .level-picker:hover {
-  background: var(--lime-400);
+  background: var(--emerald-400);
   color: var(--sky-900);
 }
 
@@ -106,18 +108,18 @@ html, body {
 }
 
 .arrow:hover {
-  background: var(--lime-400);
+  background: var(--emerald-400);
   color: var(--sky-900);
 }
 
 .arrow.left {
   border-radius: 4px 0 0 4px;
-  border-right: 1px solid var(--sky-700);
+  border-right: 2px solid var(--sky-700);
 }
 
 .arrow.right {
   border-radius: 0 4px 4px 0;
-  border-left: 1px solid var(--sky-700);
+  border-left: 2px solid var(--sky-700);
 }
 
 .arrow.disabled {
@@ -247,8 +249,8 @@ html, body {
   width: 100%;
   margin: 32px 0;
   border-radius: 8px;
-  border: 2px solid var(--amber-600);
-  background: var(--amber-100);
+  border: 2px solid var(--green-600);
+  background: var(--green-100);
   padding: 24px;
 }
 
@@ -260,12 +262,14 @@ html, body {
 }
 
 .bookmark {
-  color: var(--amber-600);
+  color: var(--green-600);
   margin-right: 8px;  
 }
 
 .reference-title {
-  color: var(--amber-600);
+  color: var(--green-600);
+  /* color: #fdc48b; */
+  /* f9ae65 */
   margin: 0;
 }
 
@@ -282,7 +286,7 @@ html, body {
 }
 
 ol, ul  {
-  margin-left: 22px;
+  margin-left: 20px;
 }
 
 li {
@@ -382,7 +386,7 @@ pre {
 .canvas {
   width: 100%;
   height: 100%;
-  background: var(--lime-50);
+  background: fdc48b;
 }
 
 
@@ -392,9 +396,9 @@ pre {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
     grid-template-areas: 
-      "header"
-      "sidebar"
-      "view";
+      'header'
+      'sidebar'
+      'view';
   }
 
   .sidebar {
