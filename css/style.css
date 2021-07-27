@@ -335,27 +335,16 @@ pre {
   font-family: 'Roboto Mono', monospace;
   font-size: 15px;
   line-height: 1.5;
-  color: #777;
+  color: rgb(255, 255, 255);
 }
 
 #css {
   height: 375px;
   position: relative;
-  padding: 10px 10px 10px 40px;
-  background-color: #e0e0e0;
+  padding: 10px 10px 10px 10px;
+  background-color: #000000;
   border-radius: 4px;
   overflow: hidden;
-}
-
-.line-numbers {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  padding: 10px 6px;
-  text-align: right;
-  background-color: #999;
-  color: #D5D5D5;
 }
 
 #code {

@@ -9,8 +9,9 @@ let levels = [
     board: '',
     selector: '',
     style: {},
-    before: '',
-    after: '',
+    before:
+      '<!DOCTYPE html>\n<html lang="en">\n  <head>\n    <title>Document</title>\n  </head>\n  <body>',
+    after: '  </body>\n</html>',
   },
   {
     number: 2,
