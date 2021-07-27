@@ -320,11 +320,14 @@ li {
 
 
 /* Begin editor Code */
-#editor {
+.editor {
+  display: block;
   width: 100%;
+  min-height: 120px;
+  font-family: var(--font-stack-code);
   /* height: 400px;
   margin-top: 16px; */
-  /* background: var(--lime-400); */
+  /* background: var(--lime-200); */
   position: relative;
   margin: 32px 0;
   /* box-shadow: 0 0 8px 4px hsla(175, 77%, 26%, 0.08); */
@@ -332,17 +335,17 @@ li {
 
 #editor,
 pre {
-  font-family: 'Roboto Mono', monospace;
+  font-family: var(--font-stack-code);
   font-size: 15px;
   line-height: 1.5;
-  color: rgb(255, 255, 255);
+  /* color: rgb(255, 255, 255); */
 }
 
 #css {
   height: 375px;
   position: relative;
   padding: 10px 10px 10px 10px;
-  background-color: #000000;
+  /* background-color: #000000; */
   border-radius: 4px;
   overflow: hidden;
 }
@@ -353,7 +356,7 @@ pre {
   height: 24px;
   margin-left: 16px;
   border: none;
-  font-family: 'Menlo', monospace;
+  font-family: var(--font-stack-code);
   font-size: 16px;
   outline: none;
   resize: none;

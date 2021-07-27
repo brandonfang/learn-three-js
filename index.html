@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="images/favicon.svg">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="images/favicon.svg" />
     <title>Learn Three.js</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/prism.css">
-    <link rel="stylesheet" href="css/colors.css">
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/prism.css" />
+    <link rel="stylesheet" href="css/colors.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
 
   <body>
@@ -20,10 +20,23 @@
           <div class="logo-wrapper">
             <h1 class="logo">Learn Three.js</h1>
           </div>
-  
+
           <div class="level-menu">
             <span class="arrow left">
-              <svg class="chevron" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="15 18 9 12 15 6"></polyline></svg>
+              <svg
+                class="chevron"
+                stroke="currentColor"
+                fill="none"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polyline points="15 18 9 12 15 6"></polyline>
+              </svg>
             </span>
             <div class="level-picker">
               <span class="label label-level">Level</span>
@@ -31,11 +44,37 @@
               <span class="label label-of">of</span>
               <span class="label label-total"></span>
               <span class="label label-down">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-chevron-down"
+                >
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
               </span>
             </div>
             <span class="arrow right">
-              <svg class="chevron" stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              <svg
+                class="chevron"
+                stroke="currentColor"
+                fill="none"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <polyline points="9 18 15 12 9 6"></polyline>
+              </svg>
             </span>
             <div class="level-dropdown">
               <div class="level-grid"></div>
@@ -46,17 +85,21 @@
       </div>
 
       <section class="sidebar">
-
         <article class="instructions"></article>
 
-        <div class="editor" id="editor">
+        <!-- <div class="editor" id="editor">
           <div id="css">
             <pre id="before"></pre>
             <textarea id="code" autofocus autocapitalize="none"></textarea>
             <pre id="after"></pre>
           </div>
           <button id="next">Next</button>
-        </div>
+        </div> -->
+
+        <div id="editor" class="editor">function foo(items) {
+  var x = "All this is syntax highlighted";
+  return x;
+}</div>
 
         <div class="reference">
           <div class="reference-header">
@@ -66,9 +109,7 @@
         </div>
 
         <footer class="footer">
-          <div class="footer-link">
-            Made by Brandon Fang
-          </div>
+          <div class="footer-link">Made by Brandon Fang</div>
           <div class="footer-link">
             <a href="https://bdmfang.com" target="_blank">Portfolio</a>
           </div>
@@ -87,9 +128,9 @@
       </section>
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js" integrity="sha512-GZ1RIgZaSc8rnco/8CXfRdCpDxRCphenIiZ2ztLy3XQfCbQUSCuk8IudvNHxkRA3oUg6q0qejgN/qqyG1duv5Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="js/three.min.js"></script>
     <script src="js/script.js"></script>
-    <script src="js/prism.js"></script>
     <script src="js/levels.js"></script>
     <script src="js/game.js"></script>
   </body>

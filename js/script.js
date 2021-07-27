@@ -1,3 +1,7 @@
+var editor = ace.edit('editor');
+editor.setTheme('ace/theme/dracula');
+editor.session.setMode('ace/mode/javascript');
+
 // import * as THREE from 'three';
 // console.log(THREE);
 

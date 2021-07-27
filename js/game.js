@@ -109,8 +109,6 @@ var Game = {
     removeClass($('.level-circle.current'), 'current');
     addClass($$('.level-circle').item(level.number - 1), 'current');
     text($('.label-current'), level.number.toString());
-    text($('#before'), level.before);
-    text($('#after'), level.after);
     // remove styles on background
     // update canvas
     // remove/reset animations
