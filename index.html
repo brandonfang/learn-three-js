@@ -102,40 +102,8 @@
       </section>
     </div>
 
-
-    <script type="module">
-      import * as THREE from 'https://cdn.skypack.dev/pin/three@v0.130.0-WI96Ec9p8dZb5AMcOcgD/mode=imports,min/optimized/three.js';
-      
-      let container = document.getElementById('canvas');
-      
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera( 75, container.clientWidth / container.clientHeight, 0.1, 1000 );
-
-      const renderer = new THREE.WebGLRenderer({ alpha: true });
-      renderer.setSize( container.clientWidth, container.clientHeight );
-      renderer.setClearColor(0xfdc48b, 1);
-      container.appendChild( renderer.domElement );
-      
-      const geometry = new THREE.BoxGeometry();
-      const material = new THREE.MeshBasicMaterial( { color: 0x34D399 } );
-      const cube = new THREE.Mesh( geometry, material );
-      scene.add( cube );
-      
-      camera.position.z = 5;
-
-      const animate = function () {
-  requestAnimationFrame( animate );
-
-  cube.rotation.x += 0.01;
-  cube.rotation.y += 0.01;
-
-  renderer.render( scene, camera );
-};
-
-animate();
-    </script>
-    <!-- <script src="js/three.js"></script> -->
-    <!-- <script src="js/scene.js"></script> -->
+    <script src="js/three.min.js"></script>
+    <script src="js/script.js"></script>
     <script src="js/prism.js"></script>
     <script src="js/levels.js"></script>
     <script src="js/game.js"></script>
