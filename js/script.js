@@ -1,6 +1,11 @@
 var editor = ace.edit('editor');
 editor.setTheme('ace/theme/dracula');
 editor.session.setMode('ace/mode/javascript');
+// editor.setOptions(wrapBehavioursEnabled, true)
+// editor.sessions.setOptions(wrap, 20);
+editor.renderer.setOptions({
+  showPrintMargin: false
+});
 
 // import * as THREE from 'three';
 // console.log(THREE);
