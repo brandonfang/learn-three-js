@@ -1,17 +1,23 @@
+// Create and configure code editor
 var editor = ace.edit('editor');
 editor.setTheme('ace/theme/dracula');
 editor.session.setMode('ace/mode/javascript');
+editor.renderer.setShowGutter(false);
 // editor.setOptions(wrapBehavioursEnabled, true)
 // editor.sessions.setOptions(wrap, 20);
 editor.renderer.setOptions({
+  fontFamily: 'Roboto Mono',
+  fontSize: '14px',
+  printMargin: '28px',
   showPrintMargin: false
 });
 
-// import * as THREE from 'three';
 // console.log(THREE);
 
+// Select canvas
 let container = document.getElementById('canvas');
 
+// Create scene
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
   75,

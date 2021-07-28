@@ -49,4 +49,52 @@ let levels = [
     before: '',
     after: '',
   },
+  {
+    number: 5,
+    name: 'level 5',
+    instructions:
+      '<h2>Instructions title for level 5.</h2><p>Instructions for level 5. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna nisl, rhoncus eget bibendum at, euismod eget fermentum quis tellus. Nulla est elit, semper in finibus at, finibus in sapien. Nulla bibendum leo ac orci varius nibh. In elit arcu, malesuada a diam vel, imperdiet gravida mi. Vivamus ante neque, blandit ut efficitur sed, fermentum quis tellus. Nulla est elit, semper in finibus at, finibus in sapien. Nulla bibendum leo ac orci varius, eget fermentum nulla efficitur. In tempus, lacus quis malesuada feugiat, orci justo vehicula sapien, in blandit orci massa eu nunc. Duis sit amet elit diam. Morbi tincidunt orci et mi fermentum, eget lacinia odio cursus. Pellentesque at quam facilisis, euismod purus sed, efficitur quam.</p>',
+    reference: '<p>This is the reference material for level 5.</p>',
+    board: '',
+    selector: '',
+    style: {},
+    before: '',
+    after: '',
+  },
+  {
+    number: 6,
+    name: 'level 6',
+    instructions:
+      '<h2>Instructions title for level 6.</h2><p>Instructions for level 6. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna nisl, rhoncus eget bibendum at, euismod eget fermentum quis tellus. Nulla est elit, semper in finibus at, finibus in sapien. Nulla bibendum leo ac orci varius nibh. In elit arcu, malesuada a diam vel, imperdiet gravida mi. Vivamus ante neque, blandit ut efficitur sed, fermentum quis tellus. Nulla est elit, semper in finibus at, finibus in sapien. Nulla bibendum leo ac orci varius, eget fermentum nulla efficitur. In tempus, lacus quis malesuada feugiat, orci justo vehicula sapien, in blandit orci massa eu nunc. Duis sit amet elit diam. Morbi tincidunt orci et mi fermentum, eget lacinia odio cursus. Pellentesque at quam facilisis, euismod purus sed, efficitur quam.</p>',
+    reference: '<p>This is the reference material for level 6.</p>',
+    board: '',
+    selector: '',
+    style: {},
+    before: '',
+    after: '',
+  },
+  {
+    number: 7,
+    name: 'level 7',
+    instructions:
+      '<h2>Instructions title for level 7.</h2><p>Instructions for level 7. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna nisl, rhoncus eget bibendum at, euismod eget fermentum quis tellus. Nulla est elit, semper in finibus at, finibus in sapien. Nulla bibendum leo ac orci varius nibh. In elit arcu, malesuada a diam vel, imperdiet gravida mi. Vivamus ante neque, blandit ut efficitur sed, fermentum quis tellus. Nulla est elit, semper in finibus at, finibus in sapien. Nulla bibendum leo ac orci varius, eget fermentum nulla efficitur. In tempus, lacus quis malesuada feugiat, orci justo vehicula sapien, in blandit orci massa eu nunc. Duis sit amet elit diam. Morbi tincidunt orci et mi fermentum, eget lacinia odio cursus. Pellentesque at quam facilisis, euismod purus sed, efficitur quam.</p>',
+    reference: '<p>This is the reference material for level 7.</p>',
+    board: '',
+    selector: '',
+    style: {},
+    before: '',
+    after: '',
+  },
+  {
+    number: 8,
+    name: 'level 8',
+    instructions:
+      '<h2>Instructions title for level 8.</h2><p>Instructions for level 8. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna nisl, rhoncus eget bibendum at, euismod eget fermentum quis tellus. Nulla est elit, semper in finibus at, finibus in sapien. Nulla bibendum leo ac orci varius nibh. In elit arcu, malesuada a diam vel, imperdiet gravida mi. Vivamus ante neque, blandit ut efficitur sed, fermentum quis tellus. Nulla est elit, semper in finibus at, finibus in sapien. Nulla bibendum leo ac orci varius, eget fermentum nulla efficitur. In tempus, lacus quis malesuada feugiat, orci justo vehicula sapien, in blandit orci massa eu nunc. Duis sit amet elit diam. Morbi tincidunt orci et mi fermentum, eget lacinia odio cursus. Pellentesque at quam facilisis, euismod purus sed, efficitur quam.</p>',
+    reference: '<p>This is the reference material for level 8.</p>',
+    board: '',
+    selector: '',
+    style: {},
+    before: '',
+    after: '',
+  },
 ];
