@@ -261,11 +261,6 @@ html, body {
   margin-bottom: 16px;
 }
 
-.bookmark {
-  color: var(--green-600);
-  margin-right: 8px;  
-}
-
 .reference-title {
   color: var(--green-600);
   /* color: #fdc48b; */

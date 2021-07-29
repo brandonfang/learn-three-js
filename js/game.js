@@ -151,8 +151,8 @@ const Game = {
   saveAnswer: () => {
     let level = levels[this.level];
     let editor = document.getElementById('editor');
-    let code = editor.getValue();
-    Game.answers[level.name] = editor.getValue();
+    // let code = editor.getValue();
+    // Game.answers[level.name] = editor.getValue();
   },
 
   reset: () => {
