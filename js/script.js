@@ -1,6 +1,7 @@
 // Create and configure code editor
-var editor = ace.edit('editor');
+const editor = ace.edit('editor');
 editor.setTheme('ace/theme/dracula');
+editor.session.setTabSize(2);
 editor.session.setMode('ace/mode/javascript');
 editor.renderer.setShowGutter(false);
 // editor.setOptions(wrapBehavioursEnabled, true)
@@ -12,10 +13,13 @@ editor.renderer.setOptions({
   showPrintMargin: false
 });
 
-// console.log(THREE);
+editor.setValue("console.log('hello world');");
+// editor.session.setValue("the new text here"); // set value and reset undo history
+const value = editor.getValue(); // or session.getValue
+// console.log(value);
 
 // Select canvas
-let container = document.getElementById('canvas');
+const container = document.getElementById('canvas');
 
 // Create scene
 const scene = new THREE.Scene();
@@ -48,3 +52,25 @@ const animate = function () {
 };
 
 animate();
+
+// Sizes
+const sizes = {
+  width: container.clientWidth,
+  height: container.clientHeight,
+};
+
+window.addEventListener('resize', () => {
+  // Update sizes
+  sizes.width = window.innerWidth;
+  sizes.height = window.innerHeight;
+
+  editor.resize();
+
+  // Update camera
+  camera.aspect = sizes.width / sizes.height;
+  camera.updateProjectionMatrix();
+
+  // Update renderer
+  renderer.setSize(sizes.width, sizes.height);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+});

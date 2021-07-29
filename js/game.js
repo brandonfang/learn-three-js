@@ -27,7 +27,7 @@ const text = (ele, content) => ele.textContent = content;
 
 
 // Game Logic
-var Game = {
+const Game = {
   user: localStorage.user || '',
   level: localStorage.level || 0,
   answers: localStorage.answers || {},
@@ -51,6 +51,11 @@ var Game = {
 
   setHandlers: () => {
     $('.reset-button').addEventListener('click', Game.reset);
+    window.addEventListener('beforeunload', () => {
+      localStorage.setItem('level', game.level);
+      localStorage.setItem('answers', JSON.stringify(game.answers));
+      localStorage.setItem('solved', JSON.stringify(game.solved));
+    });
   },
 
 
@@ -132,15 +137,22 @@ var Game = {
 
   check: () => {
     Game.applyCode();
+    let level = levels[this.level];
+    let editor = document.getElementById('editor');
+    
   },
 
   applyCode: () => {
+    let level = levels[this.level];
 
     Game.saveAnswer();
   },
 
   saveAnswer: () => {
-
+    let level = levels[this.level];
+    let editor = document.getElementById('editor');
+    let code = editor.getValue();
+    Game.answers[level.name] = editor.getValue();
   },
 
   reset: () => {
