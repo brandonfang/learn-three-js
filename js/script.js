@@ -13,7 +13,7 @@ editor.renderer.setOptions({
   showPrintMargin: false
 });
 
-editor.setValue("console.log('hello world');");
+editor.setValue(levels[0].before);
 // editor.session.setValue("the new text here"); // set value and reset undo history
 const value = editor.getValue(); // or session.getValue
 // console.log(value);
