@@ -42,7 +42,7 @@ editor.session.setOptions({
   tabSize: 2,
 })
 
-// editor.insert(levels[0].before);
+editor.insert(levels[0].before);
 // editor.insert('\n');
 // editor.insert('\n');
 // editor.insert(levels[0].after);
@@ -112,9 +112,10 @@ window.addEventListener('resize', () => {
 // Game Logic
 const Game = {
   user: localStorage.user || '',
-  level: localStorage.level || 1,
+  level: localStorage.level || 0,
   answers: (localStorage.answers && JSON.parse(localStorage.answers)) || {},
   solved: (localStorage.solved && JSON.parse(localStorage.solved)) || [],
+
 
   start: () => {
     text($('.label-total'), levels.length.toString());
@@ -123,7 +124,7 @@ const Game = {
     if (!localStorage.user) {
       // generate a random id for new user
       Game.user = Date.now().toString(36) + Math.random().toString(36).substring(2);
-      // put new user into local storage
+      // add new user to local storage
       localStorage.setItem('user', Game.user);
     }
    
@@ -134,11 +135,18 @@ const Game = {
 
   setHandlers: () => {
     $('.reset-all').addEventListener('click', Game.reset);
+    $('.reset-level').addEventListener('click', Game.resetLevel);
+
     window.addEventListener('beforeunload', () => {
       localStorage.setItem('level', Game.level);
       localStorage.setItem('answers', JSON.stringify(Game.answers));
       localStorage.setItem('solved', JSON.stringify(Game.solved));
     });
+
+    $('.editor').addEventListener('keydown', () => {
+
+    });
+
   },
 
 
@@ -201,9 +209,10 @@ const Game = {
     // update canvas
     // remove/reset animations
 
+
     removeClass($('.arrow.disabled'), 'disabled');
-    if (level === 0) addClass($('.arrow.left'), 'disabled');
-    if (level === levels.length - 1) addClass($('.arrow.right'), 'disabled');
+    if (level.number === 1) addClass($('.arrow.left'), 'disabled');
+    if (level.number === levels.length) addClass($('.arrow.right'), 'disabled');
 
     $('.instructions').innerHTML = level.instructions;
     if (level.reference) {
@@ -223,7 +232,7 @@ const Game = {
     let level = levels[Game.level];
     console.log(level)
     console.log(level.solutions)
-    // console.log(Game.answers)
+    console.log(Game.answers)
     let correct = level.solutions.includes(Game.answers[level.number]);
     
     if (correct) {
@@ -241,16 +250,16 @@ const Game = {
   },
 
   saveAnswer: () => {
-    let level = levels[this.level];
-    let editor = document.getElementById('editor');
+    let level = levels[Game.level];
     // let code = editor.getValue();
-    // Game.answers[level.name] = editor.getValue();
+    // console.log(code)
+    // Game.answers[level.number] = code;
   },
 
   reset: () => {
     let isConfirmed = confirm('Are you sure you want to reset the game? You will lose all your saved progress.');
     if (isConfirmed) {
-      Game.level = 1;
+      Game.level = 0;
       Game.answers = {};
       Game.solved = [];
       Game.loadLevel(levels[0]);
@@ -263,21 +272,22 @@ const Game = {
     let isConfirmed = confirm('Are you sure you want to reset the code for this level?');
     if (isConfirmed) {
       let level = levels[this.level];
-      Game.answers[level.name] = '';
+      // Game.answers[level.name] = '';
       Game.loadLevel(level);
       // reset specific level circle 
     }
   },
 
   win: () => {
-
+    
   },
 
   debounce: () => {
-
+    
   }
 };
 
+// Start game
 document.addEventListener("DOMContentLoaded", () => {
   Game.start();
 });

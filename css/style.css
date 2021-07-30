@@ -88,10 +88,11 @@ html, body {
   justify-content: center;
   align-items: center;
   transition: inherit;
+  cursor: pointer;
 }
 
 .level-picker:hover {
-  background: var(--emerald-400);
+  background: var(--lime-300);
   color: var(--sky-900);
 }
 
@@ -104,10 +105,11 @@ html, body {
   justify-content: center;
   align-items: center;
   transition: inherit;
+  cursor: pointer;
 }
 
 .arrow:hover {
-  background: var(--emerald-400);
+  background: var(--lime-300);
   color: var(--sky-900);
 }
 
@@ -122,8 +124,9 @@ html, body {
 }
 
 .arrow.disabled {
-  opacity: 0.3;
-  background: orange;
+  background: var(--coolGray-300);
+  color: var(--coolGray-500);
+  cursor: auto;
 }
 
 .chevron {
