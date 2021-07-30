@@ -50,7 +50,7 @@ const Game = {
   },
 
   setHandlers: () => {
-    $('.reset-button').addEventListener('click', Game.reset);
+    $('.reset-all').addEventListener('click', Game.reset);
     window.addEventListener('beforeunload', () => {
       localStorage.setItem('level', game.level);
       localStorage.setItem('answers', JSON.stringify(game.answers));
@@ -164,6 +164,16 @@ const Game = {
       Game.loadLevel(levels[0]);
       let circles = $$('.level-circles')
       circles.forEach((circle) => removeClass(circle, 'solved'));
+    }
+  },
+
+  resetLevel: () => {
+    let isConfirmed = confirm('Are you sure you want to reset the code for this level?');
+    if (isConfirmed) {
+      let level = levels[this.level];
+      Game.answers[level.name] = '';
+      Game.loadLevel(level);
+      // reset specific level circle 
     }
   },
 
