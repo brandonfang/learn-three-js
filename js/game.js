@@ -42,7 +42,10 @@ editor.session.setOptions({
   tabSize: 2,
 })
 
-editor.setValue(levels[0].before);
+// editor.insert(levels[0].before);
+// editor.insert('\n');
+// editor.insert('\n');
+// editor.insert(levels[0].after);
 // editor.session.setValue("the new text here"); // set value and reset undo history
 // const value = editor.getValue(); // or session.getValue
 // console.log(value);
@@ -109,9 +112,9 @@ window.addEventListener('resize', () => {
 // Game Logic
 const Game = {
   user: localStorage.user || '',
-  level: localStorage.level || 0,
-  answers: localStorage.answers || {},
-  solved: localStorage.solved || [],
+  level: localStorage.level || 1,
+  answers: (localStorage.answers && JSON.parse(localStorage.answers)) || {},
+  solved: (localStorage.solved && JSON.parse(localStorage.solved)) || [],
 
   start: () => {
     text($('.label-total'), levels.length.toString());
@@ -132,9 +135,9 @@ const Game = {
   setHandlers: () => {
     $('.reset-all').addEventListener('click', Game.reset);
     window.addEventListener('beforeunload', () => {
-      localStorage.setItem('level', game.level);
-      localStorage.setItem('answers', JSON.stringify(game.answers));
-      localStorage.setItem('solved', JSON.stringify(game.solved));
+      localStorage.setItem('level', Game.level);
+      localStorage.setItem('answers', JSON.stringify(Game.answers));
+      localStorage.setItem('solved', JSON.stringify(Game.solved));
     });
   },
 
@@ -151,7 +154,7 @@ const Game = {
 
   loadMenu: () => {
     levels.forEach((level, i) => {
-      let solved = Game.solved.includes(level.name) ? ' solved' : '';
+      let solved = Game.solved.includes(level.number) ? ' solved' : '';
       let levelCircle = `<div class='level-circle${solved}' level='${i}' title='${level.name}'>${i + 1}</div>`;
       $('.level-grid').innerHTML += levelCircle;
     });
@@ -209,17 +212,26 @@ const Game = {
       hide($('.reference'));
     }
 
-    let answer = Game.answers[level.name];
+    let answer = Game.answers[level.number];
 
     Game.applyCode();
     Game.check();
   },
 
   check: () => {
-    Game.applyCode();
-    let level = levels[this.level];
-    let editor = document.getElementById('editor');
+    Game.applyCode(); // remove line later
+    let level = levels[Game.level];
+    console.log(level)
+    console.log(level.solutions)
+    // console.log(Game.answers)
+    let correct = level.solutions.includes(Game.answers[level.number]);
     
+    if (correct) {
+      // mark level as solved
+      console.log('you have the corect answer!')
+    } else {
+      // do nothing
+    }
   },
 
   applyCode: () => {
@@ -238,7 +250,7 @@ const Game = {
   reset: () => {
     let isConfirmed = confirm('Are you sure you want to reset the game? You will lose all your saved progress.');
     if (isConfirmed) {
-      Game.level = 0;
+      Game.level = 1;
       Game.answers = {};
       Game.solved = [];
       Game.loadLevel(levels[0]);

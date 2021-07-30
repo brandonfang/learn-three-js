@@ -11,7 +11,7 @@ let levels = [
     style: {},
     before: '//level 1 before code',
     after: '// level 1 after code',
-    solution: 'console.log(\'hello world\')'
+    solutions: ["console.log(\'hello world\')"]
   },
   {
     number: 2,
