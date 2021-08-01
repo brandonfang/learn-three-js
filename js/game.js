@@ -113,10 +113,10 @@ window.addEventListener('resize', () => {
 const Game = {
   user: localStorage.user || '',
   levelIndex: localStorage.level || 0, // level.number - 1
-  // answers: (localStorage.answers && JSON.parse(localStorage.answers)) || {},
-  answers: {},
-  // solved: (localStorage.solved && JSON.parse(localStorage.solved)) || [],
-  solved: [1, 2],
+  answers: (localStorage.answers && JSON.parse(localStorage.answers)) || {},
+  // answers: {},
+  solved: (localStorage.solved && JSON.parse(localStorage.solved)) || [],
+  // solved: [1, 2],
 
 
   start: () => {
@@ -130,7 +130,7 @@ const Game = {
       localStorage.setItem('user', Game.user);
     }
 
-    // check that level is in range
+    // check that level is in range (optional)
     if (Game.levelIndex < 0 || Game.levelIndex > levels.length - 1) {
       Game.levelIndex = 0;
     }
@@ -238,14 +238,18 @@ const Game = {
   },
 
   check: (level) => {
-    Game.applyCode(); // remove line later
-    console.log(level)
-    // console.log(Game.answers)
+    Game.applyCode(); // optional
+    console.log('level', level)
+    console.log('answers', Game.answers)
+    console.log('solutions', level.solutions)
     let correct = level.solutions.includes(Game.answers[level.number]);
     
     if (correct) {
-      // mark level as solved
-      console.log('you have the corect answer!')
+      // mark level as solved. activate 'next' button
+      console.log('you have the correct answer!')
+      Game.solved.push(level.number);
+      localStorage.setItem('solved', Game.solved);
+      addClass($('.next'), 'active');
     } else {
       // do nothing
     }

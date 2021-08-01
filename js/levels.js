@@ -9,7 +9,7 @@ let levels = [
       '<ul><li><a href="https://github.com/mrdoob/three.js/" target="_blank">Three.js GitHub</a></li><li><a href="https://threejs.org" target="_blank">Three.js documentation</a></li><li><a href="https://threejsfundamentals.org/" target="_blank">Three.js Fundamentals</a></li></ul>',
     before: '//level 1 before code',
     after: '// level 1 after code',
-    solutions: ["console.log('hello world')"],
+    solutions: ["console.log('level one')"],
   },
   {
     number: 2,
@@ -22,7 +22,7 @@ let levels = [
     style: {},
     before: '',
     after: '',
-    solutions: ["console.log('hello world')"],
+    solutions: ["console.log('level two')"],
   },
   {
     number: 3,
@@ -35,7 +35,7 @@ let levels = [
     style: {},
     before: '',
     after: '',
-    solutions: ["console.log('hello world')"],
+    solutions: ["console.log('level three')"],
   },
   {
     number: 4,
