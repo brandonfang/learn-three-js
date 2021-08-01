@@ -215,15 +215,16 @@ html, body {
 }
 
 .level-circle:hover {
-  box-shadow: 0 0 0 3px var(--green-400) inset;
+  box-shadow: 0 0 0 3px var(--coolGray-400) inset;
 }
 
 .level-circle.current {
-  box-shadow: 0 0 0 3px var(--cyan-500) inset;
+  box-shadow: 0 0 0 3px var(--coolGray-400) inset;
 }
 
 .level-circle.solved {
-  box-shadow: 0 0 0 3px var(--green-700) inset;
+  background: var(--green-200);
+  color: var(--green-700);
 }
 
 .reset-all {

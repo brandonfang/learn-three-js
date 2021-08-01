@@ -112,11 +112,11 @@ window.addEventListener('resize', () => {
 // Game Logic
 const Game = {
   user: localStorage.user || '',
-  level: localStorage.level || 1,
+  levelIndex: localStorage.level || 0, // level.number - 1
   // answers: (localStorage.answers && JSON.parse(localStorage.answers)) || {},
   answers: {},
   // solved: (localStorage.solved && JSON.parse(localStorage.solved)) || [],
-  solved: [],
+  solved: [1, 2],
 
 
   start: () => {
@@ -129,13 +129,15 @@ const Game = {
       // add new user to local storage
       localStorage.setItem('user', Game.user);
     }
+
+    // check that level is in range
+    if (Game.levelIndex < 0 || Game.levelIndex > levels.length - 1) {
+      Game.levelIndex = 0;
+    }
     
     Game.setHandlers();
     Game.loadMenu();
-    if (Game.level < 1 || Game.level > levels.length) {
-      Game.level = 1;
-    }
-    Game.loadLevel(levels[Game.level - 1]);
+    Game.loadLevel(levels[Game.levelIndex]);
   },
 
   setHandlers: () => {
@@ -143,7 +145,7 @@ const Game = {
     $('.reset-level').addEventListener('click', Game.resetLevel);
 
     window.addEventListener('beforeunload', () => {
-      localStorage.setItem('level', Game.level);
+      localStorage.setItem('levelIndex', Game.levelIndex);
       localStorage.setItem('answers', JSON.stringify(Game.answers));
       localStorage.setItem('solved', JSON.stringify(Game.solved));
     });
@@ -156,19 +158,21 @@ const Game = {
 
 
   prev: () => {
-    Game.level--;
-    Game.loadLevel(levels[Game.level]);
+    Game.levelIndex--;
+    localStorage.setItem('levelIndex', Game.levelIndex)
+    Game.loadLevel(levels[Game.levelIndex]);
   },
 
   next: () => {
-    Game.level++;
-    Game.loadLevel(levels[Game.level]);
+    Game.levelIndex++;
+    localStorage.setItem('levelIndex', Game.levelIndex);
+    Game.loadLevel(levels[Game.levelIndex]);
   },
 
   loadMenu: () => {
     levels.forEach((level, i) => {
       let solved = Game.solved.includes(level.number) ? ' solved' : '';
-      let levelCircle = `<div class='level-circle${solved}' level='${i}' title='${level.name}'>${i + 1}</div>`;
+      let levelCircle = `<div class='level-circle${solved}' level='${i}' title='${level.name}'>${i + 1}</div>`; 
       $('.level-grid').innerHTML += levelCircle;
     });
 
@@ -177,7 +181,7 @@ const Game = {
       circle.addEventListener('click', () => {
         Game.saveAnswer();
         let level = circle.getAttribute('level');
-        Game.level = parseInt(level, 10);
+        Game.levelIndex = parseInt(level, 10);
         Game.loadLevel(levels[level]);
       });
     })
@@ -210,8 +214,8 @@ const Game = {
     removeClass($('.level-circle.current'), 'current');
     addClass($$('.level-circle').item(level.number - 1), 'current');
     text($('.label-current'), level.number.toString());
-    // remove styles on background
-    // update canvas
+
+    // update canvas and reset styles
     // remove/reset animations
 
 
@@ -226,6 +230,7 @@ const Game = {
       hide($('.reference'));
     }
 
+    // Game.answers is a POJO
     let answer = Game.answers[level.number];
 
     Game.applyCode();
@@ -247,13 +252,13 @@ const Game = {
   },
 
   applyCode: () => {
-    let level = levels[Game.level];
+    let level = levels[Game.levelIndex];
 
     Game.saveAnswer();
   },
 
   saveAnswer: () => {
-    let level = levels[Game.level];
+    let level = levels[Game.levelIndex];
     // let code = editor.getValue();
     // console.log(code)
     // Game.answers[level.number] = code;
@@ -262,7 +267,7 @@ const Game = {
   reset: () => {
     let isConfirmed = confirm('Are you sure you want to reset the game? You will lose all your saved progress.');
     if (isConfirmed) {
-      Game.level = 1;
+      Game.levelIndex = 1;
       Game.answers = {};
       Game.solved = [];
       Game.loadLevel(levels[0]);
@@ -272,9 +277,9 @@ const Game = {
   },
 
   resetLevel: () => {
-    let isConfirmed = confirm('Are you sure you want to reset the code for this level?');
+    let isConfirmed = confirm('Are you sure you want to reset this level?');
     if (isConfirmed) {
-      let level = levels[Game.level];
+      let level = levels[Game.levelIndex];
       // Game.answers[level.name] = '';
       Game.loadLevel(level);
       // reset specific level circle 
