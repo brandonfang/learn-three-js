@@ -124,8 +124,8 @@ html, body {
 }
 
 .arrow.disabled {
-  background: var(--coolGray-300);
-  color: var(--coolGray-500);
+  background: var(--coolGray-200);
+  color: var(--coolGray-400);
   cursor: auto;
 }
 

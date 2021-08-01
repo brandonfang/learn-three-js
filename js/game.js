@@ -112,9 +112,11 @@ window.addEventListener('resize', () => {
 // Game Logic
 const Game = {
   user: localStorage.user || '',
-  level: localStorage.level || 0,
-  answers: (localStorage.answers && JSON.parse(localStorage.answers)) || {},
-  solved: (localStorage.solved && JSON.parse(localStorage.solved)) || [],
+  level: localStorage.level || 1,
+  // answers: (localStorage.answers && JSON.parse(localStorage.answers)) || {},
+  answers: {},
+  // solved: (localStorage.solved && JSON.parse(localStorage.solved)) || [],
+  solved: [],
 
 
   start: () => {
@@ -127,10 +129,13 @@ const Game = {
       // add new user to local storage
       localStorage.setItem('user', Game.user);
     }
-   
+    
     Game.setHandlers();
     Game.loadMenu();
-    Game.loadLevel(levels[Game.level]);
+    if (Game.level < 1 || Game.level > levels.length) {
+      Game.level = 1;
+    }
+    Game.loadLevel(levels[Game.level - 1]);
   },
 
   setHandlers: () => {
@@ -224,15 +229,13 @@ const Game = {
     let answer = Game.answers[level.number];
 
     Game.applyCode();
-    Game.check();
+    Game.check(level);
   },
 
-  check: () => {
+  check: (level) => {
     Game.applyCode(); // remove line later
-    let level = levels[Game.level];
     console.log(level)
-    console.log(level.solutions)
-    console.log(Game.answers)
+    // console.log(Game.answers)
     let correct = level.solutions.includes(Game.answers[level.number]);
     
     if (correct) {
@@ -244,7 +247,7 @@ const Game = {
   },
 
   applyCode: () => {
-    let level = levels[this.level];
+    let level = levels[Game.level];
 
     Game.saveAnswer();
   },
@@ -259,7 +262,7 @@ const Game = {
   reset: () => {
     let isConfirmed = confirm('Are you sure you want to reset the game? You will lose all your saved progress.');
     if (isConfirmed) {
-      Game.level = 0;
+      Game.level = 1;
       Game.answers = {};
       Game.solved = [];
       Game.loadLevel(levels[0]);
@@ -271,7 +274,7 @@ const Game = {
   resetLevel: () => {
     let isConfirmed = confirm('Are you sure you want to reset the code for this level?');
     if (isConfirmed) {
-      let level = levels[this.level];
+      let level = levels[Game.level];
       // Game.answers[level.name] = '';
       Game.loadLevel(level);
       // reset specific level circle 
