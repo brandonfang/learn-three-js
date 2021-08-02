@@ -112,7 +112,7 @@ window.addEventListener('resize', () => {
 // Game Logic
 const Game = {
   user: localStorage.user || '',
-  levelIndex: localStorage.level || 0, // level.number - 1
+  levelIndex: localStorage.levelIndex || 0, // level.number - 1
   answers: (localStorage.answers && JSON.parse(localStorage.answers)) || {},
   // answers: {},
   solved: (localStorage.solved && JSON.parse(localStorage.solved)) || [],
@@ -145,6 +145,7 @@ const Game = {
     $('.reset-level').addEventListener('click', Game.resetLevel);
 
     window.addEventListener('beforeunload', () => {
+      Game.saveAnswer();
       localStorage.setItem('levelIndex', Game.levelIndex);
       localStorage.setItem('answers', JSON.stringify(Game.answers));
       localStorage.setItem('solved', JSON.stringify(Game.solved));
@@ -230,8 +231,19 @@ const Game = {
       hide($('.reference'));
     }
 
-    // Game.answers is a POJO
-    let answer = Game.answers[level.number];
+    editor.setValue('');
+    let answer = Game.answers[level.name];
+    // console.log(answer)
+    editor.setValue(level.before);
+    editor.insert('\n');
+    // editor.insert(answer);
+    editor.insert('\n');
+    editor.insert(level.after);
+
+
+
+    // set up three.js code with Game.answers or level.before/after
+
 
     Game.applyCode();
     Game.check(level);
@@ -239,9 +251,9 @@ const Game = {
 
   check: (level) => {
     Game.applyCode(); // optional
-    console.log('level', level)
-    console.log('answers', Game.answers)
-    console.log('solutions', level.solutions)
+    // console.log('level', level)
+    // console.log('answers', Game.answers)
+    // console.log('solutions', level.solutions)
     let correct = level.solutions.includes(Game.answers[level.number]);
     
     if (correct) {
@@ -263,9 +275,9 @@ const Game = {
 
   saveAnswer: () => {
     let level = levels[Game.levelIndex];
-    // let code = editor.getValue();
-    // console.log(code)
-    // Game.answers[level.number] = code;
+    // need to get only one line of code, not the entire editor
+    let code = editor.getValue();
+    Game.answers[level.name] = code;
   },
 
   reset: () => {
