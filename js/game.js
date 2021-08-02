@@ -28,11 +28,14 @@ const text = (ele, content) => ele.textContent = content;
 
 // Create and configure code editor
 const editor = ace.edit('editor');
+editor.setOptions({
+  cursorStyle: 'ace',
+  enableBasicAutocompletion: true,
+});
 editor.renderer.setOptions({
   theme: 'ace/theme/dracula',
   fontFamily: 'Roboto Mono',
   fontSize: '14px',
-  cursorStyle: 'slim',
   showGutter: true,
   displayIndentGuides: true,
   printMargin: false,
@@ -42,14 +45,6 @@ editor.session.setOptions({
   mode: 'ace/mode/javascript',
   tabSize: 2,
 })
-
-// editor.insert(levels[0].before);
-// editor.insert('\n');
-// editor.insert('\n');
-// editor.insert(levels[0].after);
-// editor.session.setValue("the new text here"); // set value and reset undo history
-// const value = editor.getValue(); // or session.getValue
-// console.log(value);
 
 
 // Select canvas
@@ -234,12 +229,13 @@ const Game = {
     editor.setValue('');
     let answer = Game.answers[level.name];
     console.log(answer)
-    editor.insert(level.before);
-    editor.insert('/n');
+    // editor.insert(level.before);
+    // editor.insert('/n');
     editor.insert(answer);
-    editor.insert('/n');
-    editor.insert(level.after);
-    editor.gotoLine(level.startLineNumber);
+    // editor.insert('/n');
+    // editor.insert(level.after);
+    editor.focus();
+    // editor.gotoLine(level.startLineNumber);
 
 
     // set up three.js code with Game.answers or level.before/after
@@ -277,6 +273,7 @@ const Game = {
     // need to get only one line of code, not the entire editor
     let code = editor.getValue();
     Game.answers[level.name] = code;
+    localStorage.setItem('answers', JSON.stringify(Game.answers));
   },
 
   reset: () => {
