@@ -31,8 +31,9 @@ const editor = ace.edit('editor');
 editor.renderer.setOptions({
   theme: 'ace/theme/dracula',
   fontFamily: 'Roboto Mono',
-  fontSize: '15px',
-  showGutter: false,
+  fontSize: '14px',
+  cursorStyle: 'slim',
+  showGutter: true,
   displayIndentGuides: true,
   printMargin: false,
   maxLines: Infinity,
@@ -42,7 +43,7 @@ editor.session.setOptions({
   tabSize: 2,
 })
 
-editor.insert(levels[0].before);
+// editor.insert(levels[0].before);
 // editor.insert('\n');
 // editor.insert('\n');
 // editor.insert(levels[0].after);
@@ -219,7 +220,6 @@ const Game = {
     // update canvas and reset styles
     // remove/reset animations
 
-
     removeClass($('.arrow.disabled'), 'disabled');
     if (level.number === 1) addClass($('.arrow.left'), 'disabled');
     if (level.number === levels.length) addClass($('.arrow.right'), 'disabled');
@@ -233,17 +233,16 @@ const Game = {
 
     editor.setValue('');
     let answer = Game.answers[level.name];
-    // console.log(answer)
-    editor.setValue(level.before);
-    editor.insert('\n');
-    // editor.insert(answer);
-    editor.insert('\n');
+    console.log(answer)
+    editor.insert(level.before);
+    editor.insert('/n');
+    editor.insert(answer);
+    editor.insert('/n');
     editor.insert(level.after);
-
+    editor.gotoLine(level.startLineNumber);
 
 
     // set up three.js code with Game.answers or level.before/after
-
 
     Game.applyCode();
     Game.check(level);
