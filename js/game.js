@@ -2,7 +2,10 @@
 const editor = ace.edit('editor');
 editor.setOptions({
   cursorStyle: 'ace',
+  highlightActiveLine: true,
+  wrap: true,
   enableBasicAutocompletion: true,
+  // autoScrollEditorIntoView: true,
 });
 editor.renderer.setOptions({
   theme: 'ace/theme/dracula',
@@ -18,10 +21,6 @@ editor.renderer.setPadding('16px');
 editor.session.setOptions({
   mode: 'ace/mode/javascript',
   tabSize: 2,
-});
-
-editor.getSession().on('change', () => {
-  Game.saveAnswer();
 });
 
 
@@ -56,7 +55,6 @@ const toggle = (ele) => {
   show(ele);
 };
 const text = (ele, content) => (ele.textContent = content);
-
 
 // Select canvas
 const container = document.getElementById('canvas');
@@ -115,6 +113,11 @@ window.addEventListener('resize', () => {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 
+editor.getSession().on('change', () => {
+  material.color.setHex(`0x${editor.getValue()}`);
+  Game.saveAnswer();
+});
+
 // Game Logic
 const Game = {
   user: localStorage.user || '',
@@ -155,8 +158,6 @@ const Game = {
       localStorage.setItem('answers', JSON.stringify(Game.answers));
       localStorage.setItem('solved', JSON.stringify(Game.solved));
     });
-
-    $('.editor').addEventListener('keydown', () => {});
   },
 
   prev: () => {

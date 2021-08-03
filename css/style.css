@@ -279,6 +279,7 @@ html, body {
   color: var(--sky-900);
   font-size: 15px;
   font-weight: 400;
+  transition: 0.2s;
   cursor: pointer;
 }
 
@@ -290,7 +291,7 @@ html, body {
 }
 
 .next.active:hover {
-
+  background: var(--rose-700);
 }
 
 .reference {
