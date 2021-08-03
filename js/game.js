@@ -1,31 +1,3 @@
-// Utility Methods
-const $ = (x) => document.querySelector(x);
-const $$ = (x) => document.querySelectorAll(x);
-const $c = (x) => document.createElement(x);
-
-const addClass = (ele, className) => { if (ele) ele.classList.add(className) };
-const removeClass = (ele, className) => { if (ele) ele.classList.remove(className) };
-const toggleClass = (ele, className) => { if (ele) ele.classList.toggle(className) };
-const addEventListenerByClass = (className, event, fn) => {
-  let list = document.getElementsByClassName(className);
-  for (let i = 0; i < list.length; i++) {
-    list[i].addEventListener(event, fn, false);
-  }
-}
-
-const show = (ele) => ele.style.display = 'block';
-const hide = (ele) => ele.style.display = 'none';
-const toggle = (ele) => {
-  if (window.getComputedStyle(ele).display !== 'none') {
-    hide(ele);
-    return;
-  }
-  show(ele);
-};
-
-const text = (ele, content) => ele.textContent = content;
-
-
 // Create and configure code editor
 const editor = ace.edit('editor');
 editor.setOptions({
@@ -37,14 +9,53 @@ editor.renderer.setOptions({
   fontFamily: 'Roboto Mono',
   fontSize: '14px',
   showGutter: true,
+  showFoldWidgets: false,
   displayIndentGuides: true,
   printMargin: false,
-  maxLines: Infinity,
+  maxLines: 50,
 });
+editor.renderer.setPadding('16px');
 editor.session.setOptions({
   mode: 'ace/mode/javascript',
   tabSize: 2,
-})
+});
+
+editor.getSession().on('change', () => {
+  Game.saveAnswer();
+});
+
+
+// Utility Methods
+const $ = (x) => document.querySelector(x);
+const $$ = (x) => document.querySelectorAll(x);
+const $c = (x) => document.createElement(x);
+
+const addClass = (ele, className) => {
+  if (ele) ele.classList.add(className);
+};
+const removeClass = (ele, className) => {
+  if (ele) ele.classList.remove(className);
+};
+const toggleClass = (ele, className) => {
+  if (ele) ele.classList.toggle(className);
+};
+const addEventListenerByClass = (className, event, fn) => {
+  let list = document.getElementsByClassName(className);
+  for (let i = 0; i < list.length; i++) {
+    list[i].addEventListener(event, fn, false);
+  }
+};
+
+const show = (ele) => (ele.style.display = 'block');
+const hide = (ele) => (ele.style.display = 'none');
+const toggle = (ele) => {
+  if (window.getComputedStyle(ele).display !== 'none') {
+    hide(ele);
+    return;
+  }
+  show(ele);
+};
+const text = (ele, content) => (ele.textContent = content);
 
 
 // Select canvas
@@ -104,7 +115,6 @@ window.addEventListener('resize', () => {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 
-
 // Game Logic
 const Game = {
   user: localStorage.user || '',
@@ -114,11 +124,10 @@ const Game = {
   solved: (localStorage.solved && JSON.parse(localStorage.solved)) || [],
   // solved: [1, 2],
 
-
   start: () => {
     text($('.label-total'), levels.length.toString());
     show($('.editor'));
-    
+
     if (!localStorage.user) {
       // generate a random id for new user
       Game.user = Date.now().toString(36) + Math.random().toString(36).substring(2);
@@ -130,7 +139,7 @@ const Game = {
     if (Game.levelIndex < 0 || Game.levelIndex > levels.length - 1) {
       Game.levelIndex = 0;
     }
-    
+
     Game.setHandlers();
     Game.loadMenu();
     Game.loadLevel(levels[Game.levelIndex]);
@@ -147,12 +156,8 @@ const Game = {
       localStorage.setItem('solved', JSON.stringify(Game.solved));
     });
 
-    $('.editor').addEventListener('keydown', () => {
-
-    });
-
+    $('.editor').addEventListener('keydown', () => {});
   },
-
 
   prev: () => {
     Game.levelIndex--;
@@ -169,7 +174,9 @@ const Game = {
   loadMenu: () => {
     levels.forEach((level, i) => {
       let solved = Game.solved.includes(level.number) ? ' solved' : '';
-      let levelCircle = `<div class='level-circle${solved}' level='${i}' title='${level.name}'>${i + 1}</div>`; 
+      let levelCircle = `<div class='level-circle${solved}' level='${i}' title='${level.name}'>${
+        i + 1
+      }</div>`;
       $('.level-grid').innerHTML += levelCircle;
     });
 
@@ -181,32 +188,40 @@ const Game = {
         Game.levelIndex = parseInt(level, 10);
         Game.loadLevel(levels[level]);
       });
-    })
+    });
 
     $('.level-picker').addEventListener('click', () => {
       toggle($('.level-dropdown'));
     });
 
     let arrowLeft = $('.arrow.left');
-    arrowLeft.addEventListener('click', () => {
-      if (arrowLeft.classList.contains('disabled')) return;
-      Game.saveAnswer();
-      Game.prev();
-    }, false);
+    arrowLeft.addEventListener(
+      'click',
+      () => {
+        if (arrowLeft.classList.contains('disabled')) return;
+        Game.saveAnswer();
+        Game.prev();
+      },
+      false
+    );
 
     let arrowRight = $('.arrow.right');
-    arrowRight.addEventListener('click', () => {
-      if (arrowRight.classList.contains('disabled')) return;
-      Game.saveAnswer();
-      Game.next();
-    }, false);
+    arrowRight.addEventListener(
+      'click',
+      () => {
+        if (arrowRight.classList.contains('disabled')) return;
+        Game.saveAnswer();
+        Game.next();
+      },
+      false
+    );
   },
 
   // in progress
   loadLevel: (level) => {
     if (!level) return;
     show($('.editor'));
-    show($('.reference'))
+    show($('.reference'));
     hide($('.level-dropdown'));
     removeClass($('.level-circle.current'), 'current');
     addClass($$('.level-circle').item(level.number - 1), 'current');
@@ -228,7 +243,6 @@ const Game = {
 
     editor.setValue('');
     let answer = Game.answers[level.name];
-    console.log(answer)
     // editor.insert(level.before);
     // editor.insert('/n');
     editor.insert(answer);
@@ -248,7 +262,7 @@ const Game = {
 
     if (correct) {
       // mark level as solved. activate 'next' button
-      console.log('you have the correct answer!')
+      console.log('you have the correct answer!');
       if (!Game.solved.includes(level.number)) {
         Game.solved.push(level.number);
       }
@@ -260,25 +274,26 @@ const Game = {
   },
 
   applyCode: () => {
-    return
+    return;
   },
 
   saveAnswer: () => {
     let level = levels[Game.levelIndex];
     // need to get only one line of code, not the entire editor
-    let code = editor.getValue();
-    Game.answers[level.name] = code;
-    updateLocalStorage();
+    Game.answers[level.name] = editor.getValue();
+    Game.updateLocalStorage();
   },
 
   reset: () => {
-    let isConfirmed = confirm('Are you sure you want to reset the game? You will lose all your saved progress.');
+    let isConfirmed = confirm(
+      'Are you sure you want to reset the game? You will lose all your saved progress.'
+    );
     if (isConfirmed) {
       Game.levelIndex = 1;
       Game.answers = {};
       Game.solved = [];
       Game.loadLevel(levels[0]);
-      let circles = $$('.level-circles')
+      let circles = $$('.level-circles');
       circles.forEach((circle) => removeClass(circle, 'solved'));
       Game.updateLocalStorage();
     }
@@ -302,16 +317,12 @@ const Game = {
     localStorage.setItem('solved', JSON.stringify(Game.solved));
   },
 
-  win: () => {
-    
-  },
+  win: () => {},
 
-  debounce: () => {
-    
-  }
+  debounce: () => {},
 };
 
 // Start game
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   Game.start();
 });

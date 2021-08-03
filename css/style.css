@@ -125,7 +125,7 @@ html, body {
 
 .arrow.disabled {
   background: var(--coolGray-200);
-  color: var(--coolGray-400);
+  color: var(--coolGray-200);
   cursor: auto;
 }
 
@@ -290,7 +290,7 @@ html, body {
 }
 
 .next.active:hover {
-  
+
 }
 
 .reference {
@@ -359,39 +359,14 @@ li {
 }
 
 
-
-
-
-
 /* Begin editor Code */
 .editor {
   display: block;
   width: 100%;
   min-height: 120px;
   font-family: var(--font-stack-code);
-  /* height: 400px;
-  margin-top: 16px; */
-  /* background: var(--lime-200); */
   position: relative;
   margin: 32px 0;
-  /* box-shadow: 0 0 8px 4px hsla(175, 77%, 26%, 0.08); */
-}
-
-#editor,
-pre {
-  font-family: var(--font-stack-code);
-  font-size: 15px;
-  line-height: 1.5;
-  /* color: rgb(255, 255, 255); */
-}
-
-#css {
-  height: 375px;
-  position: relative;
-  padding: 10px 10px 10px 10px;
-  /* background-color: #000000; */
-  border-radius: 4px;
-  overflow: hidden;
 }
 
 #code {
@@ -406,8 +381,6 @@ pre {
   resize: none;
   overflow: auto;
 }
-
-
 
 /* Begin Canvas Code */
 
