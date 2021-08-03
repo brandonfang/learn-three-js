@@ -156,7 +156,7 @@ const Game = {
 
   prev: () => {
     Game.levelIndex--;
-    localStorage.setItem('levelIndex', Game.levelIndex)
+    localStorage.setItem('levelIndex', Game.levelIndex);
     Game.loadLevel(levels[Game.levelIndex]);
   },
 
@@ -237,35 +237,30 @@ const Game = {
     editor.focus();
     // editor.gotoLine(level.startLineNumber);
 
-
     // set up three.js code with Game.answers or level.before/after
 
-    Game.applyCode();
     Game.check(level);
   },
 
+  // consider making this a function without parameters
   check: (level) => {
-    Game.applyCode(); // optional
-    // console.log('level', level)
-    // console.log('answers', Game.answers)
-    // console.log('solutions', level.solutions)
-    let correct = level.solutions.includes(Game.answers[level.number]);
-    
+    let correct = level.solutions.includes(Game.answers[level.name]);
+
     if (correct) {
       // mark level as solved. activate 'next' button
       console.log('you have the correct answer!')
-      Game.solved.push(level.number);
-      localStorage.setItem('solved', Game.solved);
+      if (!Game.solved.includes(level.number)) {
+        Game.solved.push(level.number);
+      }
+      Game.updateLocalStorage();
       addClass($('.next'), 'active');
     } else {
-      // do nothing
+      removeClass($('.next'), 'active');
     }
   },
 
   applyCode: () => {
-    let level = levels[Game.levelIndex];
-
-    Game.saveAnswer();
+    return
   },
 
   saveAnswer: () => {
@@ -273,7 +268,7 @@ const Game = {
     // need to get only one line of code, not the entire editor
     let code = editor.getValue();
     Game.answers[level.name] = code;
-    localStorage.setItem('answers', JSON.stringify(Game.answers));
+    updateLocalStorage();
   },
 
   reset: () => {
@@ -285,6 +280,7 @@ const Game = {
       Game.loadLevel(levels[0]);
       let circles = $$('.level-circles')
       circles.forEach((circle) => removeClass(circle, 'solved'));
+      Game.updateLocalStorage();
     }
   },
 
@@ -294,8 +290,16 @@ const Game = {
       let level = levels[Game.levelIndex];
       // Game.answers[level.name] = '';
       Game.loadLevel(level);
-      // reset specific level circle 
+      // reset specific level circle
+      Game.updateLocalStorage();
     }
+  },
+
+  updateLocalStorage: () => {
+    localStorage.setItem('user', Game.user);
+    localStorage.setItem('levelIndex', Game.levelIndex);
+    localStorage.setItem('answers', JSON.stringify(Game.answers));
+    localStorage.setItem('solved', JSON.stringify(Game.solved));
   },
 
   win: () => {

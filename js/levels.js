@@ -20,7 +20,7 @@ let levels = [
     reference: '<p>This is the reference material for level 2.</p>',
     before: '//level 2 before code',
     before: '// level 2 after code',
-    startLineNumber: 3,
+    startLineNumber: 1,
     solutions: ["console.log('level two')"],
   },
   {
@@ -31,7 +31,7 @@ let levels = [
     reference: '<p>This is the reference material for level 3.</p>',
     before: '// level 3 before code',
     before: '// level 3 after code',
-    startLineNumber: 5,
+    startLineNumber: 1,
     solutions: ["console.log('level three')"],
   },
   {
@@ -42,7 +42,7 @@ let levels = [
     reference: '<p>This is the reference material for level 4.</p>',
     before: '// level 4 before code',
     before: '// level 4 after code',
-    startLineNumber: 2,
+    startLineNumber: 1,
     solutions: ["console.log('level four')"],
   },
   {
@@ -53,7 +53,7 @@ let levels = [
     reference: '<p>This is the reference material for level 5.</p>',
     before: '// level 5 before code',
     before: '// level 5 after code',
-    startLineNumber: 4,
+    startLineNumber: 1,
     solutions: ["console.log('level five')"],
   },
   {
@@ -64,7 +64,7 @@ let levels = [
     reference: '<p>This is the reference material for level 6.</p>',
     before: '// level 6 before code',
     before: '// level 6 after code',
-    startLineNumber: 6,
+    startLineNumber: 1,
     solutions: ["console.log('level six')"],
   },
 ];
