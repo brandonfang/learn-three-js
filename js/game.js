@@ -1,24 +1,29 @@
 // Create and configure code editor
 const editor = ace.edit('editor');
 editor.setOptions({
+  // Editor options
   cursorStyle: 'ace',
   highlightActiveLine: true,
   wrap: true,
   enableBasicAutocompletion: true,
-  // autoScrollEditorIntoView: true,
-});
-editor.renderer.setOptions({
+  useWorker: false,
+
+  // Renderer options
   theme: 'ace/theme/dracula',
   fontFamily: 'Roboto Mono',
-  fontSize: '14px',
+  fontSize: '15px',
   showGutter: true,
+  // highlightGutterLine: true,
+  fixedGutterWidth: true,
   showFoldWidgets: false,
   displayIndentGuides: true,
   printMargin: false,
   maxLines: 50,
-});
-editor.renderer.setPadding('16px');
-editor.session.setOptions({
+
+  // Mouse handler options
+  dragEnabled: true,
+
+  // Session options
   mode: 'ace/mode/javascript',
   tabSize: 2,
 });

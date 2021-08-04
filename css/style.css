@@ -370,18 +370,14 @@ li {
   margin: 32px 0;
 }
 
-#code {
-  display: block;
-  width: calc(100% - 16px);
-  height: 24px;
-  margin-left: 16px;
-  border: none;
-  font-family: var(--font-stack-code);
-  font-size: 16px;
-  outline: none;
-  resize: none;
-  overflow: auto;
+.ace_gutter-layer {
+  width: 32px !important;
 }
+
+.ace_gutter-layer > * {
+  margin-left: -16px;
+}
+
 
 /* Begin Canvas Code */
 
