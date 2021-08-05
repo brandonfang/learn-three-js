@@ -164,12 +164,14 @@ const Game = {
   },
 
   prev: () => {
+    Game.updateLocalStorage();
     Game.levelIndex--;
     localStorage.setItem('levelIndex', Game.levelIndex);
     Game.loadLevel(levels[Game.levelIndex]);
   },
 
   next: () => {
+    Game.updateLocalStorage();
     Game.levelIndex++;
     localStorage.setItem('levelIndex', Game.levelIndex);
     Game.loadLevel(levels[Game.levelIndex]);
@@ -244,6 +246,9 @@ const Game = {
     } else {
       hide($('.reference'));
     }
+
+    Game.answers[level.name] = Game.answers[level.name] || '';
+    Game.updateLocalStorage();
 
     editor.setValue('');
     let answer = Game.answers[level.name];
