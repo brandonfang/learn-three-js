@@ -45,8 +45,7 @@ html, body {
   width: 100%;
   padding: 24px 32px;
   background: var(--amber-100);
-  /* border-bottom: 2px solid var(--amber-500); */
-  box-shadow: 0 0 12px 4px hsla(201, 90%, 27%, 0.1);
+  /* box-shadow: 0 0 12px 4px hsla(201, 90%, 27%, 0.1); */
 }
 
 .header {
@@ -253,8 +252,7 @@ html, body {
 }
 
 .level-buttons {
-  /* width: 100%; */
-  height: 40px;
+  height: 36px;
   margin: 32px 0;
   display: flex;
   justify-content: space-between;
@@ -262,10 +260,10 @@ html, body {
 }
 
 .reset-level {
-  height: 40px;
+  height: 36px;
   display: flex;
   align-items: center;
-  padding: 0 12px;
+  padding: 0 16px;
   border-radius: 4px;
   background: var(--coolGray-300);
   color: var(--coolGray-600);
@@ -275,10 +273,10 @@ html, body {
 }
 
 .hint {
-  height: 40px;
+  height: 36px;
   display: flex;
   align-items: center;
-  padding: 0 12px;
+  padding: 0 16px;
   border-radius: 4px;
   background: var(--coolGray-300);
   color: var(--coolGray-600);
@@ -288,10 +286,10 @@ html, body {
 
 
 .next {
-  height: 40px;
+  height: 36px;
   display: flex;
   align-items: center;
-  padding: 0 12px;
+  padding: 0 16px;
   border-radius: 4px;
   background: var(--sky-200);
   color: var(--sky-900);
