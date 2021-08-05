@@ -154,6 +154,8 @@ const Game = {
   setHandlers: () => {
     $('.reset-all').addEventListener('click', Game.reset);
     $('.reset-level').addEventListener('click', Game.resetLevel);
+    $('.hint').addEventListener('click', Game.hint);
+    // $('.next').addEventListener('click', Game.nextLevel);
 
     window.addEventListener('beforeunload', () => {
       Game.saveAnswer();
@@ -263,6 +265,11 @@ const Game = {
     // set up three.js code with Game.answers or level.before/after
 
     Game.check(level);
+  },
+
+  hint: () => {
+    // show hint tooltip
+    return;
   },
 
   // consider making this a function without parameters

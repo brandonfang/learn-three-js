@@ -247,6 +247,11 @@ html, body {
   margin-bottom: 32px;
 }
 
+.left-buttons {
+  display: flex;
+  align-items: center;
+}
+
 .level-buttons {
   /* width: 100%; */
   height: 40px;
@@ -260,11 +265,24 @@ html, body {
   height: 40px;
   display: flex;
   align-items: center;
-  padding: 0 16px;
+  padding: 0 12px;
   border-radius: 4px;
   background: var(--coolGray-300);
   color: var(--coolGray-600);
-  font-size: 15px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 16px;
+}
+
+.hint {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 4px;
+  background: var(--coolGray-300);
+  color: var(--coolGray-600);
+  font-size: 14px;
   cursor: pointer;
 }
 
@@ -273,11 +291,11 @@ html, body {
   height: 40px;
   display: flex;
   align-items: center;
-  padding: 0 16px;
+  padding: 0 12px;
   border-radius: 4px;
   background: var(--sky-200);
   color: var(--sky-900);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 400;
   transition: 0.2s;
   cursor: pointer;

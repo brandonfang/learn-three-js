@@ -11,6 +11,7 @@ let levels = [
     after: '// level 1 after code',
     startLineNumber: 1,
     solutions: ["console.log('level one')"],
+    hints: ["console.log('level one')"],
   },
   {
     number: 2,
@@ -22,6 +23,7 @@ let levels = [
     before: '// level 2 after code',
     startLineNumber: 1,
     solutions: ["console.log('level two')"],
+    hints: ['Lorem ipsum'],
   },
   {
     number: 3,
@@ -33,6 +35,7 @@ let levels = [
     before: '// level 3 after code',
     startLineNumber: 1,
     solutions: ["console.log('level three')"],
+    hints: ['Lorem ipsum'],
   },
   {
     number: 4,
@@ -44,6 +47,7 @@ let levels = [
     before: '// level 4 after code',
     startLineNumber: 1,
     solutions: ["console.log('level four')"],
+    hints: ['Lorem ipsum'],
   },
   {
     number: 5,
@@ -55,6 +59,7 @@ let levels = [
     before: '// level 5 after code',
     startLineNumber: 1,
     solutions: ["console.log('level five')"],
+    hints: ['Lorem ipsum'],
   },
   {
     number: 6,
@@ -66,5 +71,6 @@ let levels = [
     before: '// level 6 after code',
     startLineNumber: 1,
     solutions: ["console.log('level six')"],
+    hints: ['Lorem ipsum'],
   },
 ];
