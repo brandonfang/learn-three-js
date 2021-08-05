@@ -361,13 +361,23 @@ li {
 
 
 /* Begin editor Code */
-.editor {
+.editor-wrapper {
   display: block;
+  width: 100%;
+  position: relative;
+  margin: 32px 0;
+  padding: 16px;
+  background: #282a36;
+}
+
+.editor {
   width: 100%;
   min-height: 120px;
   font-family: var(--font-stack-code);
-  position: relative;
-  margin: 32px 0;
+}
+
+.ace_gutter {
+  width: 32px !important;
 }
 
 .ace_gutter-layer {
@@ -377,6 +387,7 @@ li {
 .ace_gutter-layer > * {
   margin-left: -16px;
 }
+
 
 
 /* Begin Canvas Code */
@@ -429,5 +440,3 @@ li {
     padding: 24px;
   }
 }
-
-

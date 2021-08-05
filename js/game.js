@@ -4,19 +4,18 @@ editor.setOptions({
   // Editor options
   cursorStyle: 'ace',
   highlightActiveLine: true,
-  wrap: true,
+  // wrap: true,
   enableBasicAutocompletion: true,
   useWorker: false,
 
   // Renderer options
   theme: 'ace/theme/dracula',
-  fontFamily: 'Roboto Mono',
-  fontSize: '15px',
-  showGutter: true,
-  // highlightGutterLine: true,
-  fixedGutterWidth: true,
+  fontFamily: 'Roboto Mono, monospace',
+  fontSize: '14px',
+  showGutter: false,
+  // fixedGutterWidth: true,
   showFoldWidgets: false,
-  displayIndentGuides: true,
+  displayIndentGuides: false,
   printMargin: false,
   maxLines: 50,
 
@@ -27,7 +26,6 @@ editor.setOptions({
   mode: 'ace/mode/javascript',
   tabSize: 2,
 });
-
 
 // Utility Methods
 const $ = (x) => document.querySelector(x);
