@@ -27,7 +27,7 @@ let levels = [
     number: 3,
     name: 'level-3',
     instructions:
-      '<h2>Instructions title for level 3.</h2><p>Instructions for level 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna nisl, rhoncus eget bibendum at, euismod eget nibh. In elit arcu, malesuada a diam vel, imperdiet gravida mi. Vivamus ante neque, blandit ut efficitur sed, fermentum quiius, eget fermentum nulla efficitur. In tempus, lacus quis malesuada feugiat, orci justo vehicula sapien, in blandit orci massa eu nunc. </p>',
+      '<h2>Instructions title for level 3.</h2><p>Instructions for level 3. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna nisl, rhoncus eget bibendum at, euismod eget nibh. In elit arcu, malesuada a diam vel, imperdiet gravida mi. Vivamus ante neque, blandit ut efficitur sed, fermentum quiius, eget fermentum nulla efficitur. In tempus, lacus quis malesuada feugiat, orci justo vehicula sapien, in blandit orci massa eu nunc.</p>',
     reference: '<p>This is the reference material for level 3.</p>',
     before: '// level 3 before code',
     before: '// level 3 after code',

@@ -4,18 +4,17 @@ editor.setOptions({
   // Editor options
   cursorStyle: 'ace',
   highlightActiveLine: true,
-  // wrap: true,
   enableBasicAutocompletion: true,
-  useWorker: false,
+  // autoScrollEditorIntoView: false,
+  readOnly: false,
 
   // Renderer options
   theme: 'ace/theme/dracula',
   fontFamily: 'Roboto Mono, monospace',
   fontSize: '14px',
   showGutter: false,
-  // fixedGutterWidth: true,
   showFoldWidgets: false,
-  displayIndentGuides: false,
+  displayIndentGuides: true,
   printMargin: false,
   maxLines: 50,
 
@@ -23,6 +22,7 @@ editor.setOptions({
   dragEnabled: true,
 
   // Session options
+  useWorker: false,
   mode: 'ace/mode/javascript',
   tabSize: 2,
 });
@@ -293,11 +293,11 @@ const Game = {
       'Are you sure you want to reset the game? You will lose all your saved progress.'
     );
     if (isConfirmed) {
-      Game.levelIndex = 1;
+      Game.levelIndex = 0;
       Game.answers = {};
       Game.solved = [];
       Game.loadLevel(levels[0]);
-      let circles = $$('.level-circles');
+      let circles = $$('.level-circle');
       circles.forEach((circle) => removeClass(circle, 'solved'));
       Game.updateLocalStorage();
     }
