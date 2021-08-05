@@ -1,103 +1,3 @@
-function setReadOnly(editor, readonly_ranges) {
-  var session = editor.getSession(),
-    Range = require('ace/range').Range;
-  ranges = [];
-
-  function before(obj, method, wrapper) {
-    var orig = obj[method];
-    obj[method] = function () {
-      var args = Array.prototype.slice.call(arguments);
-      return wrapper.call(
-        this,
-        function () {
-          return orig.apply(obj, args);
-        },
-        args
-      );
-    };
-    return obj[method];
-  }
-  function intersects(range) {
-    return editor.getSelectionRange().intersects(range);
-  }
-  function intersectsRange(newRange) {
-    for (i = 0; i < ranges.length; i++) if (newRange.intersects(ranges[i])) return true;
-    return false;
-  }
-  function preventReadonly(next, args) {
-    for (i = 0; i < ranges.length; i++) {
-      if (intersects(ranges[i])) return;
-    }
-    next();
-  }
-  function onEnd(position) {
-    var row = position['row'],
-      column = position['column'];
-    for (i = 0; i < ranges.length; i++)
-      if (ranges[i].end['row'] == row && ranges[i].end['column'] == column) return true;
-    return false;
-  }
-  function outSideRange(position) {
-    var row = position['row'],
-      column = position['column'];
-    for (i = 0; i < ranges.length; i++) {
-      if (ranges[i].start['row'] < row && ranges[i].end['row'] > row) return false;
-      if (ranges[i].start['row'] == row && ranges[i].start['column'] < column) {
-        if (ranges[i].end['row'] != row || ranges[i].end['column'] > column) return false;
-      } else if (ranges[i].end['row'] == row && ranges[i].end['column'] > column) {
-        return false;
-      }
-    }
-    return true;
-  }
-  for (i = 0; i < readonly_ranges.length; i++) {
-    ranges.push(new Range(...readonly_ranges[i]));
-  }
-  ranges.forEach(function (range) {
-    session.addMarker(range, 'readonly-highlight');
-  });
-  session.setMode('ace/mode/javascript');
-  editor.keyBinding.addKeyboardHandler({
-    handleKeyboard: function (data, hash, keyString, keyCode, event) {
-      if (Math.abs(keyCode) == 13 && onEnd(editor.getCursorPosition())) {
-        return false;
-      }
-      if (hash === -1 || (keyCode <= 40 && keyCode >= 37)) return false;
-      for (i = 0; i < ranges.length; i++) {
-        if (intersects(ranges[i])) {
-          return { command: 'null', passEvent: false };
-        }
-      }
-    },
-  });
-  before(editor, 'onPaste', preventReadonly);
-  before(editor, 'onCut', preventReadonly);
-  for (i = 0; i < ranges.length; i++) {
-    ranges[i].start = session.doc.createAnchor(ranges[i].start);
-    ranges[i].end = session.doc.createAnchor(ranges[i].end);
-    ranges[i].end.$insertRight = true;
-  }
-
-  var old$tryReplace = editor.$tryReplace;
-  editor.$tryReplace = function (range, replacement) {
-    return intersectsRange(range) ? null : old$tryReplace.apply(this, arguments);
-  };
-  var session = editor.getSession();
-  var oldInsert = session.insert;
-  session.insert = function (position, text) {
-    return oldInsert.apply(this, [position, outSideRange(position) ? text : '']);
-  };
-  var oldRemove = session.remove;
-  session.remove = function (range) {
-    return intersectsRange(range) ? false : oldRemove.apply(this, arguments);
-  };
-  var oldMoveText = session.moveText;
-  session.moveText = function (fromRange, toPosition, copy) {
-    if (intersectsRange(fromRange) || !outSideRange(toPosition)) return fromRange;
-    return oldMoveText.apply(this, arguments);
-  };
-}
-
 // Create and configure code editor
 const editor = ace.edit('editor');
 editor.setOptions({
@@ -127,7 +27,7 @@ editor.setOptions({
   tabSize: 2,
 });
 
-// Utility Methods
+// Game utility methods
 const $ = (x) => document.querySelector(x);
 const $$ = (x) => document.querySelectorAll(x);
 const $c = (x) => document.createElement(x);
@@ -221,7 +121,7 @@ editor.getSession().on('change', () => {
   Game.saveAnswer();
 });
 
-// Game Logic
+// Game logic
 const Game = {
   user: localStorage.user || '',
   levelIndex: localStorage.levelIndex || 0, // level.number - 1
@@ -282,9 +182,8 @@ const Game = {
   loadMenu: () => {
     levels.forEach((level, i) => {
       let solved = Game.solved.includes(level.number) ? ' solved' : '';
-      let levelCircle = `<div class='level-circle${solved}' level='${i}' title='${level.name}'>${
-        i + 1
-      }</div>`;
+      let levelCircle = `<div class='level-circle${solved}' level='${i}' title='${level.name}'>${i + 1
+        }</div>`;
       $('.level-grid').innerHTML += levelCircle;
     });
 
@@ -362,7 +261,7 @@ const Game = {
     // editor.insert(level.after);
     // editor.focus();
     // editor.gotoLine(level.startLineNumber);
-    var n = editor.getSession().getValue().split('\n').length; // To count total no. of lines
+    let n = editor.getSession().getValue().split('\n').length; // To count total no. of lines
     editor.gotoLine(n + 1);
 
     // set up three.js code with Game.answers or level.before/after
@@ -440,9 +339,9 @@ const Game = {
     localStorage.setItem('solved', JSON.stringify(Game.solved));
   },
 
-  win: () => {},
+  win: () => { },
 
-  debounce: () => {},
+  debounce: () => { },
 };
 
 // Start game
