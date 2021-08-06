@@ -376,7 +376,7 @@ li {
 }
 
 
-/* Begin editor Code */
+/* Editor styles */
 .editor-wrapper {
   display: block;
   width: 100%;
@@ -404,17 +404,22 @@ li {
   margin-left: -16px;
 }
 
+.readonly-highlight {
+  opacity: 0.4;
+  background: var(--coolGray-900);
+  position: absolute;
+}
 
-/* Begin Canvas Code */
+/* Canvas styles */
 
 .canvas {
   width: 100%;
   height: 100%;
-  background: fdc48b;
+  /* background: #fdc48b; */
 }
 
 
-/* first breakpoint */
+/* Breakpoint - layout change */
 @media (max-width: 1024px) {
   .game {
     grid-template-columns: 1fr;
@@ -432,7 +437,7 @@ li {
 }
 
 
-/* second breakpoint */
+/* Breakpoint - mobile nav */
 @media (max-width: 472px) {
   .game {
     display: block;
