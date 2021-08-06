@@ -1,33 +1,3 @@
-// Create and configure code editor
-
-// const editor = ace.edit('editor');
-// editor.setOptions({
-//   // Editor options
-//   cursorStyle: 'ace',
-//   highlightActiveLine: true,
-//   enableBasicAutocompletion: true,
-//   // autoScrollEditorIntoView: false,
-//   readOnly: false,
-
-//   // Renderer options
-//   theme: 'ace/theme/dracula',
-//   fontFamily: 'Roboto Mono, monospace',
-//   fontSize: '14px',
-//   showGutter: false,
-//   showFoldWidgets: false,
-//   displayIndentGuides: true,
-//   printMargin: false,
-//   maxLines: 50,
-
-//   // Mouse handler options
-//   dragEnabled: true,
-
-//   // Session options
-//   useWorker: false,
-//   mode: 'ace/mode/javascript',
-//   tabSize: 2,
-// });
-
 // Game utility methods
 const $ = (x) => document.querySelector(x);
 const $$ = (x) => document.querySelectorAll(x);
@@ -59,6 +29,9 @@ const toggle = (ele) => {
   show(ele);
 };
 const text = (ele, content) => (ele.textContent = content);
+
+// Select editor (the variable not the DOM element)
+// const editor = document.getElementById('editor');
 
 // Select canvas
 const container = document.getElementById('canvas');
@@ -106,7 +79,7 @@ window.addEventListener('resize', () => {
   sizes.width = window.innerWidth;
   sizes.height = window.innerHeight;
 
-  editor.resize();
+  // editor.resize();
 
   // Update camera
   camera.aspect = sizes.width / sizes.height;
@@ -117,11 +90,10 @@ window.addEventListener('resize', () => {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 
-editor.getSession().on('change', () => {
-  // test game input
-  material.color.setHex(`0x${editor.getValue()}`);
-  Game.saveAnswer();
-});
+// editor.getSession().on('change', () => {
+//   material.color.setHex(`0x${editor.getValue()}`);
+//   Game.saveAnswer();
+// });
 
 // Game logic
 const Game = {
@@ -251,9 +223,9 @@ const Game = {
     Game.answers[level.name] = Game.answers[level.name] || '';
     Game.updateLocalStorage();
 
-    editor.setValue(level.before);
+    // editor.setValue(level.before);
     // editor.focus();
-    let answer = Game.answers[level.name];
+    // let answer = Game.answers[level.name];
     // editor.insert(level.before);
     // editor.insert('/n');
     // editor.insert(answer);
@@ -261,8 +233,8 @@ const Game = {
     // editor.insert(level.after);
     // editor.focus();
     // editor.gotoLine(level.startLineNumber);
-    let n = editor.getSession().getValue().split('\n').length; // To count total no. of lines
-    editor.gotoLine(n, Infinity);
+    // let n = editor.getSession().getValue().split('\n').length; // To count total no. of lines
+    // editor.gotoLine(n, Infinity);
 
     // set up three.js code with Game.answers or level.before/after
 
@@ -302,7 +274,7 @@ const Game = {
   saveAnswer: () => {
     let level = levels[Game.levelIndex];
     // need to get only one line of code, not the entire editor
-    Game.answers[level.name] = editor.getValue();
+    // Game.answers[level.name] = editor.getValue();
     Game.updateLocalStorage();
   },
 

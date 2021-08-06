@@ -1,9 +1,39 @@
-const setReadOnly = function(editor, readOnlyRanges) {
+// Create and configure code editor
+
+// const editor = ace.edit('editor');
+// editor.setOptions({
+//   // Editor options
+//   cursorStyle: 'ace',
+//   highlightActiveLine: true,
+//   enableBasicAutocompletion: true,
+//   // autoScrollEditorIntoView: false,
+//   readOnly: false,
+
+//   // Renderer options
+//   theme: 'ace/theme/dracula',
+//   fontFamily: 'Roboto Mono, monospace',
+//   fontSize: '14px',
+//   showGutter: false,
+//   showFoldWidgets: false,
+//   displayIndentGuides: true,
+//   printMargin: false,
+//   maxLines: 50,
+
+//   // Mouse handler options
+//   dragEnabled: true,
+
+//   // Session options
+//   useWorker: false,
+//   mode: 'ace/mode/javascript',
+//   tabSize: 2,
+// });
+
+const setReadOnly = function (editor, readOnlyRanges) {
   let session = editor.getSession();
   let Range = require('ace/range').Range;
   let ranges = [];
 
-  const before = function(obj, method, wrapper) {
+  const before = function (obj, method, wrapper) {
     let orig = obj[method];
     obj[method] = function () {
       let args = Array.prototype.slice.call(arguments);
@@ -16,33 +46,33 @@ const setReadOnly = function(editor, readOnlyRanges) {
       );
     };
     return obj[method];
-  }
+  };
 
-  const intersects = function(range) {
+  const intersects = function (range) {
     return editor.getSelectionRange().intersects(range);
-  }
+  };
 
-  const intersectsRange = function(newRange) {
+  const intersectsRange = function (newRange) {
     for (i = 0; i < ranges.length; i++) if (newRange.intersects(ranges[i])) return true;
     return false;
-  }
+  };
 
-  const preventReadOnly = function(next, args) {
+  const preventReadOnly = function (next, args) {
     for (i = 0; i < ranges.length; i++) {
       if (intersects(ranges[i])) return;
     }
     next();
-  }
+  };
 
-  const onEnd = function(position) {
+  const onEnd = function (position) {
     let row = position['row'];
     let column = position['column'];
     for (i = 0; i < ranges.length; i++)
       if (ranges[i].end['row'] == row && ranges[i].end['column'] == column) return true;
     return false;
-  }
+  };
 
-  const outSideRange = function(position) {
+  const outSideRange = function (position) {
     let row = position['row'];
     let column = position['column'];
     for (i = 0; i < ranges.length; i++) {
@@ -54,7 +84,7 @@ const setReadOnly = function(editor, readOnlyRanges) {
       }
     }
     return true;
-  }
+  };
 
   for (i = 0; i < readOnlyRanges.length; i++) {
     ranges.push(new Range(...readOnlyRanges[i]));
@@ -108,9 +138,9 @@ const setReadOnly = function(editor, readOnlyRanges) {
     if (intersectsRange(fromRange) || !outSideRange(toPosition)) return fromRange;
     return oldMoveText.apply(this, arguments);
   };
-}
+};
 
-const refreshEditor = function(id, content, readOnlyRanges) {
+const refreshEditor = function (id, content, readOnlyRanges) {
   let tempId = id + '-temp';
   document.getElementById(id).innerHTML = "<div id='" + tempId + "'></div>";
   document.getElementById(tempId).innerHTML = content;
@@ -144,7 +174,7 @@ const refreshEditor = function(id, content, readOnlyRanges) {
   });
   // call setReadOnly()
   setReadOnly(editor, readOnlyRanges);
-}
+};
 
 // Set lineNumbers (array) as read only
 const readOnlyLines = function (id, content, lineNumbers) {
@@ -155,7 +185,7 @@ const readOnlyLines = function (id, content, lineNumbers) {
   refreshEditor(id, content, readOnlyRanges);
 };
 
-const getReadOnlyByEditableTag = function(id, content) {
+const getReadOnlyByEditableTag = function (id, content) {
   let text = content.split('\n');
   let starts = [0];
   let ends = [];
@@ -170,8 +200,10 @@ const getReadOnlyByEditableTag = function(id, content) {
   }
   // call refreshEditor()
   refreshEditor(id, content, readOnlyRanges);
-}
+};
 
 let content = document.getElementById('editor').innerHTML;
 // call getReadOnlyByEditableTag()
 getReadOnlyByEditableTag('editor', content);
+
+readOnlyLines('editor', content, [1, 2, 4, 5, 6, 7, 8]);
