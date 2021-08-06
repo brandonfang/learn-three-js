@@ -320,18 +320,9 @@ html, body {
   padding: 24px;
 }
 
-.reference-header {
-  height: 24px;
-  display: flex;
-  align-items: center;
-  margin-bottom: 16px;
-}
 
 .reference-title {
   color: var(--green-600);
-  /* color: #fdc48b; */
-  /* f9ae65 */
-  margin: 0;
 }
 
 .reference-body {
@@ -418,7 +409,6 @@ li {
   /* background: #fdc48b; */
 }
 
-
 /* Breakpoint - layout change */
 @media (max-width: 1024px) {
   .game {
@@ -431,11 +421,9 @@ li {
   }
 
   .sidebar {
-
   }
 
 }
-
 
 /* Breakpoint - mobile nav */
 @media (max-width: 472px) {
