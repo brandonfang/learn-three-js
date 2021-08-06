@@ -1,9 +1,9 @@
-function setReadOnly(editor, readOnlyRanges) {
+const setReadOnly = function(editor, readOnlyRanges) {
   let session = editor.getSession();
   let Range = require('ace/range').Range;
   let ranges = [];
 
-  function before(obj, method, wrapper) {
+  const before = function(obj, method, wrapper) {
     let orig = obj[method];
     obj[method] = function () {
       let args = Array.prototype.slice.call(arguments);
@@ -18,33 +18,33 @@ function setReadOnly(editor, readOnlyRanges) {
     return obj[method];
   }
 
-  function intersects(range) {
+  const intersects = function(range) {
     return editor.getSelectionRange().intersects(range);
   }
 
-  function intersectsRange(newRange) {
+  const intersectsRange = function(newRange) {
     for (i = 0; i < ranges.length; i++) if (newRange.intersects(ranges[i])) return true;
     return false;
   }
 
-  function preventReadonly(next, args) {
+  const preventReadOnly = function(next, args) {
     for (i = 0; i < ranges.length; i++) {
       if (intersects(ranges[i])) return;
     }
     next();
   }
 
-  function onEnd(position) {
-    let row = position['row'],
-      column = position['column'];
+  const onEnd = function(position) {
+    let row = position['row'];
+    let column = position['column'];
     for (i = 0; i < ranges.length; i++)
       if (ranges[i].end['row'] == row && ranges[i].end['column'] == column) return true;
     return false;
   }
 
-  function outSideRange(position) {
-    let row = position['row'],
-      column = position['column'];
+  const outSideRange = function(position) {
+    let row = position['row'];
+    let column = position['column'];
     for (i = 0; i < ranges.length; i++) {
       if (ranges[i].start['row'] < row && ranges[i].end['row'] > row) return false;
       if (ranges[i].start['row'] == row && ranges[i].start['column'] < column) {
@@ -65,6 +65,7 @@ function setReadOnly(editor, readOnlyRanges) {
   });
 
   session.setMode('ace/mode/javascript');
+
   editor.keyBinding.addKeyboardHandler({
     handleKeyboard: function (data, hash, keyString, keyCode, event) {
       if (Math.abs(keyCode) == 13 && onEnd(editor.getCursorPosition())) {
@@ -78,8 +79,10 @@ function setReadOnly(editor, readOnlyRanges) {
       }
     },
   });
-  before(editor, 'onPaste', preventReadonly);
-  before(editor, 'onCut', preventReadonly);
+
+  before(editor, 'onPaste', preventReadOnly);
+  before(editor, 'onCut', preventReadOnly);
+
   for (i = 0; i < ranges.length; i++) {
     ranges[i].start = session.doc.createAnchor(ranges[i].start);
     ranges[i].end = session.doc.createAnchor(ranges[i].end);
@@ -90,7 +93,8 @@ function setReadOnly(editor, readOnlyRanges) {
   editor.$tryReplace = function (range, replacement) {
     return intersectsRange(range) ? null : old$tryReplace.apply(this, arguments);
   };
-  let session = editor.getSession();
+
+  // let session = editor.getSession();
   let oldInsert = session.insert;
   session.insert = function (position, text) {
     return oldInsert.apply(this, [position, outSideRange(position) ? text : '']);
@@ -106,40 +110,44 @@ function setReadOnly(editor, readOnlyRanges) {
   };
 }
 
-function refreshEditor(id, content, readonly) {
-  var temp_id = id + '_temp';
+// Refresh editor
+const refreshEditor = function(id, content, readonly) {
+  let temp_id = id + '_temp';
   document.getElementById(id).innerHTML = "<div id='" + temp_id + "'></div>";
   document.getElementById(temp_id).innerHTML = content;
-  var editor = ace.edit(temp_id);
+  let editor = ace.edit(temp_id);
+  // Set editor as read only
   setReadOnly(editor, readonly);
 }
 
-function getReadOnlyByEditableTag(id, content) {
-  var text = content.split('\n');
-  var starts = [0],
-    ends = [];
+const getReadOnlyByEditableTag = function(id, content) {
+  let text = content.split('\n');
+  let starts = [0];
+  let ends = [];
   text.forEach(function (line, index) {
     if (line.indexOf('&lt;editable&gt;') !== -1) ends.push(index);
     if (line.indexOf('&lt;/editable&gt;') !== -1) starts.push(index + 1);
   });
   ends.push(text.length);
-  var readOnlyRanges = [];
+  let readOnlyRanges = [];
   for (i = 0; i < starts.length; i++) {
     readOnlyRanges.push([starts[i], 0, ends[i], 0]);
   }
   refreshEditor(id, content, readOnlyRanges);
 }
-var content = document.getElementById('code').innerHTML;
-function readOnlyLines(id, content, lineNumbers) {
-  var readOnlyRanges = [];
-  all_lines = lineNumbers.sort();
 
-  for (i = 0; i < lineNumbers.length; i++) {
-    readOnlyRanges.push([lineNumbers[i] - 1, 0, lineNumbers[i], 0]);
-  }
-  refreshEditor(id, content, readOnlyRanges);
-}
-
+let content = document.getElementById('code').innerHTML;
 getReadOnlyByEditableTag('myeditor', content);
+
+
+// function readOnlyLines(id, content, lineNumbers) {
+//   let readOnlyRanges = [];
+//   all_lines = lineNumbers.sort();
+
+//   for (i = 0; i < lineNumbers.length; i++) {
+//     readOnlyRanges.push([lineNumbers[i] - 1, 0, lineNumbers[i], 0]);
+//   }
+//   refreshEditor(id, content, readOnlyRanges);
+// }
 
 //readOnlyLines("myeditor",content,[5,7,9]);

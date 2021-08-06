@@ -262,7 +262,7 @@ const Game = {
     // editor.focus();
     // editor.gotoLine(level.startLineNumber);
     let n = editor.getSession().getValue().split('\n').length; // To count total no. of lines
-    editor.gotoLine(n + 1);
+    editor.gotoLine(n, Infinity);
 
     // set up three.js code with Game.answers or level.before/after
 
