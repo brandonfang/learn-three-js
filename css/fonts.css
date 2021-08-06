@@ -21,6 +21,13 @@
 
 @font-face {
   font-family: 'Graphik';
+  src: url('../fonts/Graphik-400-RegularItalic.otf') format('opentype');
+  font-style: italic;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Graphik';
   src: url('../fonts/Graphik-500-Medium.otf') format('opentype');
   font-style: normal;
   font-weight: 500;
@@ -84,3 +91,10 @@ a:hover {
   color: inherit;
 }
 
+em {
+  font-weight: 600;
+}
+
+.italic {
+  font-style: italic;
+}

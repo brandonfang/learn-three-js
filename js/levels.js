@@ -4,11 +4,11 @@ let levels = [
     number: 1,
     name: 'level-1',
     instructions:
-      '<h2>Welcome! This is a game to help you learn about three.js.</h2><p>WebGL is a JavaScript API for rendering interactive 2D and 3D graphics without the use of plug-ins. WebGL is very fast, allowing GPU-accelerated usage of physics and image processing and effects as part of the web page canvas. But because it uses the GPU to draw pixels on the canvas, it is dependent on complicated matrices inputs which require math.</p><p>Three.js is an easy to use, lightweight, cross-browser, general purpose 3D library built on top of WebGL. It does most of the heavy lifting (shaders and matrices) for us and allows us to write more human-friendly code.</p>',
+      "<h2>Welcome to Learn Three.js, follow along to learn the basics of creating 3D web graphics!</h2><p>First, we have to talk about the connection between WebGL and three.js.</p><p><em>WebGL</em> (Web Graphics Library) is a JavaScript API for rendering interactive 2D and 3D graphics without plug-ins. It draws points, lines, and triangles based on code you supply. WebGL is very fast, allowing GPU-accelerated usage of physics and image processing and effects as part of the web page canvas. But because it uses the GPU to draw pixels on the canvas, it is dependent on complicated matrices inputs which require math.</p><p><em>Three.js</em> is an easy to use, lightweight, cross-browser, general purpose 3D library built on top of WebGL. It uses an HTML canvas and WebGL to display 3D scenes. We'll be using it because it does most of the heavy lifting (shaders and matrices) for us and allows us to write more human-friendly code.</p>",
     reference:
       '<ul><li><a href="https://github.com/mrdoob/three.js/" target="_blank">Three.js GitHub</a></li><li><a href="https://threejs.org" target="_blank">Three.js documentation</a></li><li><a href="https://threejsfundamentals.org/" target="_blank">Three.js Fundamentals</a></li></ul>',
     skeleton: '',
-    language: 'javascript',
+    language: 'html',
     startPosition: [0, 0],
     solutions: ["console.log('level one')"],
     hints: ["console.log('level one')"],
