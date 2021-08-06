@@ -1,3 +1,4 @@
+// Set editor as partially read only
 const setReadOnly = function(editor, readOnlyRanges) {
   let session = editor.getSession();
   let Range = require('ace/range').Range;
@@ -111,13 +112,13 @@ const setReadOnly = function(editor, readOnlyRanges) {
 }
 
 // Refresh editor
-const refreshEditor = function(id, content, readonly) {
-  let temp_id = id + '_temp';
-  document.getElementById(id).innerHTML = "<div id='" + temp_id + "'></div>";
-  document.getElementById(temp_id).innerHTML = content;
-  let editor = ace.edit(temp_id);
-  // Set editor as read only
-  setReadOnly(editor, readonly);
+const refreshEditor = function(id, content, readOnlyRanges) {
+  let tempId = id + '-temp';
+  document.getElementById(id).innerHTML = "<div id='" + tempId + "'></div>";
+  document.getElementById(tempId).innerHTML = content;
+  let editor = ace.edit(tempId);
+  // call setReadOnly()
+  setReadOnly(editor, readOnlyRanges);
 }
 
 const getReadOnlyByEditableTag = function(id, content) {
@@ -133,21 +134,21 @@ const getReadOnlyByEditableTag = function(id, content) {
   for (i = 0; i < starts.length; i++) {
     readOnlyRanges.push([starts[i], 0, ends[i], 0]);
   }
+  // call refreshEditor()
   refreshEditor(id, content, readOnlyRanges);
 }
 
-let content = document.getElementById('code').innerHTML;
-getReadOnlyByEditableTag('myeditor', content);
+let content = document.getElementById('editor').innerHTML;
+// call getReadOnlyByEditableTag()
+getReadOnlyByEditableTag('editor', content);
 
 
-// function readOnlyLines(id, content, lineNumbers) {
-//   let readOnlyRanges = [];
-//   all_lines = lineNumbers.sort();
+function readOnlyLines(id, content, lineNumbers) {
+  let readOnlyRanges = [];
+  for (i = 0; i < lineNumbers.length; i++) {
+    readOnlyRanges.push([lineNumbers[i] - 1, 0, lineNumbers[i], 0]);
+  }
+  refreshEditor(id, content, readOnlyRanges);
+}
 
-//   for (i = 0; i < lineNumbers.length; i++) {
-//     readOnlyRanges.push([lineNumbers[i] - 1, 0, lineNumbers[i], 0]);
-//   }
-//   refreshEditor(id, content, readOnlyRanges);
-// }
-
-//readOnlyLines("myeditor",content,[5,7,9]);
+//readOnlyLines("editor", content, [5,7,9]);

@@ -1,4 +1,6 @@
+
 // Create and configure code editor
+
 const editor = ace.edit('editor');
 editor.setOptions({
   // Editor options
@@ -117,6 +119,7 @@ window.addEventListener('resize', () => {
 });
 
 editor.getSession().on('change', () => {
+  // test game input
   material.color.setHex(`0x${editor.getValue()}`);
   Game.saveAnswer();
 });
@@ -126,18 +129,16 @@ const Game = {
   user: localStorage.user || '',
   levelIndex: localStorage.levelIndex || 0, // level.number - 1
   answers: (localStorage.answers && JSON.parse(localStorage.answers)) || {},
-  // answers: {},
   solved: (localStorage.solved && JSON.parse(localStorage.solved)) || [],
-  // solved: [1, 2],
 
   start: () => {
     text($('.label-total'), levels.length.toString());
     show($('.editor'));
 
     if (!localStorage.user) {
-      // generate a random id for new user
+      // generate random id for new user
       Game.user = Date.now().toString(36) + Math.random().toString(36).substring(2);
-      // add new user to local storage
+      // add new user to localstorage
       localStorage.setItem('user', Game.user);
     }
 
