@@ -1,33 +1,32 @@
-
 // Create and configure code editor
 
-const editor = ace.edit('editor');
-editor.setOptions({
-  // Editor options
-  cursorStyle: 'ace',
-  highlightActiveLine: true,
-  enableBasicAutocompletion: true,
-  // autoScrollEditorIntoView: false,
-  readOnly: false,
+// const editor = ace.edit('editor');
+// editor.setOptions({
+//   // Editor options
+//   cursorStyle: 'ace',
+//   highlightActiveLine: true,
+//   enableBasicAutocompletion: true,
+//   // autoScrollEditorIntoView: false,
+//   readOnly: false,
 
-  // Renderer options
-  theme: 'ace/theme/dracula',
-  fontFamily: 'Roboto Mono, monospace',
-  fontSize: '14px',
-  showGutter: false,
-  showFoldWidgets: false,
-  displayIndentGuides: true,
-  printMargin: false,
-  maxLines: 50,
+//   // Renderer options
+//   theme: 'ace/theme/dracula',
+//   fontFamily: 'Roboto Mono, monospace',
+//   fontSize: '14px',
+//   showGutter: false,
+//   showFoldWidgets: false,
+//   displayIndentGuides: true,
+//   printMargin: false,
+//   maxLines: 50,
 
-  // Mouse handler options
-  dragEnabled: true,
+//   // Mouse handler options
+//   dragEnabled: true,
 
-  // Session options
-  useWorker: false,
-  mode: 'ace/mode/javascript',
-  tabSize: 2,
-});
+//   // Session options
+//   useWorker: false,
+//   mode: 'ace/mode/javascript',
+//   tabSize: 2,
+// });
 
 // Game utility methods
 const $ = (x) => document.querySelector(x);

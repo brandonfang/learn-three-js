@@ -1,4 +1,3 @@
-// Set editor as partially read only
 const setReadOnly = function(editor, readOnlyRanges) {
   let session = editor.getSession();
   let Range = require('ace/range').Range;
@@ -111,15 +110,50 @@ const setReadOnly = function(editor, readOnlyRanges) {
   };
 }
 
-// Refresh editor
 const refreshEditor = function(id, content, readOnlyRanges) {
   let tempId = id + '-temp';
   document.getElementById(id).innerHTML = "<div id='" + tempId + "'></div>";
   document.getElementById(tempId).innerHTML = content;
+  // create and configure code editor
   let editor = ace.edit(tempId);
+  editor.setOptions({
+    // Editor options
+    cursorStyle: 'ace',
+    highlightActiveLine: true,
+    enableBasicAutocompletion: true,
+    // autoScrollEditorIntoView: false,
+    readOnly: false,
+
+    // Renderer options
+    theme: 'ace/theme/dracula',
+    fontFamily: 'Roboto Mono, monospace',
+    fontSize: '14px',
+    showGutter: false,
+    showFoldWidgets: false,
+    displayIndentGuides: true,
+    printMargin: false,
+    maxLines: 50,
+
+    // Mouse handler options
+    dragEnabled: true,
+
+    // Session options
+    useWorker: false,
+    mode: 'ace/mode/javascript',
+    tabSize: 2,
+  });
   // call setReadOnly()
   setReadOnly(editor, readOnlyRanges);
 }
+
+// Set lineNumbers (array) as read only
+const readOnlyLines = function (id, content, lineNumbers) {
+  let readOnlyRanges = [];
+  for (i = 0; i < lineNumbers.length; i++) {
+    readOnlyRanges.push([lineNumbers[i] - 1, 0, lineNumbers[i], 0]);
+  }
+  refreshEditor(id, content, readOnlyRanges);
+};
 
 const getReadOnlyByEditableTag = function(id, content) {
   let text = content.split('\n');
@@ -141,14 +175,3 @@ const getReadOnlyByEditableTag = function(id, content) {
 let content = document.getElementById('editor').innerHTML;
 // call getReadOnlyByEditableTag()
 getReadOnlyByEditableTag('editor', content);
-
-
-function readOnlyLines(id, content, lineNumbers) {
-  let readOnlyRanges = [];
-  for (i = 0; i < lineNumbers.length; i++) {
-    readOnlyRanges.push([lineNumbers[i] - 1, 0, lineNumbers[i], 0]);
-  }
-  refreshEditor(id, content, readOnlyRanges);
-}
-
-//readOnlyLines("editor", content, [5,7,9]);
