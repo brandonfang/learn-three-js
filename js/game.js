@@ -223,16 +223,13 @@ const Game = {
     Game.answers[level.name] = Game.answers[level.name] || '';
     Game.updateLocalStorage();
 
-    // editor.setValue(level.before);
     // editor.focus();
     // let answer = Game.answers[level.name];
-    // editor.insert(level.before);
     // editor.insert('/n');
     // editor.insert(answer);
     // editor.insert('/n');
-    // editor.insert(level.after);
     // editor.focus();
-    // editor.gotoLine(level.startLineNumber);
+    // editor.gotoLine(level.startPosition);
     // let n = editor.getSession().getValue().split('\n').length; // To count total no. of lines
     // editor.gotoLine(n, Infinity);
 

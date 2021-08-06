@@ -149,7 +149,7 @@ const refreshEditor = function (id, content, readOnlyRanges) {
   editor.setOptions({
     // Editor options
     cursorStyle: 'ace',
-    highlightActiveLine: true,
+    highlightActiveLine: false,
     enableBasicAutocompletion: true,
     // autoScrollEditorIntoView: false,
     readOnly: false,
@@ -174,6 +174,8 @@ const refreshEditor = function (id, content, readOnlyRanges) {
   });
   // call setReadOnly()
   setReadOnly(editor, readOnlyRanges);
+
+  // editor.gotoLine(...startPosition);
 };
 
 // Set lineNumbers (array) as read only
