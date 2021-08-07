@@ -372,9 +372,22 @@ li {
   display: block;
   width: 100%;
   position: relative;
-  margin: 32px 0;
+  margin: 40px 0 32px 0;
   padding: 16px;
   background: #282a36;
+}
+
+.editor-language {
+  position: absolute;
+  top: -40px;
+  right: 16px;
+  border-radius: 4px 4px 0px 0px;
+  padding: 8px;
+  background: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: white;
+  text-transform: uppercase;
 }
 
 .editor {

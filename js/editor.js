@@ -95,6 +95,7 @@ const setReadOnly = function (editor, readOnlyRanges) {
   });
 
   session.setMode('ace/mode/javascript');
+  // session.setMode(`ace/mode/${level.language}`);
 
   editor.keyBinding.addKeyboardHandler({
     handleKeyboard: function (data, hash, keyString, keyCode, event) {

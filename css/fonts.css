@@ -43,7 +43,7 @@
 :root {
   --font-stack-header: 'Recoleta', 'Work Sans', 'Georgia', serif;
   --font-stack-body: 'Graphik', 'Inter', 'Helvetica', 'Arial', sans-serif;
-  --font-stack-code: 'Menlo', 'Monaco', 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', 'Inconsolata', 'Roboto Mono', monospace;
+  --font-stack-code: 'Roboto Mono', 'Menlo', 'Monaco', 'Lucida Console', 'Liberation Mono', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Courier New', 'Inconsolata', monospace;
 }
 
 h1 {
@@ -97,4 +97,11 @@ em {
 
 .italic {
   font-style: italic;
+}
+
+code {
+  background: #282a36;
+  color: var(--sky-300);
+  font-family: var(--font-stack-code);
+  padding: 0 2px;
 }

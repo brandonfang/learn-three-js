@@ -219,6 +219,9 @@ const Game = {
     } else {
       hide($('.reference'));
     }
+    if (level.language) {
+      $('.editor-language').innerHTML = level.language;
+    }
 
     Game.answers[level.name] = Game.answers[level.name] || '';
     Game.updateLocalStorage();
