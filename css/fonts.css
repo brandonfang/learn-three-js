@@ -100,8 +100,11 @@ em {
 }
 
 code {
-  background: #282a36;
-  color: var(--sky-300);
+  white-space: pre-wrap;
+  padding: 2px 4px;
+  border-radius: 2px;
+  font-size: 15px;
   font-family: var(--font-stack-code);
-  padding: 0 2px;
+  color: var(--orange-500);
+  background: var(--coolGray-100);
 }

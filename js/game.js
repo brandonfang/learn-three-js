@@ -219,8 +219,8 @@ const Game = {
     } else {
       hide($('.reference'));
     }
-    if (level.language) {
-      $('.editor-language').innerHTML = level.language;
+    if (level.tag) {
+      $('.editor-language-tag').innerHTML = level.tag;
     }
 
     Game.answers[level.name] = Game.answers[level.name] || '';
