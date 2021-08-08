@@ -90,10 +90,10 @@ window.addEventListener('resize', () => {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 
-// editor.getSession().on('change', () => {
-//   material.color.setHex(`0x${editor.getValue()}`);
-//   Game.saveAnswer();
-// });
+editor.getSession().on('change', () => {
+  material.color.setHex(`0x${editor.getValue()}`);
+  Game.saveAnswer();
+});
 
 // Game logic
 const Game = {
@@ -169,6 +169,10 @@ const Game = {
       });
     });
 
+    $('.level-picker').addEventListener('click', () => {
+      toggle($('.level-dropdown'));
+    });
+    
     $('.level-picker').addEventListener('click', () => {
       toggle($('.level-dropdown'));
     });

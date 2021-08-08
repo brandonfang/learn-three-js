@@ -4,21 +4,21 @@ let levels = [
     number: 1,
     name: 'level-1',
     instructions:
-      "<h2>Welcome to Learn Three.js, follow along to learn the basics of creating 3D web graphics!</h2><p>First, we have to talk about the connection between WebGL and three.js.</p><p><em>WebGL</em> (Web Graphics Library) is a JavaScript API for rendering interactive 2D and 3D graphics without plugins. It draws points, lines, and triangles in the browser based on code you supply. WebGL is very fast because it runs on the GPU of your computer but it requires a lot of geometry and matrix math. Many lines of WebGL code are needed to display simple shapes like triangles and cubes.</p><p><em>Three.js</em> is an easy to use, lightweight, cross-browser, general purpose 3D library built on top of WebGL. It uses the HTML5 canvas element and WebGL to display 3D scenes. We'll be using it because it does most of the mathematical heavy lifting for us and lets us write more human-friendly code.</p><p>There are a few ways to include three.js in your JavaScript project. Let's get started with an HTML file and embedding the three core library from the <a href='https://github.com/mrdoob/three.js/blob/master/build' target='_blank'>three.js repo</a> (the unminified versions also work).</p><p>Embed a file named <code>three.js</code> by adding a script tag.</p>",
+      "<h2>Welcome to Learn Three.js, follow along to learn the basics of creating 3D web graphics!</h2><p>First, we have to talk about the connection between WebGL and three.js.</p><p><em>WebGL</em> (Web Graphics Library) is a JavaScript API for rendering interactive 2D and 3D graphics without plugins. It draws points, lines, and triangles in the browser based on code you supply. WebGL is very fast because it runs on the GPU of your computer but it requires a lot of geometry and matrix math. Many lines of WebGL code are needed to display simple shapes like triangles and cubes.</p><p><em>Three.js</em> is an easy to use, lightweight, cross-browser, general purpose 3D library built on top of WebGL. It uses the HTML5 canvas element and WebGL to display 3D scenes. We'll be using it because it does most of the mathematical heavy lifting for us and lets us write more human-friendly code.</p><p>There are a few ways to include three.js in your JavaScript project. Let's get started by embedding a plain JavaScript file, from the <a href='https://github.com/mrdoob/three.js/blob/master/build/three.min.js' target='_blank'>three.js repo</a>, in an HTML file.<p>Use a script tag to embed a file named <code>three.min.js</code>.</p>",
     reference:
       '<ul><li><a href="https://github.com/mrdoob/three.js/" target="_blank">Three.js GitHub repo</a></li><li><a href="https://threejs.org/docs/index.html#manual/en/introduction/Installation" target="_blank">Installation - three.js docs</a></li><li><a href="https://threejs.org" target="_blank">Three.js docs</a></li><li><a href="https://threejsfundamentals.org/" target="_blank">Three.js Fundamentals</a></li></ul>',
     skeleton: '',
     language: 'html',
     tag: 'html',
     startPosition: [0, 0],
-    solutions: ["console.log('level one')"],
-    hints: ["console.log('level one')"],
+    solutions: ["<script src='./three.min.js'></script>"],
+    hints: ["<script src='./three.min.js'></script>"],
   },
   {
     number: 2,
     name: 'level-2',
     instructions:
-      '<h2>Instructions title for level 2.</h2><p>Instructions for level 2. Lorem ipsum dolor sit ametcu, malesuada a diam vel, imperdiet gravida mi. Vivamus ante neque, blandit ut efficitur sed, fermentum quis tellus. Nulla est elit, semper in finibus at, finibus in sapien. Nulla bibendum leo ac orci varius, eget fermentum nulla efficitur. In tempus, lacus quis malesuada feugiat, ismod purus sed, efficitur quam.</p>',
+      '<h2>Instructions title for level 2.</h2><code>const scene = new THREE.Scene()</code>',
     reference: '<p>This is the reference material for level 2.</p>',
     skeleton: '',
     language: 'javascript',

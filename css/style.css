@@ -123,8 +123,8 @@ html, body {
 }
 
 .arrow.disabled {
-  background: var(--coolGray-200);
-  color: var(--coolGray-200);
+  background: var(--lime-200);
+  color: var(--lime-200);
   cursor: auto;
 }
 
@@ -387,7 +387,7 @@ li {
   font-family: var(--font-stack-code);
   font-size: 12px;
   line-height: 1;
-  color: var(--orange-500);
+  color: var(--green-500);
   text-transform: uppercase;
 }
 
