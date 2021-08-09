@@ -169,13 +169,13 @@ html, body {
   display: none;
   position: absolute;
   z-index: 1;
-  top: 44px;
+  top: 46px;
   left: 32px;
   width: 160px;
   border-radius: 4px;
   outline: none;
-  box-shadow: 0 6px 16px 8px hsla(201, 90%, 27%, 0.3);
-  background: var(--fuchsia-50);
+  box-shadow: 0 6px 16px 8px hsla(201, 90%, 27%, 0.2);
+  background: white;
   padding: 16px;
 }
 
@@ -189,7 +189,7 @@ html, body {
   outline: none;
   border-left: 12px solid transparent;
   border-right: 12px solid transparent;
-  border-bottom: 12px solid var(--fuchsia-50);
+  border-bottom: 12px solid white;
 }
 
 .level-grid {
@@ -247,6 +247,7 @@ html, body {
 }
 
 .left-buttons {
+  position: relative;
   display: flex;
   align-items: center;
 }
@@ -268,6 +269,7 @@ html, body {
   background: var(--coolGray-300);
   color: var(--coolGray-600);
   font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
   margin-right: 16px;
 }
@@ -281,17 +283,19 @@ html, body {
   background: var(--coolGray-300);
   color: var(--coolGray-600);
   font-size: 14px;
+  font-weight: 500;
   cursor: pointer;
 }
 
 .hint-tooltip {
   display: none;
+  z-index: 1;
   position: absolute;
-  left: 240px;
-  top: 100px;
+  left: 200px;
+  top: 0px;
   /* width: 80px;
   height: 80px; */
-  background: var(--pink-600);
+  background: var(--pink-300);
   padding: 24px;
 
 }
@@ -305,7 +309,7 @@ html, body {
   background: var(--sky-200);
   color: var(--sky-900);
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 500;
   transition: 0.2s;
   cursor: pointer;
 }

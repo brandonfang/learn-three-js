@@ -131,7 +131,6 @@ const Game = {
     });
     // $('.next').addEventListener('click', Game.nextLevel);
 
-
     window.addEventListener('beforeunload', () => {
       Game.saveAnswer();
       localStorage.setItem('levelIndex', Game.levelIndex);
@@ -157,8 +156,9 @@ const Game = {
   loadMenu: () => {
     levels.forEach((level, i) => {
       let solved = Game.solved.includes(level.number) ? ' solved' : '';
-      let levelCircle = `<div class='level-circle${solved}' level='${i}' title='${level.name}'>${i + 1
-        }</div>`;
+      let levelCircle = `<div class='level-circle${solved}' level='${i}' title='${level.name}'>${
+        i + 1
+      }</div>`;
       $('.level-grid').innerHTML += levelCircle;
     });
 
@@ -175,11 +175,7 @@ const Game = {
     $('.level-picker').addEventListener('click', () => {
       toggle($('.level-dropdown'));
     });
-
-    $('.level-picker').addEventListener('click', () => {
-      toggle($('.level-dropdown'));
-    });
-
+    
     let arrowLeft = $('.arrow.left');
     arrowLeft.addEventListener(
       'click',
@@ -279,7 +275,7 @@ const Game = {
 
   reset: () => {
     let isConfirmed = confirm(
-      'Are you sure you want to reset the game? You will lose all your saved progress.'
+      'Are you sure you want to reset the game?\n\nYou will lose all your saved progress.'
     );
     if (isConfirmed) {
       Game.levelIndex = 0;
@@ -293,7 +289,7 @@ const Game = {
   },
 
   resetLevel: () => {
-    let isConfirmed = confirm('Are you sure you want to reset this level?');
+    let isConfirmed = confirm('Are you sure you want to reset this level?\n\nYou will lose your saved progress for this level.');
     if (isConfirmed) {
       let level = levels[Game.levelIndex];
       // Game.answers[level.name] = '';
@@ -310,9 +306,9 @@ const Game = {
     localStorage.setItem('solved', JSON.stringify(Game.solved));
   },
 
-  win: () => { },
+  win: () => {},
 
-  debounce: () => { },
+  debounce: () => {},
 };
 
 // Start game
