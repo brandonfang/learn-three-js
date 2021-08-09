@@ -272,7 +272,7 @@ html, body {
   margin-right: 16px;
 }
 
-.hint {
+.hint-button {
   height: 36px;
   display: flex;
   align-items: center;
@@ -284,6 +284,17 @@ html, body {
   cursor: pointer;
 }
 
+.hint-tooltip {
+  display: none;
+  position: absolute;
+  left: 240px;
+  top: 100px;
+  /* width: 80px;
+  height: 80px; */
+  background: var(--pink-600);
+  padding: 24px;
+
+}
 
 .next {
   height: 36px;

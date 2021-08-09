@@ -126,8 +126,11 @@ const Game = {
   setHandlers: () => {
     $('.reset-all').addEventListener('click', Game.reset);
     $('.reset-level').addEventListener('click', Game.resetLevel);
-    $('.hint').addEventListener('click', Game.hint);
+    $('.hint-button').addEventListener('click', () => {
+      toggle($('.hint-tooltip'));
+    });
     // $('.next').addEventListener('click', Game.nextLevel);
+
 
     window.addEventListener('beforeunload', () => {
       Game.saveAnswer();
@@ -172,7 +175,7 @@ const Game = {
     $('.level-picker').addEventListener('click', () => {
       toggle($('.level-dropdown'));
     });
-    
+
     $('.level-picker').addEventListener('click', () => {
       toggle($('.level-dropdown'));
     });
@@ -206,6 +209,7 @@ const Game = {
     show($('.editor'));
     show($('.reference'));
     hide($('.level-dropdown'));
+    hide($('.hint-tooltip'));
     removeClass($('.level-circle.current'), 'current');
     addClass($$('.level-circle').item(level.number - 1), 'current');
     text($('.label-current'), level.number.toString());
@@ -243,15 +247,6 @@ const Game = {
     // set up three.js code with Game.answers or level.before/after
 
     Game.check(level);
-  },
-
-  hint: () => {
-    // $('.hint').addEventListener('click', () => {
-    //   toggle($('.hint-tooltip'));
-    // });
-
-    // show hint tooltip
-    return;
   },
 
   // consider making this a function without parameters
