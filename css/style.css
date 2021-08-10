@@ -30,6 +30,7 @@ body {
   width: 100%;
   justify-self: center;
   padding: 32px;
+  background: white;
   /* overflow-y: auto; */
 }
 
@@ -274,9 +275,31 @@ body {
   margin-right: 16px;
 }
 
-.hint {
-  position: relative;
-}
+/* .hint-tooltip {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  left: 0px;
+  bottom: 48px;
+  border-radius: 4px;;
+  background: var(--green-200);
+  padding: 12px 16px;
+  font-size: 13px !important;
+  white-space: nowrap;
+} */
+
+/* .hint-tooltip::after{
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 18px;
+  bottom: -12px;
+  outline: none;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid var(--green-200);
+} */
 
 .hint-button {
   height: 36px;
@@ -291,32 +314,39 @@ body {
   cursor: pointer;
 }
 
-.hint-tooltip {
-  display: none;
-  position: absolute;
-  z-index: 1;
-  left: 0px;
-  /* top: calc(-1 * (100% + 12px)); */
-  bottom: 48px;
-  border-radius: 4px;;
-  background: var(--green-200);
-  padding: 12px 16px;
-  font-size: 13px !important;
-  white-space: nowrap;
+.hint {
+  position: relative;
+  width: 100%;
+  /* margin: 32px 0; */
+  border-radius: 0px;
+  border: 2px solid var(--orange-600);
+  background: var(--orange-100);
+  padding: 24px;
 }
 
-.hint-tooltip::after{
-  content: '';
+.hint-close {
   position: absolute;
-  width: 0;
-  height: 0;
-  /* left: calc(50% - 12px); */
-  left: 18px;
-  bottom: -12px;
-  outline: none;
-  border-left: 12px solid transparent;
-  border-right: 12px solid transparent;
-  border-top: 12px solid var(--green-200);
+  top: 24px;
+  right: 24px;
+  color: var(--orange-900);
+}
+
+.hint-title {
+  font-size: 20px;
+  color: var(--orange-900);
+}
+
+.hint-body {
+  font-size: 14px;
+  color: var(--fuchsia-400);
+}
+
+.hint-code {
+  white-space: nowrap;
+  padding: 0;
+  font-size: 12px;
+  background: transparent;
+  color: var(--coolGray-800)
 }
 
 .next-button {
@@ -497,5 +527,13 @@ li {
 
   .view {
     display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .reset-level, 
+  .hint-button,
+  .next-button {
+    font-size: 12px;
   }
 }

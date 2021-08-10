@@ -124,9 +124,7 @@ const Game = {
   setHandlers: () => {
     $('.reset-all').addEventListener('click', Game.reset);
     $('.reset-level').addEventListener('click', Game.resetLevel);
-    $('.hint-button').addEventListener('click', () => {
-      toggle($('.hint-tooltip'));
-    });
+    $('.hint-button').addEventListener('click', Game.toggleHint);
     // $('.next-button').addEventListener('click', Game.nextLevel);
 
     window.addEventListener('beforeunload', () => {
@@ -135,6 +133,10 @@ const Game = {
       localStorage.setItem('answers', JSON.stringify(Game.answers));
       localStorage.setItem('solved', JSON.stringify(Game.solved));
     });
+  },
+
+  toggleHint: () => {
+    console.log('toggling the hint')
   },
 
   prev: () => {
@@ -203,7 +205,7 @@ const Game = {
     show($('.editor'));
     show($('.reference'));
     hide($('.level-dropdown'));
-    hide($('.hint-tooltip'));
+    // hide($('.hint-tooltip'));
     removeClass($('.level-circle.current'), 'current');
     addClass($$('.level-circle').item(level.number - 1), 'current');
     text($('.label-current'), level.number.toString());
@@ -225,11 +227,11 @@ const Game = {
       text($('.editor-language-tag'), level.tag);
     }
 
-    if (level.hints) {
-      $('.hint-tooltip').innerHTML = level.hints[0];
-    } else {
-      hide($('.hint'));
-    }
+    // if (level.hints) {
+    //   $('.hint-tooltip').innerHTML = level.hints[0];
+    // } else {
+    //   hide($('.hint'));
+    // }
 
     Game.answers[level.name] = Game.answers[level.name] || '';
     Game.updateLocalStorage();
