@@ -29,6 +29,7 @@ editor.setOptions({
   tabSize: 2,
 });
 
+
 // const setReadOnly = function (editor, readOnlyRanges) {
 //   let session = editor.getSession();
 //   let Range = require('ace/range').Range;

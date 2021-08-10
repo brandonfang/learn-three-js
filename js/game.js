@@ -30,9 +30,6 @@ const toggle = (ele) => {
 };
 const text = (ele, content) => (ele.textContent = content);
 
-// Select editor (the variable not the DOM element)
-// const editor = document.getElementById('editor');
-
 // Select canvas
 const container = document.getElementById('canvas');
 
@@ -90,10 +87,10 @@ window.addEventListener('resize', () => {
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
 
-editor.getSession().on('change', () => {
-  material.color.setHex(`0x${editor.getValue()}`);
-  Game.saveAnswer();
-});
+// editor.getSession().on('change', () => {
+//   material.color.setHex(`0x${editor.getValue()}`);
+//   Game.saveAnswer();
+// });
 
 // Game logic
 const Game = {
@@ -224,21 +221,11 @@ const Game = {
       hide($('.reference'));
     }
     if (level.tag) {
-      $('.editor-language-tag').innerHTML = level.tag;
+      text($('.editor-language-tag'), level.tag);
     }
 
     Game.answers[level.name] = Game.answers[level.name] || '';
     Game.updateLocalStorage();
-
-    // editor.focus();
-    // let answer = Game.answers[level.name];
-    // editor.insert('/n');
-    // editor.insert(answer);
-    // editor.insert('/n');
-    // editor.focus();
-    // editor.gotoLine(level.startPosition);
-    // let n = editor.getSession().getValue().split('\n').length; // To count total no. of lines
-    // editor.gotoLine(n, Infinity);
 
     // set up three.js code with Game.answers or level.before/after
 
@@ -268,8 +255,8 @@ const Game = {
 
   saveAnswer: () => {
     let level = levels[Game.levelIndex];
-    // need to get only one line of code, not the entire editor
-    // Game.answers[level.name] = editor.getValue();
+    // need to save only relevant lines of code
+
     Game.updateLocalStorage();
   },
 
@@ -307,8 +294,6 @@ const Game = {
   },
 
   win: () => {},
-
-  debounce: () => {},
 };
 
 // Start game
