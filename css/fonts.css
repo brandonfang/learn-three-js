@@ -100,11 +100,12 @@ em {
 }
 
 code {
+  display: inline-block;
   white-space: pre-wrap;
-  padding: 2px 4px;
+  padding: 0px 4px;
   border-radius: 2px;
   font-size: 15px;
   font-family: var(--font-stack-code);
-  color: var(--violet-700);
+  color: var(--violet-600);
   background: var(--coolGray-100);
 }

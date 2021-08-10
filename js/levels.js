@@ -12,7 +12,7 @@ let levels = [
     tag: 'html',
     startPosition: [0, 0],
     solutions: ["<script src='./three.min.js'></script>"],
-    hints: ["Try doing this: <code>&lt;script src='./three.min.js'&gt;&lt;/script&gt;</code>"],
+    hints: ['<code>&lt;script src="./three.min.js"&gt;&lt;/script&gt;</code>'],
   },
   {
     number: 2,

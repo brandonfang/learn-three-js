@@ -122,7 +122,7 @@ const Game = {
   },
 
   setHandlers: () => {
-    $('.reset-all').addEventListener('click', Game.reset);
+    $('.reset-all').addEventListener('click', Game.resetAll);
     $('.reset-level').addEventListener('click', Game.resetLevel);
     $('.hint-header').addEventListener('click', Game.toggleHint);
     // $('.next-button').addEventListener('click', Game.nextLevel);
@@ -136,7 +136,6 @@ const Game = {
   },
 
   toggleHint: () => {
-    // console.log('toggling the hint')
     const hintHeader = $('.hint-header');
     const hintClose  = $('.hint-close');
     const hintBody  = $('.hint-body');
@@ -147,7 +146,7 @@ const Game = {
       hintBody.classList.remove('closed');
       hintClose.classList.add('open');
       hintBody.classList.add('open');
-      // show($('.hint-body'));
+      show($('.hint-body'));
 
       $('.hint-close').innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
       hintHeader.focus();
@@ -156,13 +155,11 @@ const Game = {
       hintBody.classList.remove('open');
       hintClose.classList.add('closed');
       hintBody.classList.add('closed');
-      // hide($('.hint-body'));
-
+      hide($('.hint-body'));
+// 
       $('.hint-close').innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
       hintHeader.focus();
     }
-
-
   },
 
   prev: () => {
@@ -231,7 +228,7 @@ const Game = {
     show($('.editor'));
     show($('.reference'));
     hide($('.level-dropdown'));
-    // hide($('.hint'));
+    hide($('.hint-body'));
     removeClass($('.level-circle.current'), 'current');
     addClass($$('.level-circle').item(level.number - 1), 'current');
     text($('.label-current'), level.number.toString());
@@ -293,7 +290,7 @@ const Game = {
     Game.updateLocalStorage();
   },
 
-  reset: () => {
+  resetAll: () => {
     let isConfirmed = confirm(
       'Are you sure you want to reset the game?\n\nYou will lose all your saved progress.'
     );
