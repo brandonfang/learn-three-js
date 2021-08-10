@@ -15,7 +15,7 @@
     <meta name="twitter:url"          content="">
     <meta name="twitter:title"        content="">
     <meta name="twitter:description"  content="">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:card"         content="summary_large_image">
     <meta name="twitter:image"        content=""> -->
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/codemirror.css" />
@@ -65,7 +65,6 @@
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="feather feather-chevron-down"
                 >
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
@@ -106,11 +105,13 @@
         <div class="level-buttons">
           <div class="left-buttons">
             <button class="reset-level">Reset level</button>
-            <button class="hint-button">Hint</button>
-            <div class="hint-tooltip">hello</div>
+            <div class="hint">
+              <button class="hint-button">Hint</button>
+              <div class="hint-tooltip"></div>
+            </div>
           </div>
           <div class="right-buttons">
-            <button class="next">Next</button>
+            <button class="next-button">Next</button>
           </div>
         </div>
 
@@ -120,7 +121,7 @@
         </div>
 
         <footer class="footer">
-          <div class="footer-link">Made by <a href="" target="_blank" rel="noopener noreferrer">Brandon Fang</a></div>
+          <div class="footer-link">Made by <a href="" target="_blank">Brandon Fang</a></div>
           <div class="footer-link">
             <a href="https://bdmfang.com" target="_blank">Portfolio</a>
           </div>
@@ -149,7 +150,6 @@
     <script src="js/mode/javascript.js"></script>
 
     <script src="js/levels.js"></script>
-    <!-- <script src="js/editor.js"></script> -->
     <script src="js/game.js"></script>
   </body>
 </html>

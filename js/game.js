@@ -30,6 +30,7 @@ const toggle = (ele) => {
 };
 const text = (ele, content) => (ele.textContent = content);
 
+
 // Select canvas
 const container = document.getElementById('canvas');
 
@@ -126,7 +127,7 @@ const Game = {
     $('.hint-button').addEventListener('click', () => {
       toggle($('.hint-tooltip'));
     });
-    // $('.next').addEventListener('click', Game.nextLevel);
+    // $('.next-button').addEventListener('click', Game.nextLevel);
 
     window.addEventListener('beforeunload', () => {
       Game.saveAnswer();
@@ -222,6 +223,12 @@ const Game = {
     }
     if (level.tag) {
       text($('.editor-language-tag'), level.tag);
+    }
+
+    if (level.hints) {
+      $('.hint-tooltip').innerHTML = level.hints[0];
+    } else {
+      hide($('.hint'));
     }
 
     Game.answers[level.name] = Game.answers[level.name] || '';
