@@ -342,6 +342,10 @@ body {
   animation: fade-in .8s;
 }
 
+.hint-body > p {
+  margin-bottom: 4px;
+}
+
 .reference {
   position: relative;
   width: 100%;
@@ -402,7 +406,7 @@ li {
   width: 100%;
   position: relative;
   margin: 44px 0 24px 0;
-  padding: 16px;
+  padding: 12px 0;
   background: #282a36;
   color: white;
 }
@@ -421,11 +425,12 @@ li {
   text-transform: uppercase;
 }
 
-.editor {
-  width: 100%;
-  /* min-height: 120px; */
-  height: 0;
+#editor {
+}
+
+.CodeMirror {
   font-family: var(--font-stack-code);
+  font-size: 14px;
 }
 
 /* .ace_gutter {

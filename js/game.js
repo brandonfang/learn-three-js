@@ -30,6 +30,26 @@ const toggle = (ele) => {
 };
 const text = (ele, content) => (ele.textContent = content);
 
+// Create CodeMirror
+// const editorWrapper = document.getElementById('editor-wrapper');
+// let editor = CodeMirror(editorWrapper, {
+//   theme: 'dracula',
+//   mode: levels[0].mode,
+//   value: '',
+//   lineNumbers: true,
+//   indentUnit: 2,
+//   tabSize: 2,
+//   viewportMargin: Infinity,
+//   autoCloseTags: true,
+//   foldGutter: true,
+//   dragDrop: true,
+//   lint: true,
+//   extraKeys: {
+//     'Ctrl-Space': 'autocomplete',
+//   },
+//   autohint: true,
+// });
+
 // Select canvas
 const container = document.getElementById('canvas');
 
@@ -240,7 +260,7 @@ const Game = {
   loadEditor: (level) => {
     // console.log(level);
     const editorWrapper = document.getElementById('editor-wrapper');
-    const editor = CodeMirror(editorWrapper, {
+    let editor = CodeMirror(editorWrapper, {
       theme: 'dracula',
       mode: level.mode,
       value: '',
@@ -248,28 +268,34 @@ const Game = {
       indentUnit: 2,
       tabSize: 2,
       viewportMargin: Infinity,
-      // autoCloseTags: true,
-      // foldGutter: true,
-      // dragDrop: true,
-      // lint: true,
-      // extraKeys: {
-      //   'Ctrl-Space': 'autocomplete',
-      // },
+      autoCloseTags: true,
+      foldGutter: true,
+      dragDrop: true,
+      lint: true,
+      extraKeys: {
+        'Ctrl-Space': 'autocomplete',
+      },
+      autohint: true,
     });
     editor.setValue(level.skeleton);
-    
+    editor.refresh();
+
     if (level.readOnlyRanges[0]) {
       level.readOnlyRanges.forEach((range) => {
         editor.markText(
-          { line: range.start.line, ch: range.start.ch }, 
-          { line: range.end.line, ch: range.end.ch }, 
+          { line: range.start.line - 1, ch: range.start.ch }, 
+          { line: range.end.line - 1, ch: range.end.ch }, 
           { readOnly: true }
         );
       });
+      // add marker/highlight on read only lines
     }
 
+    const editorDiv = document.getElementsByClassName('CodeMirror')[0];
+    editorDiv.setAttribute('id', 'editor');
+
     editor.focus();
-    editor.setCursor({line: level.startPosition.line, ch: level.startPosition.ch});
+    editor.setCursor({line: level.startPosition.line - 1, ch: level.startPosition.ch});
   },
 
   toggleHint: () => {
