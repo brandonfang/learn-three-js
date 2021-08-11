@@ -325,7 +325,7 @@ body {
   background: var(--sky-200);
 }
 
-.hint-close {
+.hint-icon {
   width: 24px;
   height: 24px;
   color: var(--sky-600);
@@ -339,7 +339,7 @@ body {
 
 .hint-body {
   padding: 16px 24px;
-  animation: fade-in .6s;
+  animation: fade-in .8s;
 }
 
 .reference {
@@ -401,9 +401,10 @@ li {
   display: block;
   width: 100%;
   position: relative;
-  margin: 48px 0 24px 0;
+  margin: 44px 0 24px 0;
   padding: 16px;
   background: #282a36;
+  color: white;
 }
 
 .editor-language-tag {

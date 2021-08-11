@@ -196,28 +196,28 @@ const Game = {
 
   toggleHint: () => {
     const hintHeader = $('.hint-header');
-    const hintClose = $('.hint-close');
+    const hintIcon = $('.hint-icon');
     const hintBody = $('.hint-body');
-    const closed = hintClose.classList.contains('closed');
+    const closed = hintIcon.classList.contains('closed');
 
     if (closed) {
-      hintClose.classList.remove('closed');
+      hintIcon.classList.remove('closed');
       hintBody.classList.remove('closed');
-      hintClose.classList.add('open');
+      hintIcon.classList.add('open');
       hintBody.classList.add('open');
       show($('.hint-body'));
 
-      $('.hint-close').innerHTML =
+      $('.hint-icon').innerHTML =
         '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
       hintHeader.focus();
     } else {
-      hintClose.classList.remove('open');
+      hintIcon.classList.remove('open');
       hintBody.classList.remove('open');
-      hintClose.classList.add('closed');
+      hintIcon.classList.add('closed');
       hintBody.classList.add('closed');
       hide($('.hint-body'));
       //
-      $('.hint-close').innerHTML =
+      $('.hint-icon').innerHTML =
         '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
       hintHeader.focus();
     }

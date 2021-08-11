@@ -18,9 +18,10 @@
     <meta name="twitter:card"         content="summary_large_image">
     <meta name="twitter:image"        content=""> -->
     <link rel="stylesheet" href="css/reset.css" />
-    <link rel="stylesheet" href="css/codemirror.css" />
     <link rel="stylesheet" href="css/colors.css" />
     <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/codemirror.css" />
+    <link rel="stylesheet" href="css/dracula.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
 
@@ -99,7 +100,7 @@
 
         <div class="editor-wrapper">
           <div class="editor-language-tag"></div>
-          <div id="editor" class="editor" translate="no"></div>
+          <textarea class="editor" id="editor" translate="no"></textarea>
         </div>
 
         <div class="level-buttons">
@@ -110,7 +111,7 @@
         <div class="hint">
           <div class="hint-header">
             <h3 class="hint-title">Hint</h3>
-            <button class="hint-close closed">
+            <button class="hint-icon closed">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -157,7 +158,7 @@
 
     <script src="js/three.min.js"></script>
     <script src="js/codemirror.js"></script>
-    <script src="js/mode/htmlmixed.js"></script>
+    <script src="js/mode/xml.js"></script>
     <script src="js/mode/css.js"></script>
     <script src="js/mode/javascript.js"></script>
 
