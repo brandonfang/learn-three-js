@@ -30,7 +30,6 @@ const toggle = (ele) => {
 };
 const text = (ele, content) => (ele.textContent = content);
 
-
 // Select canvas
 const container = document.getElementById('canvas');
 
@@ -135,33 +134,6 @@ const Game = {
     });
   },
 
-  toggleHint: () => {
-    const hintHeader = $('.hint-header');
-    const hintClose  = $('.hint-close');
-    const hintBody  = $('.hint-body');
-    const closed = hintClose.classList.contains('closed');
-
-    if (closed) {
-      hintClose.classList.remove('closed');
-      hintBody.classList.remove('closed');
-      hintClose.classList.add('open');
-      hintBody.classList.add('open');
-      show($('.hint-body'));
-
-      $('.hint-close').innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
-      hintHeader.focus();
-    } else {
-      hintClose.classList.remove('open');
-      hintBody.classList.remove('open');
-      hintClose.classList.add('closed');
-      hintBody.classList.add('closed');
-      hide($('.hint-body'));
-// 
-      $('.hint-close').innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
-      hintHeader.focus();
-    }
-  },
-
   prev: () => {
     Game.updateLocalStorage();
     Game.levelIndex--;
@@ -198,7 +170,7 @@ const Game = {
     $('.level-picker').addEventListener('click', () => {
       toggle($('.level-dropdown'));
     });
-    
+
     let arrowLeft = $('.arrow.left');
     arrowLeft.addEventListener(
       'click',
@@ -220,6 +192,35 @@ const Game = {
       },
       false
     );
+  },
+
+  toggleHint: () => {
+    const hintHeader = $('.hint-header');
+    const hintClose = $('.hint-close');
+    const hintBody = $('.hint-body');
+    const closed = hintClose.classList.contains('closed');
+
+    if (closed) {
+      hintClose.classList.remove('closed');
+      hintBody.classList.remove('closed');
+      hintClose.classList.add('open');
+      hintBody.classList.add('open');
+      show($('.hint-body'));
+
+      $('.hint-close').innerHTML =
+        '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
+      hintHeader.focus();
+    } else {
+      hintClose.classList.remove('open');
+      hintBody.classList.remove('open');
+      hintClose.classList.add('closed');
+      hintBody.classList.add('closed');
+      hide($('.hint-body'));
+      //
+      $('.hint-close').innerHTML =
+        '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
+      hintHeader.focus();
+    }
   },
 
   // in progress
@@ -306,7 +307,9 @@ const Game = {
   },
 
   resetLevel: () => {
-    let isConfirmed = confirm('Are you sure you want to reset this level?\n\nYou will lose your saved progress for this level.');
+    let isConfirmed = confirm(
+      'Are you sure you want to reset this level?\n\nYou will lose your saved progress for this level.'
+    );
     if (isConfirmed) {
       let level = levels[Game.levelIndex];
       // Game.answers[level.name] = '';
