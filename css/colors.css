@@ -241,7 +241,4 @@
   --rose-700: hsl(345, 83%, 41%);
   --rose-800: hsl(343, 80%, 35%);
   --rose-900: hsl(342, 75%, 30%);
-
-  --color-primary: var(--teal-900);
-  --color-secondary: var(--teal-500);
 }

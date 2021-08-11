@@ -271,6 +271,11 @@ body {
   cursor: pointer;
 }
 
+.reset-level:hover {
+  background: var(--coolGray-300);
+  color: var(--coolGray-600);
+}
+
 .next-button {
   height: 36px;
   display: flex;
@@ -282,13 +287,14 @@ body {
   font-size: 14px;
   font-weight: 500;
   transition: 0.2s;
-  cursor: pointer;
+  cursor: auto;
 }
 
 .next-button.active {
   background: var(--sky-300);
   color: var(--sky-800);
   font-weight: 500;
+  cursor: pointer;
 }
 
 .next-button.active:hover {
@@ -333,7 +339,7 @@ body {
 
 .hint-body {
   padding: 16px 24px;
-  animation: fade-in .8s;
+  animation: fade-in .6s;
 }
 
 .reference {
