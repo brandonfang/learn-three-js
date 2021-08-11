@@ -30,24 +30,11 @@ const toggle = (ele) => {
 };
 const text = (ele, content) => (ele.textContent = content);
 
-// Set up initial editor state
-const editorWrapper = document.getElementById('.editor-wrapper');
-console.log(levels[0].skeleton);
-let editor = CodeMirror(editorWrapper, {
-  theme: 'dracula',
-  mode: 'xml',
-  lineNumbers: true,
-  indentUnit: 2,
-  tabSize: 2,
-  viewportMargin: Infinity,
-  value: levels[0].skeleton,
-});
-
 // Select canvas
 const container = document.getElementById('canvas');
 
 // 
-// CREATE SCENE
+// CREATE INITIAL SCENE
 // 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -251,10 +238,12 @@ const Game = {
   },
 
   loadEditor: (level) => {
-    let editor = CodeMirror(editorWrapper, {
+    // console.log(level);
+    const editorWrapper = document.getElementById('editor-wrapper');
+    const editor = CodeMirror(editorWrapper, {
       theme: 'dracula',
       mode: level.mode,
-      value: level.skeleton,
+      value: '',
       lineNumbers: true,
       indentUnit: 2,
       tabSize: 2,
@@ -267,17 +256,20 @@ const Game = {
       //   'Ctrl-Space': 'autocomplete',
       // },
     });
-
-    level.readOnlyRanges.forEach((range) => {
-      editor.markText(
-        { line: range.start.line, ch: range.start.ch }, 
-        { line: range.end.line, ch: range.end.ch }, 
-        { readOnly: true }
-      );
-    });
+    editor.setValue(level.skeleton);
+    
+    if (level.readOnlyRanges[0]) {
+      level.readOnlyRanges.forEach((range) => {
+        editor.markText(
+          { line: range.start.line, ch: range.start.ch }, 
+          { line: range.end.line, ch: range.end.ch }, 
+          { readOnly: true }
+        );
+      });
+    }
 
     editor.focus();
-    editor.setCursor({line: startPosition.line, ch: startPosition.ch});
+    editor.setCursor({line: level.startPosition.line, ch: level.startPosition.ch});
   },
 
   toggleHint: () => {
