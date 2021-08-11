@@ -30,10 +30,25 @@ const toggle = (ele) => {
 };
 const text = (ele, content) => (ele.textContent = content);
 
+// Set up initial editor state
+const editorWrapper = document.getElementById('.editor-wrapper');
+console.log(levels[0].skeleton);
+let editor = CodeMirror(editorWrapper, {
+  theme: 'dracula',
+  mode: 'xml',
+  lineNumbers: true,
+  indentUnit: 2,
+  tabSize: 2,
+  viewportMargin: Infinity,
+  value: levels[0].skeleton,
+});
+
 // Select canvas
 const container = document.getElementById('canvas');
 
-// Create scene
+// 
+// CREATE SCENE
+// 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
   75,
@@ -101,7 +116,7 @@ const Game = {
 
   start: () => {
     text($('.label-total'), levels.length.toString());
-    show($('.editor'));
+    // show($('.editor'));
 
     if (!localStorage.user) {
       // generate random id for new user
@@ -194,39 +209,10 @@ const Game = {
     );
   },
 
-  toggleHint: () => {
-    const hintHeader = $('.hint-header');
-    const hintIcon = $('.hint-icon');
-    const hintBody = $('.hint-body');
-    const closed = hintIcon.classList.contains('closed');
-
-    if (closed) {
-      hintIcon.classList.remove('closed');
-      hintBody.classList.remove('closed');
-      hintIcon.classList.add('open');
-      hintBody.classList.add('open');
-      show($('.hint-body'));
-
-      $('.hint-icon').innerHTML =
-        '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
-      hintHeader.focus();
-    } else {
-      hintIcon.classList.remove('open');
-      hintBody.classList.remove('open');
-      hintIcon.classList.add('closed');
-      hintBody.classList.add('closed');
-      hide($('.hint-body'));
-      //
-      $('.hint-icon').innerHTML =
-        '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
-      hintHeader.focus();
-    }
-  },
-
   // in progress
   loadLevel: (level) => {
     if (!level) return;
-    show($('.editor'));
+    // show($('.editor'));
     show($('.reference'));
     hide($('.level-dropdown'));
     hide($('.hint-body'));
@@ -259,8 +245,68 @@ const Game = {
     Game.updateLocalStorage();
 
     // set up three.js code with Game.answers or level.before/after
+    Game.loadEditor(level);
 
     Game.check(level);
+  },
+
+  loadEditor: (level) => {
+    let editor = CodeMirror(editorWrapper, {
+      theme: 'dracula',
+      mode: level.mode,
+      value: level.skeleton,
+      lineNumbers: true,
+      indentUnit: 2,
+      tabSize: 2,
+      viewportMargin: Infinity,
+      // autoCloseTags: true,
+      // foldGutter: true,
+      // dragDrop: true,
+      // lint: true,
+      // extraKeys: {
+      //   'Ctrl-Space': 'autocomplete',
+      // },
+    });
+
+    level.readOnlyRanges.forEach((range) => {
+      editor.markText(
+        { line: range.start.line, ch: range.start.ch }, 
+        { line: range.end.line, ch: range.end.ch }, 
+        { readOnly: true }
+      );
+    });
+
+    editor.focus();
+    editor.setCursor({line: startPosition.line, ch: startPosition.ch});
+  },
+
+  toggleHint: () => {
+    const hintHeader = $('.hint-header');
+    const hintIcon = $('.hint-icon');
+    const hintBody = $('.hint-body');
+    const closed = hintIcon.classList.contains('closed');
+
+    if (closed) {
+      hintIcon.classList.remove('closed');
+      hintBody.classList.remove('closed');
+      hintIcon.classList.add('open');
+      hintBody.classList.add('open');
+      show($('.hint-body'));
+
+      $('.hint-icon').innerHTML =
+        '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
+      hintHeader.focus();
+    } else {
+      hintIcon.classList.remove('open');
+      hintBody.classList.remove('open');
+      hintIcon.classList.add('closed');
+      hintBody.classList.add('closed');
+      hide($('.hint-body'));
+      //
+      $('.hint-icon').innerHTML =
+        '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
+      hintHeader.focus();
+    }
   },
 
   // consider making this a function without parameters

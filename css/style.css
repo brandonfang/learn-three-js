@@ -397,7 +397,7 @@ li {
 }
 
 /* Editor styles */
-.editor-wrapper {
+#editor-wrapper {
   display: block;
   width: 100%;
   position: relative;
@@ -423,7 +423,8 @@ li {
 
 .editor {
   width: 100%;
-  min-height: 120px;
+  /* min-height: 120px; */
+  height: 0;
   font-family: var(--font-stack-code);
 }
 
