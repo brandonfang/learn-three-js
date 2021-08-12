@@ -5,13 +5,13 @@ let levels = [
     name: 'level-1',
     instructions:
       "<h2>Welcome to Learn Three.js, follow along to learn the basics of creating 3D web graphics!</h2><p>First, we have to talk about the connection between WebGL and three.js.</p><p><em>WebGL</em> (Web Graphics Library) is a JavaScript API for rendering interactive 2D and 3D graphics without plugins. It draws points, lines, and triangles in the browser based on code you supply. WebGL is very fast because it runs on the GPU of your computer but it requires a lot of geometry and matrix math. Many lines of WebGL code are needed to display simple shapes like triangles and cubes.</p><p><em>Three.js</em> is an easy to use, lightweight, cross-browser, general purpose 3D library built on top of WebGL. It uses the HTML5 canvas element and WebGL to display 3D scenes. We'll be using it because it does most of the mathematical heavy lifting for us and lets us write more human-friendly code.</p><p>There are a few ways to include three.js in your JavaScript project. Let's get started by embedding the core three.js library (taken from <a href='https://github.com/mrdoob/three.js/blob/master/build/three.min.js' target='_blank' rel='noopener noreferrer'>GitHub</a>) in our <code>index.html</code> file.<p>We have a file named <code>three.min.js</code> in the root folder. Use a script tag to embed it.</p>",
-    tag: 'html',
+    tag: 'index.html',
     mode: 'xml',
     skeleton:
       '<!DOCTYPE html>\n<html lang="en">\n<head>\n  <title>Document</title>\n</head>\n<body>\n  \n</body>\n</html>',
     readOnlyRanges: [
-      { start: { line: 1, ch: 0 }, end: { line: 6, ch: 100 } },
-      { start: { line: 8, ch: 0 }, end: { line: 9, ch: 100 } },
+      { start: { line: 1, ch: 0 }, end: { line: 7, ch: 2 } },
+      { start: { line: 8, ch: 0 }, end: { line: 10, ch: 0 } },
     ],
     startPosition: { line: 7, ch: 2 },
     solutions: ["<script src='./three.min.js'></script>"],
@@ -67,32 +67,6 @@ let levels = [
     tag: 'js',
     startPosition: [0, 0],
     solutions: ["console.log('level four')"],
-    hints: ['Lorem ipsum'],
-  },
-  {
-    number: 5,
-    name: 'level-5',
-    instructions:
-      '<h2>Instructions title for level 5.</h2><p>Instructions for level 5. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna nisl, rhoncus eget bibendum at, euismod eget fermentum quis tellus. </p>',
-    reference: '<p>This is the reference material for level 5.</p>',
-    skeleton: '',
-    mode: 'javascript',
-    tag: 'js',
-    startPosition: [0, 0],
-    solutions: ["console.log('level five')"],
-    hints: ['Lorem ipsum'],
-  },
-  {
-    number: 6,
-    name: 'level-6',
-    instructions:
-      '<h2>Instructions title for level 6.</h2><p>Instructions for level 6. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna nisl, rhoncus eget bibendum at, euismod eget fermentum quis tellus. Nulla est elit, semper in finibus at.</p>',
-    reference: '<p>This is the reference material for level 6.</p>',
-    skeleton: '',
-    mode: 'javascript',
-    tag: 'js',
-    startPosition: [0, 0],
-    solutions: ["console.log('level six')"],
     hints: ['Lorem ipsum'],
   },
 ];

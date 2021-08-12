@@ -30,25 +30,6 @@ const toggle = (ele) => {
 };
 const text = (ele, content) => (ele.textContent = content);
 
-// Create CodeMirror
-// const editorWrapper = document.getElementById('editor-wrapper');
-// let editor = CodeMirror(editorWrapper, {
-//   theme: 'dracula',
-//   mode: levels[0].mode,
-//   value: '',
-//   lineNumbers: true,
-//   indentUnit: 2,
-//   tabSize: 2,
-//   viewportMargin: Infinity,
-//   autoCloseTags: true,
-//   foldGutter: true,
-//   dragDrop: true,
-//   lint: true,
-//   extraKeys: {
-//     'Ctrl-Space': 'autocomplete',
-//   },
-//   autohint: true,
-// });
 
 // Select canvas
 const container = document.getElementById('canvas');
@@ -241,7 +222,7 @@ const Game = {
       hide($('.reference'));
     }
     if (level.tag) {
-      text($('.editor-language-tag'), level.tag);
+      text($('.editor-tag'), level.tag);
     }
 
     if (level.hints[0]) {
@@ -392,6 +373,26 @@ const Game = {
 
   win: () => {},
 };
+
+// Create CodeMirror
+// const editorWrapper = document.getElementById('editor-wrapper');
+// let editor = CodeMirror(editorWrapper, {
+//   theme: 'dracula',
+//   mode: levels[0].mode,
+//   value: '',
+//   lineNumbers: true,
+//   indentUnit: 2,
+//   tabSize: 2,
+//   viewportMargin: Infinity,
+//   autoCloseTags: true,
+//   foldGutter: true,
+//   dragDrop: true,
+//   lint: true,
+//   extraKeys: {
+//     'Ctrl-Space': 'autocomplete',
+//   },
+//   autohint: true,
+// });
 
 // Start game
 document.addEventListener('DOMContentLoaded', () => {
