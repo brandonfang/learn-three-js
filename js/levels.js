@@ -26,7 +26,7 @@ let levels = [
     name: 'level-2',
     instructions:
       "<h2>Creating a scene</h2><p>To actually be able to display anything with three.js, we need three things: scene, camera and renderer, so that we can render the scene with camera. To create a scene, use the three.js <a href=\"https://threejs.org/docs/index.html?q=scene#api/en/scenes/Scene\">Scene</a> class:<code>const scene = new THREE.Scene()</code></p><h2>Geometries</h2><p>BoxGeometry is a geometry class for a rectangular cuboid with a given 'width', 'height', and 'depth'. On creation, the cuboid is centred on the origin, with each edge parallel to one of the axes.</p><p>Create a scene and a BoxGeometry with its width, height, depth all set to 1.</p>",
-    tag: 'js',
+    tag: 'script.js',
     mode: 'javascript',
     skeleton:
       'const canvas = document.getElementById("canvas");\nconst scene = ;\nconst geometry = ;',
@@ -51,7 +51,7 @@ let levels = [
     reference: '<p>This is the reference material for level 3.</p>',
     skeleton: '',
     mode: 'javascript',
-    tag: 'js',
+    tag: 'script.js',
     startPosition: [0, 0],
     solutions: ["console.log('level three')"],
     hints: ['Lorem ipsum'],
@@ -64,7 +64,7 @@ let levels = [
     reference: '<p>This is the reference material for level 4.</p>',
     skeleton: '',
     mode: 'javascript',
-    tag: 'js',
+    tag: 'script.js',
     startPosition: [0, 0],
     solutions: ["console.log('level four')"],
     hints: ['Lorem ipsum'],

@@ -19,6 +19,8 @@ const addEventListenerByClass = (className, event, fn) => {
   }
 };
 
+const text = (ele, content) => (ele.textContent = content);
+
 const show = (ele) => (ele.style.display = 'block');
 const hide = (ele) => (ele.style.display = 'none');
 const toggle = (ele) => {
@@ -28,14 +30,13 @@ const toggle = (ele) => {
   }
   show(ele);
 };
-const text = (ele, content) => (ele.textContent = content);
 
 
 // Select canvas
 const container = document.getElementById('canvas');
 
 // 
-// CREATE INITIAL SCENE
+// Create initial scene
 // 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -79,7 +80,8 @@ window.addEventListener('resize', () => {
   sizes.width = window.innerWidth;
   sizes.height = window.innerHeight;
 
-  // editor.resize();
+  // Resize editor
+  // Resize view
 
   // Update camera
   camera.aspect = sizes.width / sizes.height;
@@ -89,11 +91,6 @@ window.addEventListener('resize', () => {
   renderer.setSize(sizes.width, sizes.height);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 });
-
-// editor.getSession().on('change', () => {
-//   material.color.setHex(`0x${editor.getValue()}`);
-//   Game.saveAnswer();
-// });
 
 // Game logic
 const Game = {
@@ -232,51 +229,30 @@ const Game = {
     Game.answers[level.name] = Game.answers[level.name] || '';
     Game.updateLocalStorage();
 
-    // set up three.js code with Game.answers or level.before/after
     Game.loadEditor(level);
 
     Game.check(level);
   },
 
   loadEditor: (level) => {
-    // console.log(level);
-    const editorWrapper = document.getElementById('editor-wrapper');
-    let editor = CodeMirror(editorWrapper, {
-      theme: 'dracula',
-      mode: level.mode,
-      value: '',
-      lineNumbers: true,
-      indentUnit: 2,
-      tabSize: 2,
-      viewportMargin: Infinity,
-      autoCloseTags: true,
-      foldGutter: true,
-      dragDrop: true,
-      lint: true,
-      extraKeys: {
-        'Ctrl-Space': 'autocomplete',
-      },
-      autohint: true,
-    });
-    editor.setValue(level.skeleton);
-    editor.refresh();
+    // editor.setValue('');
+    // editor.clearHistory();
+    // editor.setValue(level.skeleton);
+    // editor.refresh();
 
-    if (level.readOnlyRanges[0]) {
-      level.readOnlyRanges.forEach((range) => {
-        editor.markText(
-          { line: range.start.line - 1, ch: range.start.ch }, 
-          { line: range.end.line - 1, ch: range.end.ch }, 
-          { readOnly: true }
-        );
-      });
-      // add marker/highlight on read only lines
-    }
+    // if (level.readOnlyRanges[0]) {
+    //   level.readOnlyRanges.forEach((range) => {
+    //     editor.markText(
+    //       { line: range.start.line - 1, ch: range.start.ch }, 
+    //       { line: range.end.line - 1, ch: range.end.ch }, 
+    //       { readOnly: true }
+    //     );
+    //   });
+    //   // add marker/highlight on read only lines
+    // }
 
-    const editorDiv = document.getElementsByClassName('CodeMirror')[0];
-    editorDiv.setAttribute('id', 'editor');
-
-    editor.focus();
-    editor.setCursor({line: level.startPosition.line - 1, ch: level.startPosition.ch});
+    // editor.focus();
+    // editor.setCursor({line: level.startPosition.line - 1, ch: level.startPosition.ch});
   },
 
   toggleHint: () => {
@@ -291,7 +267,7 @@ const Game = {
       hintIcon.classList.add('open');
       hintBody.classList.add('open');
       show($('.hint-body'));
-
+      // minus icon
       $('.hint-icon').innerHTML =
         '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-minus"><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
       hintHeader.focus();
@@ -301,7 +277,7 @@ const Game = {
       hintIcon.classList.add('closed');
       hintBody.classList.add('closed');
       hide($('.hint-body'));
-      //
+      // plus icon
       $('.hint-icon').innerHTML =
         '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>';
       hintHeader.focus();

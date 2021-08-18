@@ -31,7 +31,7 @@ body {
   justify-self: center;
   padding: 24px 32px;
   background: white;
-  /* overflow-y: auto; */
+  overflow: auto;
 }
 
 .view {
@@ -247,7 +247,7 @@ body {
 
 .instructions {
   width: 100%;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 }
 
 .level-buttons {
@@ -407,7 +407,6 @@ li {
   margin-top: 24px;
   border-radius: 4px 4px 0px 0px;
   padding: 12px 16px;
-  /* background: #282a36; */
   background: #3e404b;
   font-family: var(--font-stack-code);
   font-size: 14px;
@@ -437,7 +436,6 @@ li {
   padding: 12px 0;
   border-radius: 0 0 4px 4px;
   background: #282a36;
-  color: white;
 }
 
 #editor {
@@ -471,6 +469,10 @@ li {
       'header'
       'sidebar'
       'view';
+  }
+
+  .sidebar {
+    overflow: visible;
   }
 }
 
